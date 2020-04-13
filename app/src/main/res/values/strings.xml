@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AppFilme</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="filmes">Filmes</string>
+    <string name="series">Séries</string>
+    <string name="quiz">Quiz</string>
+    <string name="mais">Mais</string>
+</resources>

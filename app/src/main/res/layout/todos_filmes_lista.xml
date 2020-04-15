@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imagemFilmeTodos"
+        android:layout_width="91dp"
+        android:layout_height="137dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/retornorei" />
+
+    <TextView
+        android:id="@+id/textTituloTodos"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/abril_fatface"
+        android:singleLine="true"
+        android:text="O Senhor dos Anéis: O Retorno do Rei"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="5dp"
+        android:text="De"
+        app:layout_constraintEnd_toStartOf="@+id/textDeTodos"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:text="Com"
+        app:layout_constraintEnd_toStartOf="@+id/textComTodos"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/textMinutosTodos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="100dp"
+        android:text="201 min"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/textDeTodos"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos" />
+
+    <TextView
+        android:id="@+id/textComTodos"
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textDeTodos" />
+
+    <ImageView
+        android:id="@+id/estrela1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/estrela2"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        app:srcCompat="@drawable/ic_star_black_24dp" />
+
+    <ImageView
+        android:id="@+id/estrela2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/estrela3"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        app:srcCompat="@drawable/ic_star_black_24dp" />
+
+    <ImageView
+        android:id="@+id/estrela3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/estrela4"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        app:srcCompat="@drawable/ic_star_black_24dp" />
+
+    <ImageView
+        android:id="@+id/estrela4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/estrela5"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        app:srcCompat="@drawable/ic_star_black_24dp" />
+
+    <ImageView
+        android:id="@+id/estrela5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="156dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        app:srcCompat="@drawable/ic_star_black_24dp" />
+
+    <TextView
+        android:id="@+id/textVote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="serif"
+        android:text="10"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/textVote"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        app:srcCompat="@drawable/ic_star_black_24dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

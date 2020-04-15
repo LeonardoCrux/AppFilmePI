@@ -7,115 +7,169 @@
     tools:context=".view.FilmeDetalheActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imagemFilmeDetalhe"
         android:layout_width="118dp"
         android:layout_height="170dp"
-        app:srcCompat="@drawable/retornorei"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/retornorei" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tituloFilmeDetalhe"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/abril_fatface"
         android:text='O Senhor dos Anéis: O Retorno do Rei"'
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:textColor="@color/colorTab"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Elenco"
+        android:id="@+id/deDetalhe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Elenco"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="129dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
+        android:fontFamily="serif"
         android:text="De"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="148dp" />
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+        app:layout_constraintTop_toBottomOf="@+id/elencoDetalhe" />
 
     <TextView
-        android:id="@+id/Estreia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estreia"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="167dp" />
-
-    <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/sinopseFilmeDetalhe"
         android:layout_width="408dp"
-        android:layout_height="244dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/alegreya"
         android:text='O confronto final entre as forças do bem e do mal que lutam pelo controle do futuro da Terra Média se aproxima. Sauron planeja um grande ataque a Minas Tirith, capital de Gondor, o que faz com que Gandalf e Pippin partam para o local na intenção de ajudar a resistência. Um exército é reunido por Theoden em Rohan, em mais uma tentativa de deter as forças de Sauron. Enquanto isso, Frodo, Sam e Gollum seguem sua viagem rumo à Montanha da Perdição para destruir o anel.", '
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="249dp" />
+        android:textColor="@color/colorTab"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="serif"
         android:text="Título original:"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="235dp" />
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/duracaoFilmeDetalhe" />
 
     <TextView
-        android:id="@+id/The"
+        android:id="@+id/originalTitlefilmeDetalhe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="serif"
         android:text="The Lord of the Rings: The Return of the King"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="235dp" />
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/duracaoFilmeDetalhe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="201 min"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="216dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagemFilmeDetalhe" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/orcamentoDetalhe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bilheteria"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="68dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="serif"
         android:text="Orçamento"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="49dp" />
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/elencoDetalhe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="serif"
+        android:text="Elenco"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+        app:layout_constraintTop_toBottomOf="@+id/nacionalidadeDetalhe" />
+
+    <TextView
+        android:id="@+id/estreiaFilmeDetalhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="serif"
+        android:text="Estreia"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+        app:layout_constraintTop_toBottomOf="@+id/deDetalhe" />
+
+    <TextView
+        android:id="@+id/bilheteriaDetalhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="serif"
+        android:text="Bilheteria"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+        app:layout_constraintTop_toBottomOf="@+id/orcamentoDetalhe" />
+
+    <TextView
+        android:id="@+id/nacionalidadeDetalhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="serif"
         android:text="Nacionalidade"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="98dp" />
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+        app:layout_constraintTop_toBottomOf="@+id/bilheteriaDetalhe" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="410dp"
         android:layout_height="187dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="535dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Elenco"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="511dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sinopseFilmeDetalhe" />
+
+    <ProgressBar
+        android:id="@+id/progressBarDetalhe"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

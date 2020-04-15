@@ -37,8 +37,7 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesAdapter.MyViewHold
     }
 
     public void setResult(List<ResultSeries> resultado) {
-        //verificar se o result já tem informação
-        if (resultado.size() == 0) {
+        if (resultado.size() != 0) {
             this.popularList = resultado;
         } else {
             this.popularList.addAll(resultado);
@@ -55,17 +54,17 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesAdapter.MyViewHold
 
     public class MyViewHolderSeries extends RecyclerView.ViewHolder {
         private ImageView imageView;
-        private TextView textSerieNome;
+        private TextView textSerie;
 
         public MyViewHolderSeries(@NonNull View itemView) {
             super(itemView);
-            textSerieNome = itemView.findViewById(R.id.textSeriePopular);
+            textSerie = itemView.findViewById(R.id.textPopularSerie);
             imageView = itemView.findViewById(R.id.imagemSeriesPopular);
         }
 
-        public void bind(ResultSeries resultSeriesPopulares){
-            textSerieNome.setText(resultSeriesPopulares.getOriginalName().toString());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+resultSeriesPopulares.getPosterPath()).into(imageView);
+        public void bind(ResultSeries resultSeriesBind){
+            textSerie.setText(resultSeriesBind.getOriginalName());
+            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+resultSeriesBind.getPosterPath()).into(imageView);
         }
     }
 

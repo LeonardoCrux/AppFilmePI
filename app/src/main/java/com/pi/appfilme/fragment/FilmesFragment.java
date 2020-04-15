@@ -1,22 +1,23 @@
 package com.pi.appfilme.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.adapter.FilmeAdapter;
 import com.pi.appfilme.adapter.FilmeAdapterTop;
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
-import com.pi.appfilme.view.MainActivity;
+import com.pi.appfilme.view.TodosActivity;
 import com.pi.appfilme.viewmodel.FilmeViewModel;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ import static com.pi.appfilme.util.Constantes.Region.BR;
  * A simple {@link Fragment} subclass.
  */
 public class FilmesFragment extends Fragment {
+    private TextView textCartaz;
+    private TextView textTop;
     private RecyclerView recyclerCartaz;
     private RecyclerView recyclerTop;
     private FilmeAdapter adapter;
@@ -49,7 +52,7 @@ public class FilmesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_filmes, container, false);
         initViews(view);
         viewModel.getPlaying(API_KEY, PT_BR, BR,1 );
-        viewModel.liveData.observe(getViewLifecycleOwner(), (List<ResultFilme> resultFilmes) -> {adapter.atualizaListaPlaying(resultFilmes);
+        viewModel.liveData.observe(getViewLifecycleOwner(), (List<ResultFilme> resultFilmes) -> { adapter.atualizaListaPlaying(resultFilmes);
         });
         viewModel.liveDataLoading.observe(getViewLifecycleOwner(), aBoolean -> {
             if(aBoolean) {
@@ -58,6 +61,24 @@ public class FilmesFragment extends Fragment {
         });
         viewModel.getTop(API_KEY, PT_BR, BR, 1);
         viewModel.liveDataTop.observe(getViewLifecycleOwner(), resultFilmes -> {adapterTop.atualizaListaTop(resultFilmes);});
+
+        textCartaz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TodosActivity.class);
+                intent.putExtra("Click", "Cartaz");
+                startActivity(intent);
+            }
+        });
+
+        textTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TodosActivity.class);
+                intent.putExtra("Click", "Top");
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -77,6 +98,8 @@ public class FilmesFragment extends Fragment {
         recyclerTop.setAdapter(adapterTop);
         progressBar = view.findViewById(R.id.progressBar3);
         viewModel = ViewModelProviders.of(this).get(FilmeViewModel.class);
+        textTop = view.findViewById(R.id.textTop);
+        textCartaz = view.findViewById(R.id.textCartaz);
     }
 
 }

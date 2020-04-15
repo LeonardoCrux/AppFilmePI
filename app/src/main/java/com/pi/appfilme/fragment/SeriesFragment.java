@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +28,10 @@ import static com.pi.appfilme.util.Constantes.Region.BR;
  */
 public class SeriesFragment extends Fragment {
     private RecyclerView recyclerView;
-    private SeriesAdapter adapter;
+    private SeriesAdapter adapterSerie;
     private SerieViewModel viewModel;
     private List<ResultSeries> listSerie = new ArrayList<>();
+
     public SeriesFragment() {
         // Required empty public constructor
     }
@@ -42,9 +44,11 @@ public class SeriesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_series, container, false);
         initViews(view);
         viewModel.getPopularSeries(API_KEY, BR, 1);
-        viewModel.liveData.observe(getViewLifecycleOwner(), seriesPopulares -> {
-            adapter.setResult(seriesPopulares);
+        viewModel.liveData.observe(getViewLifecycleOwner(), (List<ResultSeries> seriesPopulares) -> {
+            Log.i("logfragment", "frag" + listSerie.size());
+            adapterSerie.setResult(seriesPopulares);
         });
+
         return view;
     }
 
@@ -53,8 +57,8 @@ public class SeriesFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new SeriesAdapter(listSerie);
-        recyclerView.setAdapter(adapter);
+        adapterSerie = new SeriesAdapter(listSerie);
+        recyclerView.setAdapter(adapterSerie);
         viewModel = ViewModelProviders.of(this).get(SerieViewModel.class);
 
     }

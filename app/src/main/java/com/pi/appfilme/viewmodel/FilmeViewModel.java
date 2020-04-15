@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
+import com.pi.appfilme.model.filme.detalhes.Detalhes;
 import com.pi.appfilme.repository.FilmeRepository;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class FilmeViewModel extends AndroidViewModel {
     public LiveData<String> liveDataErro = mutableLiveDataErro;
     private MutableLiveData<Boolean> mutableLiveDataLoading = new MutableLiveData<>();
     public LiveData<Boolean> liveDataLoading = mutableLiveDataLoading;
+    private MutableLiveData<Detalhes> mutableLiveDataDetalhes = new MutableLiveData<>();
+    public LiveData<Detalhes> liveDataDetalhes = mutableLiveDataDetalhes;
 
 
     public FilmeViewModel(@NonNull Application application) {
@@ -59,6 +62,20 @@ public class FilmeViewModel extends AndroidViewModel {
                         }, throwable -> {
                             mutableLiveDataErro.setValue(throwable.getMessage());
                         }));
+    }
+
+    public void getFilmeDetalhe(long id, String apiKey, String language){
+        disposable.add(
+                repository.getFilmeDetalhes(id, apiKey, language)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable1 -> mutableLiveDataLoading.setValue(true))
+                .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
+                .subscribe(detalhes -> {
+                    mutableLiveDataDetalhes.setValue(detalhes);
+                }, throwable -> {
+                    mutableLiveDataErro.setValue(throwable.getMessage());
+                }));
     }
 
 

@@ -1,4 +1,5 @@
 package com.pi.appfilme.adapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +33,6 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.ViewHolder> 
         holder.onBind(resultFilme);
     }
 
-    @Override
-    public int getItemCount() {
-        return listPlaying.size() - 17;
-    }
-
     public void atualizaListaPlaying(List<ResultFilme> novaLista) {
         if (this.listPlaying.isEmpty()) {
             this.listPlaying = novaLista;
@@ -45,6 +41,12 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.ViewHolder> 
         }
         notifyDataSetChanged();
     }
+
+    @Override
+    public int getItemCount() {
+        return listPlaying.size() - 17;
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;

@@ -62,7 +62,7 @@ public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.
         private ImageView estrela3;
         private ImageView estrela4;
         private ImageView estrela5;
-        private TextView texteDe;
+        private TextView texteDe, textData;
         private TextView textVote;
 
         public ViewHolder(@NonNull View itemView) {
@@ -70,18 +70,19 @@ public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.
             imagemTodos = itemView.findViewById(R.id.imagemFilmeTodos);
             tituloTodos = itemView.findViewById(R.id.textTituloTodos);
             textVote = itemView.findViewById(R.id.textVote);
-            texteDe = itemView.findViewById(R.id.textDeTodos);
             estrela1 = itemView.findViewById(R.id.estrela1);
             estrela2 = itemView.findViewById(R.id.estrela2);
             estrela3 = itemView.findViewById(R.id.estrela3);
             estrela4 = itemView.findViewById(R.id.estrela4);
             estrela5 = itemView.findViewById(R.id.estrela5);
+            textData = itemView.findViewById(R.id.textDataFilmeLista);
             itemView.setOnClickListener(this);
         }
 
         private void onBind(ResultFilme resultFilme){
             tituloTodos.setText(resultFilme.getTitle());
             textVote.setText(resultFilme.getVoteAverage().toString() + "/10");
+            textData.setText(resultFilme.getReleaseDate());
             Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultFilme.getPosterPath()).into(imagemTodos);
         }
 

@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -41,6 +44,8 @@ public class FilmesFragment extends Fragment {
     private List<ResultFilme> listTop = new ArrayList<>();
     private ProgressBar progressBar;
     private FilmeViewModel viewModel;
+    private Animation animFadein;
+
 
     public FilmesFragment() {
     }
@@ -65,6 +70,7 @@ public class FilmesFragment extends Fragment {
         textCartaz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textCartaz.startAnimation(animFadein);
                 Intent intent = new Intent(getContext(), TodosActivity.class);
                 intent.putExtra("Click", "Cartaz");
                 startActivity(intent);
@@ -74,6 +80,7 @@ public class FilmesFragment extends Fragment {
         textTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textTop.startAnimation(animFadein);
                 Intent intent = new Intent(getContext(), TodosActivity.class);
                 intent.putExtra("Click", "Top");
                 startActivity(intent);
@@ -98,8 +105,11 @@ public class FilmesFragment extends Fragment {
         recyclerTop.setAdapter(adapterTop);
         progressBar = view.findViewById(R.id.progressBar3);
         viewModel = ViewModelProviders.of(this).get(FilmeViewModel.class);
-        textTop = view.findViewById(R.id.textTop);
+        textTop = (TextView) view.findViewById(R.id.textTop);
         textCartaz = view.findViewById(R.id.textCartaz);
+
+        animFadein = AnimationUtils.loadAnimation(view.getContext(),
+                R.anim.fragment_fade_enter);
     }
 
 }

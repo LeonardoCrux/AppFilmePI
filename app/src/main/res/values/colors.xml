@@ -5,5 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorTab">#1E2433</color>
     <color name="branco">#FFFFFF</color>
+    <color name="cinzaRecycler">#99D8D8D8</color>
 
 </resources>

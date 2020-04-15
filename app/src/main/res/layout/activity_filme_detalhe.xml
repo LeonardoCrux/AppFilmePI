@@ -12,8 +12,7 @@
         android:layout_height="170dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/retornorei" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tituloFilmeDetalhe"
@@ -23,7 +22,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="5dp"
         android:fontFamily="@font/abril_fatface"
-        android:text='O Senhor dos Anéis: O Retorno do Rei"'
         android:textColor="@color/colorTab"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,13 +44,12 @@
 
     <TextView
         android:id="@+id/sinopseFilmeDetalhe"
-        android:layout_width="408dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="5dp"
         android:fontFamily="@font/alegreya"
-        android:text='O confronto final entre as forças do bem e do mal que lutam pelo controle do futuro da Terra Média se aproxima. Sauron planeja um grande ataque a Minas Tirith, capital de Gondor, o que faz com que Gandalf e Pippin partam para o local na intenção de ajudar a resistência. Um exército é reunido por Theoden em Rohan, em mais uma tentativa de deter as forças de Sauron. Enquanto isso, Frodo, Sam e Gollum seguem sua viagem rumo à Montanha da Perdição para destruir o anel.", '
         android:textColor="@color/colorTab"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +71,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="serif"
-        android:text="The Lord of the Rings: The Return of the King"
         android:textSize="8sp"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
@@ -84,7 +80,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="201 min"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagemFilmeDetalhe" />
 
@@ -95,7 +90,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="84dp"
         android:fontFamily="serif"
-        android:text="Orçamento"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
         app:layout_constraintTop_toTopOf="parent" />
@@ -106,7 +100,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:fontFamily="serif"
-        android:text="Elenco"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
         app:layout_constraintTop_toBottomOf="@+id/nacionalidadeDetalhe" />
@@ -117,7 +110,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:fontFamily="serif"
-        android:text="Estreia"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
         app:layout_constraintTop_toBottomOf="@+id/deDetalhe" />
@@ -128,7 +120,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:fontFamily="serif"
-        android:text="Bilheteria"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
         app:layout_constraintTop_toBottomOf="@+id/orcamentoDetalhe" />
@@ -147,8 +138,13 @@
         app:layout_constraintTop_toBottomOf="@+id/bilheteriaDetalhe" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="410dp"
+        android:id="@+id/recyclerElenco"
+        android:layout_width="match_parent"
         android:layout_height="187dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/cinzaRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 

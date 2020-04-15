@@ -1,6 +1,7 @@
 package com.pi.appfilme.repository;
 
 import com.pi.appfilme.model.filme.BuscaEBreve.Movie;
+import com.pi.appfilme.model.filme.creditos.Creditos;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
 import com.pi.appfilme.model.series.SeriesPopulares;
 import com.pi.appfilme.network.FilmeService;
@@ -20,6 +21,10 @@ public class FilmeRepository {
 
     public Observable<Movie> getTop(String apiKey, String language, String region, int pagina){
         return FilmeService.getApiService().getTop(apiKey, language,region, pagina);
+    }
+
+    public Observable<Creditos> getCreditos(long id, String apiKey){
+        return FilmeService.getApiService().getCreditos(id, apiKey);
     }
 
     public Single<Detalhes> getFilmeDetalhes(long id, String apiKey, String language){

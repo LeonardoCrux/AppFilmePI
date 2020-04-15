@@ -2,6 +2,8 @@ package com.pi.appfilme.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +13,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.pi.appfilme.R;
+import com.pi.appfilme.adapter.ElencoAdapter;
+import com.pi.appfilme.model.filme.creditos.Cast;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
+import com.pi.appfilme.viewmodel.CreditosViewModel;
 import com.pi.appfilme.viewmodel.FilmeViewModel;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
@@ -21,8 +29,12 @@ import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 public class FilmeDetalheActivity extends AppCompatActivity {
     private ImageView imagemFilme;
     private TextView tituloFilme, duracao, originalTitle, sinopse, orcamento, bilheteria, data, diretor;
-    private FilmeViewModel viewModel;
+    private FilmeViewModel viewModelFilme;
+    private CreditosViewModel viewModelElenco;
     private long idFilme;
+    private ElencoAdapter adapter;
+    private List<Cast> castList = new ArrayList<>();
+    private RecyclerView recyclerView;
     private ProgressBar progressBar;
 
     @Override
@@ -31,17 +43,21 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         setContentView(R.layout.activity_filme_detalhe);
         initView();
         recuperaIdFilme();
-        viewModel.getFilmeDetalhe(idFilme, API_KEY, PT_BR);
-        viewModel.liveDataDetalhes.observe(this, detalhes -> {
+        viewModelFilme.getFilmeDetalhe(idFilme, API_KEY, PT_BR);
+        viewModelFilme.liveDataDetalhes.observe(this, detalhes -> {
             setDetalhes(detalhes);
         });
-        viewModel.liveDataLoading.observe(this, aBoolean -> {
+        viewModelFilme.liveDataLoading.observe(this, aBoolean -> {
             if(aBoolean){
                 progressBar.setVisibility(View.VISIBLE);
             }else {
                 progressBar.setVisibility(View.INVISIBLE);
             }
         });
+
+        viewModelElenco.getCast(idFilme, "9e388e7de5c0c42386ebad1002886539");
+        viewModelElenco.liveDataCast.observe(this, casts -> adapter.atualizaLista(casts));
+
 
         Log.i("LOG", "filme" + idFilme);
     }
@@ -57,7 +73,15 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         diretor = findViewById(R.id.deDetalhe);
         bilheteria = findViewById(R.id.bilheteriaDetalhe);
         data = findViewById(R.id.estreiaFilmeDetalhe);
-        viewModel = ViewModelProviders.of(this).get(FilmeViewModel.class);
+        viewModelFilme = ViewModelProviders.of(this).get(FilmeViewModel.class);
+        viewModelElenco = ViewModelProviders.of(this).get(CreditosViewModel.class);
+
+        recyclerView = findViewById(R.id.recyclerElenco);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new ElencoAdapter(castList);
+        recyclerView.setAdapter(adapter);
     }
 
     public void recuperaIdFilme(){

@@ -1,6 +1,7 @@
 package com.pi.appfilme.network;
 
 import com.pi.appfilme.model.filme.BuscaEBreve.Movie;
+import com.pi.appfilme.model.filme.creditos.Creditos;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
 import com.pi.appfilme.model.series.SeriesPopulares;
 
@@ -31,6 +32,12 @@ public interface API {
             @Path("movie_id") long id,
             @Query("api_key") String apiKey,
             @Query("language") String language);
+
+    @GET("movie/{movie_id}/credits")
+    Observable<Creditos> getCreditos(
+    @Path("movie_id") long id,
+    @Query("api_key") String apiKey);
+
     @GET("tv/popular")
     Observable<SeriesPopulares> getSeriesPopulares(
             @Query("api_key") String apiKey,

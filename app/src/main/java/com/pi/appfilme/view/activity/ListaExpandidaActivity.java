@@ -1,4 +1,4 @@
-package com.pi.appfilme.view;
+package com.pi.appfilme.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -6,12 +6,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.pi.appfilme.R;
-import com.pi.appfilme.adapter.TodosFilmesAdapter;
+import com.pi.appfilme.view.adapter.TodosFilmesAdapter;
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
 import com.pi.appfilme.viewmodel.FilmeViewModel;
 
@@ -22,7 +20,7 @@ import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 import static com.pi.appfilme.util.Constantes.Region.BR;
 
-public class TodosActivity extends AppCompatActivity{
+public class ListaExpandidaActivity extends AppCompatActivity{
     private RecyclerView recyclerView;
     private FilmeViewModel viewModel;
     private TodosFilmesAdapter adapter;
@@ -32,7 +30,7 @@ public class TodosActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_todos);
+        setContentView(R.layout.activity_lista_expandida);
         initViews();
         Bundle bundle = getIntent().getExtras();
         String click = bundle.getString("Click");

@@ -1,4 +1,4 @@
-package com.pi.appfilme.adapter;
+package com.pi.appfilme.view.adapter;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,28 +26,26 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolderSeries onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.series_lista, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.filme_lista, parent, false);
         return new MyViewHolderSeries(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderSeries holder, int position) {
         ResultSeries resultSeriesPopulares = popularList.get(position);
-        holder.bind(resultSeriesPopulares);
     }
 
-    public void setResult(List<ResultSeries> resultado) {
-        if (resultado.size() != 0) {
-            this.popularList = resultado;
+    public void atualizaLista(List<ResultSeries> novaLista) {
+        if (popularList.isEmpty()) {
+            this.popularList = novaLista;
         } else {
-            this.popularList.addAll(resultado);
-            notifyDataSetChanged();
+            this.popularList.addAll(novaLista);
         }
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        Log.i("LISTA", "Lista"+ popularList.size());
         return popularList.size();
     }
 
@@ -58,13 +56,13 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesAdapter.MyViewHold
 
         public MyViewHolderSeries(@NonNull View itemView) {
             super(itemView);
-            textSerie = itemView.findViewById(R.id.textPopularSerie);
-            imageView = itemView.findViewById(R.id.imagemSeriesPopular);
+            textSerie = itemView.findViewById(R.id.textRecyclerCartaz);
+            imageView = itemView.findViewById(R.id.imagemCartazRecycler);
         }
 
-        public void bind(ResultSeries resultSeriesBind){
-            textSerie.setText(resultSeriesBind.getOriginalName());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+resultSeriesBind.getPosterPath()).into(imageView);
+        public void bnd(ResultSeries resultSeries){
+            textSerie.setText(resultSeries.getOriginalName());
+            Picasso.get().load("https://image.tmdb.org/t/p/w500/" + resultSeries.getPosterPath()).into(imageView);
         }
     }
 

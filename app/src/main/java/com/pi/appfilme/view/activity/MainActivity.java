@@ -1,23 +1,18 @@
-package com.pi.appfilme.view;
+package com.pi.appfilme.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.pi.appfilme.R;
-import com.pi.appfilme.fragment.FilmesFragment;
-import com.pi.appfilme.fragment.MaisFragment;
-import com.pi.appfilme.fragment.QuizFragment;
-import com.pi.appfilme.fragment.SeriesFragment;
-
-import static androidx.core.os.LocaleListCompat.create;
+import com.pi.appfilme.view.fragment.FilmesFragment;
+import com.pi.appfilme.view.fragment.MaisFragment;
+import com.pi.appfilme.view.fragment.QuizFragment;
+import com.pi.appfilme.view.fragment.SeriesFragment;
 
 public class MainActivity extends AppCompatActivity {
     private SmartTabLayout smartTabLayout;

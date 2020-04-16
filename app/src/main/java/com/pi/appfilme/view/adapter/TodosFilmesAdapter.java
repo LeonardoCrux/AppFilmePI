@@ -1,9 +1,6 @@
-package com.pi.appfilme.adapter;
+package com.pi.appfilme.view.adapter;
 
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
-import com.pi.appfilme.view.FilmeDetalheActivity;
+import com.pi.appfilme.view.activity.FilmeDetalheActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -90,7 +87,7 @@ public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), FilmeDetalheActivity.class);
             long idFilme = listResult.get(getAdapterPosition()).getId();
-            intent.putExtra("Id", idFilme);
+            intent.putExtra("ID", idFilme);
             v.getContext().startActivity(intent);
         }
     }

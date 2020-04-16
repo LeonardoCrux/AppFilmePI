@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.ResultadoBuscaActivity">
+    tools:context=".view.activity.ListaExpandidaActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTodos"
         android:layout_width="match_parent"
-        android:layout_height="327dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

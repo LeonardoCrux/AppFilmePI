@@ -1,4 +1,4 @@
-package com.pi.appfilme.fragment;
+package com.pi.appfilme.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,15 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.pi.appfilme.R;
-import com.pi.appfilme.adapter.FilmeAdapter;
-import com.pi.appfilme.adapter.FilmeAdapterTop;
+import com.pi.appfilme.view.adapter.FilmeAdapter;
+import com.pi.appfilme.view.adapter.FilmeAdapterTop;
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
-import com.pi.appfilme.view.TodosActivity;
+import com.pi.appfilme.view.activity.ListaExpandidaActivity;
 import com.pi.appfilme.viewmodel.FilmeViewModel;
 
 import java.util.ArrayList;
@@ -71,7 +70,7 @@ public class FilmesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 textCartaz.startAnimation(animFadein);
-                Intent intent = new Intent(getContext(), TodosActivity.class);
+                Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
                 intent.putExtra("Click", "Cartaz");
                 startActivity(intent);
             }
@@ -81,7 +80,7 @@ public class FilmesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 textTop.startAnimation(animFadein);
-                Intent intent = new Intent(getContext(), TodosActivity.class);
+                Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
                 intent.putExtra("Click", "Top");
                 startActivity(intent);
             }

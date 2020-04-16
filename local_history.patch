@@ -1,0 +1,180 @@
+Index: app/src/main/java/com/pi/appfilme/adapter/FilmeAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/pi/appfilme/adapter/FilmeAdapter.java	(date 1586909038475)
++++ app/src/main/java/com/pi/appfilme/adapter/FilmeAdapter.java	(date 1586909038475)
+@@ -1,5 +1,4 @@
+ package com.pi.appfilme.adapter;
+-import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+@@ -33,6 +32,11 @@
+         holder.onBind(resultFilme);
+     }
+ 
++    @Override
++    public int getItemCount() {
++        return listPlaying.size() - 17;
++    }
++
+     public void atualizaListaPlaying(List<ResultFilme> novaLista) {
+         if (this.listPlaying.isEmpty()) {
+             this.listPlaying = novaLista;
+@@ -42,12 +46,6 @@
+         notifyDataSetChanged();
+     }
+ 
+-    @Override
+-    public int getItemCount() {
+-        return listPlaying.size() - 17;
+-    }
+-
+-
+     public class ViewHolder extends RecyclerView.ViewHolder {
+         private ImageView imageView;
+         private TextView textTitulo;
+Index: app/src/main/java/com/pi/appfilme/adapter/SeriesAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/pi/appfilme/adapter/SeriesAdapter.java	(date 1586909038477)
++++ app/src/main/java/com/pi/appfilme/adapter/SeriesAdapter.java	(date 1586909038477)
+@@ -37,7 +37,8 @@
+     }
+ 
+     public void setResult(List<ResultSeries> resultado) {
+-        if (resultado.size() != 0) {
++        //verificar se o result já tem informação
++        if (resultado.size() == 0) {
+             this.popularList = resultado;
+         } else {
+             this.popularList.addAll(resultado);
+@@ -54,17 +55,17 @@
+ 
+     public class MyViewHolderSeries extends RecyclerView.ViewHolder {
+         private ImageView imageView;
+-        private TextView textSerie;
++        private TextView textSerieNome;
+ 
+         public MyViewHolderSeries(@NonNull View itemView) {
+             super(itemView);
+-            textSerie = itemView.findViewById(R.id.textPopularSerie);
++            textSerieNome = itemView.findViewById(R.id.textSeriePopular);
+             imageView = itemView.findViewById(R.id.imagemSeriesPopular);
+         }
+ 
+-        public void bind(ResultSeries resultSeriesBind){
+-            textSerie.setText(resultSeriesBind.getOriginalName());
+-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+resultSeriesBind.getPosterPath()).into(imageView);
++        public void bind(ResultSeries resultSeriesPopulares){
++            textSerieNome.setText(resultSeriesPopulares.getOriginalName().toString());
++            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+resultSeriesPopulares.getPosterPath()).into(imageView);
+         }
+     }
+ 
+Index: app/src/main/java/com/pi/appfilme/adapter/TodosFilmesAdapter.java
+===================================================================
+--- app/src/main/java/com/pi/appfilme/adapter/TodosFilmesAdapter.java	(date 0)
++++ app/src/main/java/com/pi/appfilme/adapter/TodosFilmesAdapter.java	(date 0)
+@@ -1,97 +0,0 @@
+-package com.pi.appfilme.adapter;
+-
+-import android.app.Activity;
+-import android.app.ActivityManager;
+-import android.content.Intent;
+-import android.util.Log;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-import android.widget.ImageView;
+-import android.widget.TextView;
+-
+-import androidx.annotation.NonNull;
+-import androidx.recyclerview.widget.RecyclerView;
+-
+-import com.pi.appfilme.R;
+-import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
+-import com.pi.appfilme.view.FilmeDetalheActivity;
+-import com.squareup.picasso.Picasso;
+-
+-import java.util.List;
+-
+-public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.ViewHolder> {
+-    private List<ResultFilme> listResult;
+-
+-    public TodosFilmesAdapter(List<ResultFilme> listResult) {
+-        this.listResult = listResult;
+-    }
+-
+-    @NonNull
+-    @Override
+-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.todos_filmes_lista, parent, false);
+-        return new ViewHolder(view);
+-    }
+-
+-    @Override
+-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+-        ResultFilme resultFilme = listResult.get(position);
+-        holder.onBind(resultFilme);
+-    }
+-
+-    public void atualizaLista(List<ResultFilme> novaLista){
+-        if(this.listResult.isEmpty()){
+-            listResult = novaLista;
+-        } else {
+-            this.listResult.addAll(novaLista);
+-        }
+-        notifyDataSetChanged();
+-    }
+-
+-    @Override
+-    public int getItemCount() {
+-        return listResult.size();
+-    }
+-
+-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+-        private ImageView imagemTodos;
+-        private TextView tituloTodos;
+-        private ImageView estrela1;
+-        private ImageView estrela2;
+-        private ImageView estrela3;
+-        private ImageView estrela4;
+-        private ImageView estrela5;
+-        private TextView texteDe;
+-        private TextView textVote;
+-
+-        public ViewHolder(@NonNull View itemView) {
+-            super(itemView);
+-            imagemTodos = itemView.findViewById(R.id.imagemFilmeTodos);
+-            tituloTodos = itemView.findViewById(R.id.textTituloTodos);
+-            textVote = itemView.findViewById(R.id.textVote);
+-            texteDe = itemView.findViewById(R.id.textDeTodos);
+-            estrela1 = itemView.findViewById(R.id.estrela1);
+-            estrela2 = itemView.findViewById(R.id.estrela2);
+-            estrela3 = itemView.findViewById(R.id.estrela3);
+-            estrela4 = itemView.findViewById(R.id.estrela4);
+-            estrela5 = itemView.findViewById(R.id.estrela5);
+-            itemView.setOnClickListener(this);
+-        }
+-
+-        private void onBind(ResultFilme resultFilme){
+-            tituloTodos.setText(resultFilme.getTitle());
+-            textVote.setText(resultFilme.getVoteAverage().toString() + "/10");
+-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultFilme.getPosterPath()).into(imagemTodos);
+-        }
+-
+-        @Override
+-        public void onClick(View v) {
+-            Intent intent = new Intent(v.getContext(), FilmeDetalheActivity.class);
+-            long idFilme = listResult.get(getAdapterPosition()).getId();
+-            intent.putExtra("Id", idFilme);
+-            v.getContext().startActivity(intent);
+-        }
+-    }
+-
+-}

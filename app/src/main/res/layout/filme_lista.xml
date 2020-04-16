@@ -30,10 +30,11 @@
         android:cursorVisible="false"
         android:ellipsize="end"
         android:filterTouchesWhenObscured="false"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:hapticFeedbackEnabled="false"
         android:nestedScrollingEnabled="false"
         android:singleLine="true"
-        android:text="O Poderoso Chefão"
         android:textStyle="bold"
         app:autoSizeTextType="none"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,12 +42,14 @@
         app:layout_constraintTop_toBottomOf="@+id/imagemCartazRecycler" />
 
     <TextView
-        android:id="@+id/RecyclerCartazDiretor"
+        android:id="@+id/cartazData"
         android:layout_width="128dp"
         android:layout_height="15dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:textAlignment="center"
         android:textSize="10sp"
         android:textStyle="italic"

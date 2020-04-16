@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.pi.appfilme.model.series.ResultSeries;
+import com.pi.appfilme.model.series.SeriesPopulares;
 import com.pi.appfilme.repository.FilmeRepository;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class SerieViewModel extends AndroidViewModel {
                 repository.getSeriesPopulares(apiKey, language, pagina)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(seriesPopulares -> {
+                .subscribe((SeriesPopulares seriesPopulares) -> {
                     mutableLiveDataPopular.setValue(seriesPopulares.getResultSeries());
                 }, throwable -> {
                     mutableLiveDataErro.setValue(throwable.getMessage());

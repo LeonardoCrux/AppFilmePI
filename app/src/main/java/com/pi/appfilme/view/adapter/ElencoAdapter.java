@@ -1,5 +1,6 @@
-package com.pi.appfilme.adapter;
+package com.pi.appfilme.view.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.creditos.Cast;
+import com.pi.appfilme.view.activity.PessoaDetalheActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -49,15 +51,16 @@ public class ElencoAdapter extends RecyclerView.Adapter<ElencoAdapter.ViewHolder
         return listaCast.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imagemElenco;
         private TextView textNome;
         private TextView textPersonagem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imagemElenco = itemView.findViewById(R.id.imagemElenco);
-            textNome = itemView.findViewById(R.id.nomeElenco);
+            itemView.setOnClickListener(this);
+            imagemElenco = itemView.findViewById(R.id.imagemFilmografia);
+            textNome = itemView.findViewById(R.id.personagemFilmografia);
             textPersonagem = itemView.findViewById(R.id.personagemElenco);
         }
 
@@ -65,6 +68,13 @@ public class ElencoAdapter extends RecyclerView.Adapter<ElencoAdapter.ViewHolder
             Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ cast.getProfilePath()).into(imagemElenco);
             textNome.setText(cast.getName());
             textPersonagem.setText(cast.getCharacter());
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), PessoaDetalheActivity.class);
+            intent.putExtra("ID", listaCast.get(getAdapterPosition()).getId());
+            v.getContext().startActivity(intent);
         }
     }
 }

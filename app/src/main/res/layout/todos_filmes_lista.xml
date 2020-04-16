@@ -26,7 +26,6 @@
         android:fontFamily="@font/abril_fatface"
         android:singleLine="true"
         android:text="O Senhor dos Anéis: O Retorno do Rei"
-        android:textColor="@android:color/black"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

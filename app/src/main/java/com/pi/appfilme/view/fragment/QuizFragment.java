@@ -1,4 +1,4 @@
-package com.pi.appfilme.fragment;
+package com.pi.appfilme.view.fragment;
 
 import android.os.Bundle;
 

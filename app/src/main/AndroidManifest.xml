@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pi.appfilme" >
+    package="com.pi.appfilme">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -11,14 +11,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".view.TodosActivity" >
-        </activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.activity.FotoDetalheActivity"></activity>
+        <activity android:name=".view.activity.PessoaDetalheActivity" />
+        <activity android:name=".view.activity.ListaExpandidaActivity" />
         <activity android:name=".view.Teste" />
-        <activity android:name=".view.FilmesGridActivity" />
-        <activity android:name=".view.ResultadoBuscaActivity" />
-        <activity android:name=".view.FilmeDetalheActivity" />
-        <activity android:name=".view.MainActivity" >
+        <activity android:name=".view.activity.ResultadoBuscaActivity" />
+        <activity android:name=".view.activity.FilmeDetalheActivity" />
+        <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

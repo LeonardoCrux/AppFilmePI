@@ -1,4 +1,4 @@
-package com.pi.appfilme.fragment;
+package com.pi.appfilme.view.fragment;
 
 import android.os.Bundle;
 
@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.pi.appfilme.R;
-import com.pi.appfilme.adapter.SeriesAdapter;
+import com.pi.appfilme.view.adapter.SeriesAdapter;
 import com.pi.appfilme.model.series.ResultSeries;
 import com.pi.appfilme.viewmodel.SerieViewModel;
 
@@ -43,23 +43,9 @@ public class SeriesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_series, container, false);
         initViews(view);
-        viewModel.getPopularSeries(API_KEY, BR, 1);
-        viewModel.liveData.observe(getViewLifecycleOwner(), (List<ResultSeries> seriesPopulares) -> {
-            Log.i("logfragment", "frag" + listSerie.size());
-            adapterSerie.setResult(seriesPopulares);
-        });
-
         return view;
     }
 
     public void initViews(View view){
-        recyclerView = view.findViewById(R.id.recyclerSeriePopular);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(layoutManager);
-        adapterSerie = new SeriesAdapter(listSerie);
-        recyclerView.setAdapter(adapterSerie);
-        viewModel = ViewModelProviders.of(this).get(SerieViewModel.class);
-
     }
 }

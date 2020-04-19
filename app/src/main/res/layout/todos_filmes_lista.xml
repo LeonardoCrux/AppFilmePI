@@ -55,51 +55,6 @@
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
         app:layout_constraintTop_toBottomOf="@+id/textDataFilmeLista" />
 
-    <ImageView
-        android:id="@+id/estrela1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/estrela2"
-        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
-        app:srcCompat="@drawable/ic_star_black_24dp" />
-
-    <ImageView
-        android:id="@+id/estrela2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/estrela3"
-        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
-        app:srcCompat="@drawable/ic_star_black_24dp" />
-
-    <ImageView
-        android:id="@+id/estrela3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/estrela4"
-        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
-        app:srcCompat="@drawable/ic_star_black_24dp" />
-
-    <ImageView
-        android:id="@+id/estrela4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/estrela5"
-        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
-        app:srcCompat="@drawable/ic_star_black_24dp" />
-
-    <ImageView
-        android:id="@+id/estrela5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="156dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
-        app:srcCompat="@drawable/ic_star_black_24dp" />
 
     <TextView
         android:id="@+id/textVote"

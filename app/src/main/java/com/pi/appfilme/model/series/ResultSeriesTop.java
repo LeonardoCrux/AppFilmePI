@@ -5,10 +5,10 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResultSeries {
+public class ResultSeriesTop {
 
     @SerializedName("backdrop_path")
-    private String backdropPath;
+    private Object backdropPath;
     @SerializedName("first_air_date")
     private String firstAirDate;
     @SerializedName("genre_ids")
@@ -34,11 +34,11 @@ public class ResultSeries {
     @SerializedName("vote_count")
     private Long voteCount;
 
-    public String getBackdropPath() {
+    public Object getBackdropPath() {
         return backdropPath;
     }
 
-    public void setBackdropPath(String backdropPath) {
+    public void setBackdropPath(Object backdropPath) {
         this.backdropPath = backdropPath;
     }
 

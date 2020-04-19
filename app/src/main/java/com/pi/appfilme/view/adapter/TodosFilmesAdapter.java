@@ -67,11 +67,6 @@ public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.
             imagemTodos = itemView.findViewById(R.id.imagemFilmeTodos);
             tituloTodos = itemView.findViewById(R.id.textTituloTodos);
             textVote = itemView.findViewById(R.id.textVote);
-            estrela1 = itemView.findViewById(R.id.estrela1);
-            estrela2 = itemView.findViewById(R.id.estrela2);
-            estrela3 = itemView.findViewById(R.id.estrela3);
-            estrela4 = itemView.findViewById(R.id.estrela4);
-            estrela5 = itemView.findViewById(R.id.estrela5);
             textData = itemView.findViewById(R.id.textDataFilmeLista);
             itemView.setOnClickListener(this);
         }

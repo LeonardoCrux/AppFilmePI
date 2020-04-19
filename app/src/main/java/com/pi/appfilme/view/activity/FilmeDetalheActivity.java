@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.pi.appfilme.R;
+import com.pi.appfilme.model.filme.detalhes.Genre;
 import com.pi.appfilme.view.adapter.ElencoAdapter;
 import com.pi.appfilme.model.filme.creditos.Cast;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
@@ -27,7 +28,7 @@ import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 
 public class FilmeDetalheActivity extends AppCompatActivity {
     private ImageView imagemFilme;
-    private TextView tituloFilme, duracao, originalTitle, sinopse, orcamento, bilheteria, data, diretor;
+    private TextView tituloFilme, duracao, originalTitle, sinopse, orcamento, bilheteria, data, genero;
     private FilmeViewModel viewModelFilme;
     private PessoaViewModel viewModelElenco;
     private long idFilme;
@@ -65,9 +66,9 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         duracao = findViewById(R.id.duracaoFilmeDetalhe);
         originalTitle = findViewById(R.id.originalTitlefilmeDetalhe);
         sinopse = findViewById(R.id.sinopseFilmeDetalhe);
-        progressBar = findViewById(R.id.progressBarDetalhe);
+        progressBar = findViewById(R.id.progressBarSeriesDetalhe);
         orcamento = findViewById(R.id.orcamentoDetalhe);
-        diretor = findViewById(R.id.dataFilmeDetalhe);
+        genero = findViewById(R.id.generoDetalhe);
         bilheteria = findViewById(R.id.bilheteriaDetalhe);
         data = findViewById(R.id.estreiaFilmeDetalhe);
         viewModelFilme = ViewModelProviders.of(this).get(FilmeViewModel.class);
@@ -92,6 +93,12 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         duracao.setText(detalhes.getRuntime().toString() + " min");
         originalTitle.setText(detalhes.getOriginalTitle());
         sinopse.setText(detalhes.getOverview());
+        List<Genre> genres = detalhes.getGenres();
+        String generosString = "";
+        for (Genre g: genres) {
+            generosString += g.getName()+", ";
+        }
+        genero.setText(generosString.substring(0, generosString.length()-2));
         if(detalhes.getBudget() == 0){
             orcamento.setVisibility(View.INVISIBLE);
         } else{orcamento.setText("Orçamento: " + detalhes.getBudget());}

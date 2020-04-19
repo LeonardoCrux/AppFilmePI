@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -95,13 +96,14 @@ public class FilmesFragment extends Fragment {
         recyclerCartaz.setLayoutManager(layoutManager);
         adapter = new FilmeAdapter(listPlaying);
         recyclerCartaz.setAdapter(adapter);
-
+        recyclerCartaz.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
         recyclerTop = view.findViewById(R.id.recyclerTop);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext());
         layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerTop.setLayoutManager(layoutManager2);
         adapterTop = new FilmeAdapterTop(listTop);
         recyclerTop.setAdapter(adapterTop);
+        recyclerTop.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
         progressBar = view.findViewById(R.id.progressBar3);
         viewModel = ViewModelProviders.of(this).get(FilmeViewModel.class);
         textTop = (TextView) view.findViewById(R.id.textTop);

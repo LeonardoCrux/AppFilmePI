@@ -13,14 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.pi.appfilme.R;
-import com.pi.appfilme.view.adapter.SeriesAdapter;
-import com.pi.appfilme.model.series.ResultSeries;
+import com.pi.appfilme.model.series.ResultSeriesTop;
+import com.pi.appfilme.view.adapter.SeriesTopAdapter;
 import com.pi.appfilme.viewmodel.SerieViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
+import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 import static com.pi.appfilme.util.Constantes.Region.BR;
 
 /**
@@ -28,12 +29,11 @@ import static com.pi.appfilme.util.Constantes.Region.BR;
  */
 public class SeriesFragment extends Fragment {
     private RecyclerView recyclerView;
-    private SeriesAdapter adapterSerie;
     private SerieViewModel viewModel;
-    private List<ResultSeries> listSerie = new ArrayList<>();
+    private SeriesTopAdapter adapter;
+    private List<ResultSeriesTop> listaSeriesTops = new ArrayList<>();
 
     public SeriesFragment() {
-        // Required empty public constructor
     }
 
 
@@ -43,9 +43,19 @@ public class SeriesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_series, container, false);
         initViews(view);
+        viewModel.getTopSeries(API_KEY, "pt-BR", 1);
+        viewModel.liveDataSeriesTop.observe(getViewLifecycleOwner(), resultSeriesTops -> adapter.atualizaLista(resultSeriesTops));
+
         return view;
     }
 
     public void initViews(View view){
+        recyclerView = view.findViewById(R.id.recyclerSeriesTop);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new SeriesTopAdapter(listaSeriesTops);
+        recyclerView.setAdapter(adapter);
+        viewModel = ViewModelProviders.of(this).get(SerieViewModel.class);
     }
 }

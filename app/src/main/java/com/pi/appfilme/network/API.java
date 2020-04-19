@@ -6,7 +6,10 @@ import com.pi.appfilme.model.filme.detalhes.Detalhes;
 import com.pi.appfilme.model.pessoa.Filmografia;
 import com.pi.appfilme.model.pessoa.FotosPessoa;
 import com.pi.appfilme.model.pessoa.PessoaDetalhe;
-import com.pi.appfilme.model.series.SeriesPopulares;
+import com.pi.appfilme.model.series.ResultSeriesDetalhe;
+import com.pi.appfilme.model.series.Season;
+import com.pi.appfilme.model.series.SeasonDetalhes.SeasonDetalhes;
+import com.pi.appfilme.model.series.SeriesTop;
 
 import java.util.List;
 
@@ -61,10 +64,22 @@ public interface API {
             @Query("api_key") String api_key);
 
 
+    @GET("tv/{tv_id}")
+    Single<ResultSeriesDetalhe> getSerieDetalhe(
+            @Path("tv_id") long id,
+            @Query("api_key") String apiKey,
+            @Query("language") String language);
 
-    @GET("tv/popular")
-    Observable<SeriesPopulares> getSeriesPopulares(
+    @GET("tv/top_rated")
+    Observable<SeriesTop> getSeriesTop(
             @Query("api_key") String apiKey,
             @Query("language") String language,
             @Query("page") int pagina);
+
+    @GET("tv/{tv_id}/season/{season_number}")
+    Single<SeasonDetalhes> getSeasonDetalhes(
+            @Path("tv_id") long id,
+            @Path("season_number") long season_number,
+            @Query("api_key") String apiKey,
+            @Query("language") String language);
 }

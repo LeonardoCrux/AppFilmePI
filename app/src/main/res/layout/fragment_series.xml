@@ -8,13 +8,13 @@
 
 
     <TextView
-        android:id="@+id/textPopularSerie"
+        android:id="@+id/textSerieTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="327dp"
-        android:text="SÉRIES POPULARES"
+        android:text="SÉRIES COM MELHORES NOTAS"
         android:textColor="@android:color/holo_orange_dark"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,14 +23,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerSeriePopular"
-        android:layout_width="395dp"
-        android:layout_height="240dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:orientation="horizontal"
+        android:id="@+id/recyclerSeriesTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPopularSerie" />
+        app:layout_constraintTop_toBottomOf="@+id/textSerieTop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

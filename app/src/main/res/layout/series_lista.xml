@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imagemSeriesPopular"
+        android:id="@+id/imageSerieTop"
         android:layout_width="131dp"
         android:layout_height="201dp"
         android:layout_marginStart="1dp"
@@ -37,6 +37,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagemSeriesPopular" />
+        app:layout_constraintTop_toBottomOf="@+id/imageSerieTop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

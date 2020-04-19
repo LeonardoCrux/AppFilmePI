@@ -5,12 +5,12 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SeriesPopulares {
+public class SeriesTop {
 
     @Expose
     private Long page;
     @Expose
-    private List<ResultSeries> resultSeries;
+    private List<ResultSeriesTop> results;
     @SerializedName("total_pages")
     private Long totalPages;
     @SerializedName("total_results")
@@ -24,12 +24,12 @@ public class SeriesPopulares {
         this.page = page;
     }
 
-    public List<ResultSeries> getResultSeries() {
-        return resultSeries;
+    public List<ResultSeriesTop> getResults() {
+        return results;
     }
 
-    public void setResultSeries(List<ResultSeries> resultSeries) {
-        this.resultSeries = resultSeries;
+    public void setResults(List<ResultSeriesTop> results) {
+        this.results = results;
     }
 
     public Long getTotalPages() {

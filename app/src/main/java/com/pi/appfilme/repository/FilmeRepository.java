@@ -3,11 +3,13 @@ package com.pi.appfilme.repository;
 import com.pi.appfilme.model.filme.BuscaEBreve.Movie;
 import com.pi.appfilme.model.filme.creditos.Creditos;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
-import com.pi.appfilme.model.pessoa.FilmesPessoa;
 import com.pi.appfilme.model.pessoa.Filmografia;
 import com.pi.appfilme.model.pessoa.FotosPessoa;
 import com.pi.appfilme.model.pessoa.PessoaDetalhe;
-import com.pi.appfilme.model.series.SeriesPopulares;
+import com.pi.appfilme.model.series.ResultSeriesDetalhe;
+import com.pi.appfilme.model.series.SeasonDetalhes.Episode;
+import com.pi.appfilme.model.series.SeasonDetalhes.SeasonDetalhes;
+import com.pi.appfilme.model.series.SeriesTop;
 import com.pi.appfilme.network.FilmeService;
 
 import java.util.List;
@@ -21,8 +23,8 @@ public class FilmeRepository {
         return FilmeService.getApiService().getPlaying(apiKey, language, region, pagina);
     }
 
-    public Observable<SeriesPopulares> getSeriesPopulares(String apiKey, String language, int pagina) {
-        return FilmeService.getApiService().getSeriesPopulares(apiKey, language, pagina);
+    public Observable<SeriesTop> getSeriesTop(String apiKey, String language, int pagina) {
+        return FilmeService.getApiService().getSeriesTop(apiKey, language, pagina);
     }
 
     public Observable<Movie> getTop(String apiKey, String language, String region, int pagina) {
@@ -47,5 +49,13 @@ public class FilmeRepository {
 
     public Observable<FotosPessoa> getFotos(long id, String apiKey) {
         return FilmeService.getApiService().getFotos(id, apiKey);
+    }
+
+    public Single<ResultSeriesDetalhe> getSerieDetalhe(long id, String apiKey, String language) {
+        return FilmeService.getApiService().getSerieDetalhe(id, apiKey, language);
+    }
+
+    public Single<SeasonDetalhes> getSeason(long id, long number, String apiKey, String language){
+        return FilmeService.getApiService().getSeasonDetalhes(id, number, apiKey,language);
     }
 }

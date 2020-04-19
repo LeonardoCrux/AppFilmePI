@@ -3,6 +3,7 @@ package com.pi.appfilme.view.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.GoalRow;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -75,6 +76,7 @@ public class PessoaDetalheActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(PessoaViewModel.class);
         adapter = new FilmografiaAdapter(filmesPessoaList);
         recyclerView = findViewById(R.id.recyclerFilmografia);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -85,6 +87,7 @@ public class PessoaDetalheActivity extends AppCompatActivity {
         recyclerViewFotos = findViewById(R.id.recyclerFotosPessoa);
         adapterFotos = new FotosPessoaAdapter(profileList);
         recyclerViewFotos.setAdapter(adapterFotos);
+        recyclerViewFotos.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
         recyclerViewFotos.setLayoutManager(layoutManager2);
     }
 

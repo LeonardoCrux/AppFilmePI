@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/textTituloTodos"
-        android:layout_width="286dp"
+        android:layout_width="274dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
@@ -39,7 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="27dp"
-        android:text="Com"
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
         app:layout_constraintTop_toBottomOf="@+id/textVote" />
 

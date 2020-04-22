@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.SeasonDetalheActivity"></activity>
+        <activity android:name=".view.activity.FavoritosActivity"></activity>
+        <activity android:name=".view.activity.SeasonDetalheActivity" />
         <activity android:name=".view.activity.SerieDetalheActivity" />
         <activity android:name=".view.activity.FotoDetalheActivity" />
         <activity android:name=".view.activity.PessoaDetalheActivity" />

@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.ViewModel> {
+public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.ViewHolder> {
     private List<ResultSeriesTop> listSeriesTop;
 
     public SeriesTopAdapter(List<ResultSeriesTop> listSeriesTop) {
@@ -27,13 +27,13 @@ public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.View
 
     @NonNull
     @Override
-    public ViewModel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.filme_lista, parent, false);
-        return new ViewModel(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewModel holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResultSeriesTop seriesTop = listSeriesTop.get(position);
         holder.onBind(seriesTop);
 
@@ -52,11 +52,11 @@ public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.View
         return listSeriesTop.size();
     }
 
-    public class ViewModel extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imageView;
         private TextView nome;
 
-        public ViewModel(@NonNull View v) {
+        public ViewHolder(@NonNull View v) {
             super(v);
             v.setOnClickListener(this);
             imageView = v.findViewById(R.id.imagemCartazRecycler);
@@ -65,9 +65,7 @@ public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.View
 
         public void onBind(ResultSeriesTop resultSeriesTop){
             Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultSeriesTop.getPosterPath()).into(imageView);
-            String nomeSerie = resultSeriesTop.getName();
             nome.setText(resultSeriesTop.getName());
-            Log.i("LOGSERIE", ""+ nomeSerie);
         }
 
         @Override

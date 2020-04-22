@@ -39,7 +39,7 @@ public class FilmeAdapterTop extends RecyclerView.Adapter<FilmeAdapterTop.ViewHo
 
     @Override
     public int getItemCount() {
-        return listTop.size() - 17;
+        return listTop.size();
     }
 
     public void atualizaListaTop(List<ResultFilme> novaLista) {

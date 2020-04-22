@@ -1,11 +1,28 @@
 
 package com.pi.appfilme.model.filme.detalhes;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "filmes")
 public class Detalhes {
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "idFilme")
+    private long idFilme;
+
+    public long getIdFilme() {
+        return idFilme;
+    }
+
+    public void setIdFilme(long idFilme) {
+        this.idFilme = idFilme;
+    }
 
     @Expose
     private Boolean adult;
@@ -25,22 +42,30 @@ public class Detalhes {
     private String imdbId;
     @SerializedName("original_language")
     private String originalLanguage;
+
+    @ColumnInfo(name = "original_title")
     @SerializedName("original_title")
     private String originalTitle;
     @Expose
     private String overview;
     @Expose
     private Double popularity;
+
+    @ColumnInfo(name = "poster_path")
     @SerializedName("poster_path")
     private String posterPath;
     @SerializedName("production_companies")
     private List<ProductionCompany> productionCompanies;
     @SerializedName("production_countries")
     private List<ProductionCountry> productionCountries;
+
+    @ColumnInfo(name = "release_date")
     @SerializedName("release_date")
     private String releaseDate;
     @Expose
     private Long revenue;
+
+    @ColumnInfo(name = "runtime")
     @Expose
     private Long runtime;
     @SerializedName("spoken_languages")
@@ -49,6 +74,8 @@ public class Detalhes {
     private String status;
     @Expose
     private String tagline;
+
+    @ColumnInfo(name = "title")
     @Expose
     private String title;
     @Expose

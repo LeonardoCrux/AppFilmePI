@@ -7,7 +7,8 @@
     <color name="branco">#FFFFFF</color>
     <color name="corDeFundo">#171717</color>
     <color name="cinzaTexto">#D79A9A9A</color>
-    <color name="cinzaRecycler">#99D8D8D8</color>
+    <color name="cinzaRecycler">#88555555</color>
     <color name="backRecycler">#C6222329</color>
+    <color name="fundoVermelho">#DDEA0000</color>
 
 </resources>

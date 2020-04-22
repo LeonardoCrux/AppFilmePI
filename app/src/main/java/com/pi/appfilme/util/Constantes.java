@@ -1,6 +1,7 @@
 package com.pi.appfilme.util;
 
 public class Constantes {
+    private static final String ID = "ID";
 
     public static final class Url {
         public static final String URL_BASE = "https://api.themoviedb.org/3/";

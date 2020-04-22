@@ -60,7 +60,7 @@ public class EpisodiosAdapter extends RecyclerView.Adapter<EpisodiosAdapter.View
         }
 
         public void onBind(Episode episode){
-            textNome.setText(episode.getEpisodeNumber() + ". " + episode.getName());
+            textNome.setText(episode.getEpisodeNumber() + " - " + episode.getName());
         }
 
         public void envioDadosEpisodio(Episode ep, View v) {

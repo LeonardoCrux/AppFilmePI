@@ -64,7 +64,7 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
 
         public void onBind(Season season) {
             textTemporada.setText(season.getName());
-            textEpisodios.setText(season.getName());
+            textEpisodios.setText(season.getEpisodeCount().toString() + " episódios");
             Picasso.get().load("https://image.tmdb.org/t/p/w500/" + season.getPosterPath()).into(imageView);
         }
 

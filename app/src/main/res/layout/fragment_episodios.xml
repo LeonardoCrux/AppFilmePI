@@ -24,12 +24,12 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
-        android:text="TextView"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imagemEpisodioDetalhe"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="TextView" />
 
     <TextView
         android:id="@+id/dataEpisodio"
@@ -37,10 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
-        android:text="TextView"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imagemEpisodioDetalhe"
-        app:layout_constraintTop_toBottomOf="@+id/nomeEpisodio" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeEpisodio"
+        tools:text="TextView" />
 
     <TextView
         android:id="@+id/sinopseEpisodio"
@@ -50,7 +50,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:fontFamily="serif"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagemEpisodioDetalhe" />

@@ -7,9 +7,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.pi.appfilme.model.series.ResultSeriePopular;
 import com.pi.appfilme.model.series.ResultSeriesDetalhe;
 import com.pi.appfilme.model.series.ResultSeriesTop;
 import com.pi.appfilme.model.series.SeasonDetalhes.SeasonDetalhes;
+
 import com.pi.appfilme.repository.FilmeRepository;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public class SerieViewModel extends AndroidViewModel {
     private FilmeRepository repository = new FilmeRepository();
     private MutableLiveData<List<ResultSeriesTop>> mutableSeriesTop = new MutableLiveData<>();
     public LiveData<List<ResultSeriesTop>> liveDataSeriesTop = mutableSeriesTop;
+
     private MutableLiveData<ResultSeriesDetalhe> mutableSerieDetalhe = new MutableLiveData<>();
     public LiveData<ResultSeriesDetalhe> liveDataSerieDetalhe = mutableSerieDetalhe;
 
@@ -34,6 +37,8 @@ public class SerieViewModel extends AndroidViewModel {
     private MutableLiveData<SeasonDetalhes> mutableSeason = new MutableLiveData<>();
     public LiveData<SeasonDetalhes> liveDataSeason = mutableSeason;
 
+    private MutableLiveData<List<ResultSeriePopular>> mutablePopular = new MutableLiveData<>();
+    public LiveData<List<ResultSeriePopular>> liveDataPopular = mutablePopular;
 
     public SerieViewModel(@NonNull Application application) {
         super(application);
@@ -79,5 +84,23 @@ public class SerieViewModel extends AndroidViewModel {
         );
     }
 
+    public void getSeriesPopular(String apiKey, String language, int page){
+        disposable.add(
+                repository.getSeriesPopular(apiKey, language, page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(seriesPopular -> {
+                    mutablePopular.setValue(seriesPopular.getResults());
+                    }, throwable -> {
+                    mutableLiveDataErro.setValue(throwable.getMessage());
+                        })
+        );
+    }
+
+//    @Override
+//    protected void onCleared() {
+//        super.onCleared();
+//        disposable.clear();
+//    }
 
 }

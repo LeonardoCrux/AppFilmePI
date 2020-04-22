@@ -1,6 +1,7 @@
 package com.pi.appfilme.viewmodel;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -30,6 +31,9 @@ public class FilmeViewModel extends AndroidViewModel {
     public LiveData<Boolean> liveDataLoading = mutableLiveDataLoading;
     private MutableLiveData<Detalhes> mutableLiveDataDetalhes = new MutableLiveData<>();
     public LiveData<Detalhes> liveDataDetalhes = mutableLiveDataDetalhes;
+
+    private MutableLiveData<List<Detalhes>> mutableFavoritos =  new MutableLiveData<>();
+    public LiveData<List<Detalhes>> liveDataFavoritos = mutableFavoritos;
 
 
     public FilmeViewModel(@NonNull Application application) {
@@ -64,18 +68,51 @@ public class FilmeViewModel extends AndroidViewModel {
                         }));
     }
 
-    public void getFilmeDetalhe(long id, String apiKey, String language){
+    public void getFilmeDetalhe(long id, String apiKey, String language) {
         disposable.add(
                 repository.getFilmeDetalhes(id, apiKey, language)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(disposable1 -> mutableLiveDataLoading.setValue(true))
-                .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
-                .subscribe(detalhes -> {
-                    mutableLiveDataDetalhes.setValue(detalhes);
-                }, throwable -> {
-                    mutableLiveDataErro.setValue(throwable.getMessage());
-                }));
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(disposable1 -> mutableLiveDataLoading.setValue(true))
+                        .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
+                        .subscribe(detalhes -> {
+                            mutableLiveDataDetalhes.setValue(detalhes);
+                        }, throwable -> {
+                            mutableLiveDataErro.setValue(throwable.getMessage());
+                        }));
+    }
+
+
+
+    public void getFavoritosDB(Context context){
+disposable.add(
+        repository.getFavoritosDB(context)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(detalhes -> {
+            mutableFavoritos.setValue(detalhes);
+        }, throwable -> {
+            mutableLiveDataErro.setValue(throwable.getMessage());
+        }));
+    }
+
+    public void insereFavorito(Detalhes detalhes, Context context) {
+        new Thread(() -> {
+            if (detalhes != null) {
+                repository.insereDadosDB(detalhes, context);
+            }
+        }).start();
+    }
+
+    public void removeFavorito(Detalhes detalhes, Context context) {
+
+    }
+
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        disposable.clear();
     }
 
 

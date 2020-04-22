@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.os.Build.ID;
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 
@@ -50,7 +51,7 @@ public class PessoaDetalheActivity extends AppCompatActivity {
     public void recuperaDados(){
         if(getIntent() != null) {
             Bundle bundle = getIntent().getExtras();
-            idPessoa = bundle.getLong("ID");
+            idPessoa = bundle.getLong(ID);
             viewModel.getPessoa( idPessoa , API_KEY, PT_BR);
             viewModel.liveDataPessoa.observe(this, pessoaDetalhe1 -> setDetalhes(pessoaDetalhe1));
 

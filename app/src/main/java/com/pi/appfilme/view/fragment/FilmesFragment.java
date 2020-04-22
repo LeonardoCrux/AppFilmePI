@@ -64,7 +64,7 @@ public class FilmesFragment extends Fragment {
                 progressBar.setVisibility(View.VISIBLE);
             } else progressBar.setVisibility(View.INVISIBLE);
         });
-        viewModel.getTop(API_KEY, PT_BR, BR, 1);
+        viewModel.getTop(API_KEY, PT_BR, "US", 1);
         viewModel.liveDataTop.observe(getViewLifecycleOwner(), resultFilmes -> {adapterTop.atualizaListaTop(resultFilmes);});
 
         textCartaz.setOnClickListener(new View.OnClickListener() {

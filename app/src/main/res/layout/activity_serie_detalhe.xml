@@ -168,11 +168,14 @@
             android:id="@+id/numeroEpsSerie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="7dp"
+            android:layout_marginEnd="5dp"
             android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/numeroSeasons"
-            app:layout_constraintTop_toBottomOf="@+id/notaSerie" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/numeroSeasons" />
 
         <ImageView
             android:id="@+id/imagemNotaSerie"

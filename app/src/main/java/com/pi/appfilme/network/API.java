@@ -6,11 +6,12 @@ import com.pi.appfilme.model.filme.detalhes.Detalhes;
 import com.pi.appfilme.model.pessoa.Filmografia;
 import com.pi.appfilme.model.pessoa.FotosPessoa;
 import com.pi.appfilme.model.pessoa.PessoaDetalhe;
+import com.pi.appfilme.model.pessoa.pessoa.Pessoas;
 import com.pi.appfilme.model.series.ResultSeriesDetalhe;
 import com.pi.appfilme.model.series.Season;
 import com.pi.appfilme.model.series.SeasonDetalhes.SeasonDetalhes;
+import com.pi.appfilme.model.series.SeriesPopular;
 import com.pi.appfilme.model.series.SeriesTop;
-
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -21,6 +22,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface API {
+
     @GET("movie/now_playing")
     Observable<Movie> getPlaying(
             @Query("api_key") String api_key,
@@ -74,7 +76,13 @@ public interface API {
     Observable<SeriesTop> getSeriesTop(
             @Query("api_key") String apiKey,
             @Query("language") String language,
-            @Query("page") int pagina);
+            @Query("page") int page);
+
+    @GET("tv/popular")
+    Observable<SeriesPopular> getSeriePopular(
+            @Query("api_key") String api_key,
+            @Query("language") String language,
+            @Query("page") int page);
 
     @GET("tv/{tv_id}/season/{season_number}")
     Single<SeasonDetalhes> getSeasonDetalhes(
@@ -82,4 +90,10 @@ public interface API {
             @Path("season_number") long season_number,
             @Query("api_key") String apiKey,
             @Query("language") String language);
+
+    @GET("person/popular")
+    Observable<Pessoas> getPessoasPopular(
+            @Query("api_key") String apiKey,
+            @Query("language") String language,
+            @Query("page") int pagina);
 }

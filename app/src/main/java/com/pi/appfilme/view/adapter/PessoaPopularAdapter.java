@@ -11,7 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
-import com.pi.appfilme.model.filme.creditos.Cast;
+import com.pi.appfilme.model.pessoa.pessoa.Pessoas;
+import com.pi.appfilme.model.pessoa.pessoa.ResultPessoaPop;
 import com.pi.appfilme.view.activity.PessoaDetalheActivity;
 import com.squareup.picasso.Picasso;
 
@@ -19,11 +20,11 @@ import java.util.List;
 
 import static android.os.Build.ID;
 
-public class ElencoAdapter extends RecyclerView.Adapter<ElencoAdapter.ViewHolder>{
-    private List<Cast> listaCast;
+public class PessoaPopularAdapter extends RecyclerView.Adapter<PessoaPopularAdapter.ViewHolder> {
+    private List<ResultPessoaPop> pessoaPopList;
 
-    public ElencoAdapter(List<Cast> listaCast) {
-        this.listaCast = listaCast;
+    public PessoaPopularAdapter(List<ResultPessoaPop> pessoaPopList) {
+        this.pessoaPopList = pessoaPopList;
     }
 
     @NonNull
@@ -35,47 +36,45 @@ public class ElencoAdapter extends RecyclerView.Adapter<ElencoAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Cast cast = listaCast.get(position);
-        holder.onBind(cast);
+        ResultPessoaPop pessoaPop = pessoaPopList.get(position);
+        holder.onBind(pessoaPop);
     }
 
-    public void atualizaLista(List<Cast> novaLista){
-        if(listaCast.isEmpty()){
-            this.listaCast = novaLista;
+    public void atualizaLista(List<ResultPessoaPop> novaLista){
+        if(pessoaPopList.isEmpty()){
+            pessoaPopList = novaLista;
         } else {
-            this.listaCast.addAll(novaLista);
+            pessoaPopList.addAll(novaLista);
         }
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return listaCast.size();
+        return pessoaPopList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView imagemElenco;
-        private TextView textNome;
-        private TextView textPersonagem;
+        private ImageView imagem;
+        private TextView nome;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            imagemElenco = itemView.findViewById(R.id.imagemFilmografia);
-            textNome = itemView.findViewById(R.id.personagemFilmografia);
-            textPersonagem = itemView.findViewById(R.id.personagemElenco);
+            imagem = itemView.findViewById(R.id.imagemFilmografia);
+            nome = itemView.findViewById(R.id.personagemFilmografia);
         }
 
-        public void onBind(Cast cast){
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ cast.getProfilePath()).into(imagemElenco);
-            textNome.setText(cast.getName());
-            textPersonagem.setText(cast.getCharacter());
+        public void onBind(ResultPessoaPop resultPessoaPop){
+            nome.setText(resultPessoaPop.getName());
+            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultPessoaPop.getProfilePath()).into(imagem);
+
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), PessoaDetalheActivity.class);
-            intent.putExtra(ID, listaCast.get(getAdapterPosition()).getId());
+            intent.putExtra(ID , pessoaPopList.get(getAdapterPosition()).getId());
             v.getContext().startActivity(intent);
         }
     }

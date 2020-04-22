@@ -1,19 +1,25 @@
 package com.pi.appfilme.repository;
 
+import android.content.Context;
+
+import com.pi.appfilme.data.FilmeDataBase;
 import com.pi.appfilme.model.filme.BuscaEBreve.Movie;
 import com.pi.appfilme.model.filme.creditos.Creditos;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
 import com.pi.appfilme.model.pessoa.Filmografia;
 import com.pi.appfilme.model.pessoa.FotosPessoa;
 import com.pi.appfilme.model.pessoa.PessoaDetalhe;
+import com.pi.appfilme.model.pessoa.pessoa.Pessoas;
 import com.pi.appfilme.model.series.ResultSeriesDetalhe;
 import com.pi.appfilme.model.series.SeasonDetalhes.Episode;
 import com.pi.appfilme.model.series.SeasonDetalhes.SeasonDetalhes;
+import com.pi.appfilme.model.series.SeriesPopular;
 import com.pi.appfilme.model.series.SeriesTop;
 import com.pi.appfilme.network.FilmeService;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
@@ -21,10 +27,6 @@ public class FilmeRepository {
 
     public Observable<Movie> getPlaying(String apiKey, String language, String region, int pagina) {
         return FilmeService.getApiService().getPlaying(apiKey, language, region, pagina);
-    }
-
-    public Observable<SeriesTop> getSeriesTop(String apiKey, String language, int pagina) {
-        return FilmeService.getApiService().getSeriesTop(apiKey, language, pagina);
     }
 
     public Observable<Movie> getTop(String apiKey, String language, String region, int pagina) {
@@ -58,4 +60,32 @@ public class FilmeRepository {
     public Single<SeasonDetalhes> getSeason(long id, long number, String apiKey, String language){
         return FilmeService.getApiService().getSeasonDetalhes(id, number, apiKey,language);
     }
+
+    public Observable<SeriesTop> getSeriesTop(String apiKey, String language, int pagina) {
+        return FilmeService.getApiService().getSeriesTop(apiKey, language, pagina);
+    }
+
+    public Observable<SeriesPopular> getSeriesPopular(String apiKey, String language, int page) {
+        return FilmeService.getApiService().getSeriePopular(apiKey, language, page);
+    }
+
+    public Observable<Pessoas> getPessoasPopular(String apiKey, String language, int pagina){
+        return FilmeService.getApiService().getPessoasPopular(apiKey, language, pagina);
+    }
+
+
+    // DATABASE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public void insereDadosDB(Detalhes filmeDetalhes, Context context){
+        FilmeDataBase.getDatabase(context).filmeDAO().insereFavoritoDB(filmeDetalhes);
+    }
+
+    public void removeFavorito(Detalhes detalhes, Context context){
+        FilmeDataBase.getDatabase(context).filmeDAO().removeFavorito(detalhes);
+    }
+
+    public Flowable<List<Detalhes>> getFavoritosDB(Context context){
+return FilmeDataBase.getDatabase(context).filmeDAO().recuperaFavoritosDB();
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.pi.appfilme.view.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -25,7 +26,9 @@ public class ListaExpandidaActivity extends AppCompatActivity{
     private FilmeViewModel viewModel;
     private TodosFilmesAdapter adapter;
     private ProgressBar progressBar;
+    private String selecionado;
     private List<ResultFilme> listaFilmes = new ArrayList<>();
+    private int pagina = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +36,16 @@ public class ListaExpandidaActivity extends AppCompatActivity{
         setContentView(R.layout.activity_lista_expandida);
         initViews();
         Bundle bundle = getIntent().getExtras();
-        String click = bundle.getString("Click");
-        if(click.equals("Cartaz")){
-            viewModel.getPlaying(API_KEY, PT_BR, BR, 1);
+        selecionado = bundle.getString("Click");
+        if(selecionado.equals("Cartaz")){
+            setScrollView();
+            viewModel.getPlaying(API_KEY, PT_BR, BR, pagina);
             viewModel.liveData.observe(this, resultFilmes -> adapter.atualizaLista(resultFilmes));
-        } else if(click.equals("Top")){
-            viewModel.getTop(API_KEY, PT_BR, BR, 1);
+
+
+        } else if(selecionado.equals("Top")){
+            setScrollView();
+            viewModel.getTop(API_KEY, PT_BR, "US", pagina);
             viewModel.liveDataTop.observe(this, resultFilmes -> adapter.atualizaLista(resultFilmes)); }
     }
 
@@ -51,4 +58,33 @@ public class ListaExpandidaActivity extends AppCompatActivity{
         recyclerView.setAdapter(adapter);
         viewModel = ViewModelProviders.of(this).get(FilmeViewModel.class);
     }
+
+    private void setScrollView(){
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                int itemCount = layoutManager.getItemCount();
+                int ultimoVisivel = layoutManager.findLastCompletelyVisibleItemPosition();
+                boolean ultimoItem = ultimoVisivel + 5 >= itemCount;
+
+                if (itemCount > 0 && ultimoItem){
+                    pagina++;
+                    if(selecionado.equals("Cartaz")){
+                        viewModel.getPlaying(API_KEY, PT_BR, BR, pagina);
+                    } else if(selecionado.equals("Top")){
+                        viewModel.getTop(API_KEY, PT_BR, "US", pagina);
+                    }
+                }
+            }
+        });
+    }
+
+
 }

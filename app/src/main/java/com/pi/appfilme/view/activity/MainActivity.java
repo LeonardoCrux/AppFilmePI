@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initAbas(){
-        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this).add(R.string.filmes, FilmesFragment.class).add(R.string.series, SeriesFragment.class).add(R.string.quiz, QuizFragment.class).add(R.string.mais, MaisFragment.class).create());
+        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this).add(R.string.filmes, FilmesFragment.class).add(R.string.series, SeriesFragment.class).add(R.string.pessoas, QuizFragment.class).add(R.string.mais, MaisFragment.class).create());
         viewPager.setAdapter(adapter);
         smartTabLayout.setViewPager(viewPager);
     }

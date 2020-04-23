@@ -1,5 +1,6 @@
 package com.pi.appfilme.view.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,6 @@ import java.util.List;
 
 public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.ViewHolder> {
     private List<Detalhes> detalhesList;
-    private FavoritosListener listener;
 
     public FavoritosAdapter(List<Detalhes> detalhesList) {
         this.detalhesList = detalhesList;

@@ -3,6 +3,7 @@ package com.pi.appfilme.repository;
 import android.content.Context;
 
 import com.pi.appfilme.data.FilmeDataBase;
+import com.pi.appfilme.model.filme.BuscaEBreve.Busca;
 import com.pi.appfilme.model.filme.BuscaEBreve.Movie;
 import com.pi.appfilme.model.filme.creditos.Creditos;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
@@ -24,6 +25,10 @@ import io.reactivex.Observable;
 import io.reactivex.Single;
 
 public class FilmeRepository {
+
+    public Flowable<Busca> buscaFilmes(String apiKey, String language, String query, int pagina, String region) {
+        return FilmeService.getApiService().buscaFilmes(apiKey, language, query, pagina, region);
+    }
 
     public Observable<Movie> getPlaying(String apiKey, String language, String region, int pagina) {
         return FilmeService.getApiService().getPlaying(apiKey, language, region, pagina);

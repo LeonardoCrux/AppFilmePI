@@ -62,7 +62,12 @@ public class SeasonDetalheActivity extends AppCompatActivity{
 
     public void setDetalhes(SeasonDetalhes detalhes){
         nomeSeason.setText(detalhes.getName());
-        sinopseSeason.setText(detalhes.getOverview());
+
+        if(detalhes.getOverview().equals("")){
+            sinopseSeason.setText("Sinopse da temporada indisponível");
+        } else {
+            sinopseSeason.setText(detalhes.getOverview());
+        }
         dataSeason.setText(detalhes.getAirDate());
         Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ detalhes.getPosterPath()).into(imagemSeason);
         initRecycler(detalhes);

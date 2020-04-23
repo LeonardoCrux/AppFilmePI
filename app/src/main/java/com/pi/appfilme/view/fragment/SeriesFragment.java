@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.pi.appfilme.R;
@@ -32,10 +35,11 @@ public class SeriesFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView recyclerViewPopular;
     private SerieViewModel viewModel;
-    private TextView textPopulares;
+    private TextView textPopulares, textSerieTop;
     private SeriesTopAdapter adapter;
     private List<ResultSeriesTop> listaSeriesTops = new ArrayList<>();
     private List<ResultSeriePopular> listaSeriePopular =  new ArrayList<>();
+    private Animation animFadein;
 
 
     public SeriesFragment() {
@@ -58,6 +62,8 @@ public class SeriesFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        clickTextTop();
         return view;
     }
 
@@ -68,7 +74,23 @@ public class SeriesFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new SeriesTopAdapter(listaSeriesTops);
         recyclerView.setAdapter(adapter);
+        textSerieTop = view.findViewById(R.id.textSerieTop);
         viewModel = ViewModelProviders.of(this).get(SerieViewModel.class);
         textPopulares = view.findViewById(R.id.textViewSeriePopular);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
+        animFadein = AnimationUtils.loadAnimation(view.getContext(),
+                R.anim.fragment_fade_enter);
+    }
+
+    public void clickTextTop(){
+        textSerieTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textSerieTop.startAnimation(animFadein);
+                Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
+                intent.putExtra("Click", "SeriesTop");
+                startActivity(intent);
+            }
+        });
     }
 }

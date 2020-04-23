@@ -83,7 +83,12 @@ public class SerieDetalheActivity extends AppCompatActivity {
                 criadores += c.getName() + ", ";
         }
         diretor.setText("De" + criadores.substring(0, criadores.length() -2));
-        sinopse.setText(result.getOverview());
+
+        if(result.getOverview().equals("")){
+            sinopse.setText("Sinopse indisponível");
+        } else {
+            sinopse.setText(result.getOverview());
+        }
         tituloOriginal.setText(result.getOriginalName());
         Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ result.getPosterPath()).into(imageView);
         titulo.setText(result.getName());

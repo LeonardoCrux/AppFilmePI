@@ -35,9 +35,25 @@ public class FilmeViewModel extends AndroidViewModel {
     private MutableLiveData<List<Detalhes>> mutableFavoritos =  new MutableLiveData<>();
     public LiveData<List<Detalhes>> liveDataFavoritos = mutableFavoritos;
 
+    private MutableLiveData<List<ResultFilme>> mutableBusca = new MutableLiveData<>();
+    public LiveData<List<ResultFilme>> liveDataBusca = mutableBusca;
+
 
     public FilmeViewModel(@NonNull Application application) {
         super(application);
+    }
+
+    public void buscaFilmes(String apiKey, String language, String query, int pagina, String region){
+        disposable.add(
+                repository.buscaFilmes(apiKey,language,query,pagina,region)
+                .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable1 -> mutableLiveDataLoading.setValue(true))
+                .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
+                .subscribe(busca -> {mutableBusca.setValue(busca.getResultFilmes());
+    }, throwable -> {
+                    mutableLiveDataErro.setValue(throwable.getMessage());
+                }));
     }
 
     public void getPlaying(String apiKey, String language, String region, int pagina) {
@@ -53,6 +69,7 @@ public class FilmeViewModel extends AndroidViewModel {
                             mutableLiveDataErro.setValue(throwable.getMessage());
                         }));
     }
+
 
     public void getTop(String apiKey, String language, String region, int pagina) {
         disposable.add(
@@ -92,15 +109,13 @@ disposable.add(
         .subscribe(detalhes -> {
             mutableFavoritos.setValue(detalhes);
         }, throwable -> {
-            mutableLiveDataErro.setValue(throwable.getMessage());
+            mutableLiveDataErro.setValue(throwable.getMessage() + "Erro DB");
         }));
     }
 
     public void insereFavorito(Detalhes detalhes, Context context) {
         new Thread(() -> {
-            if (detalhes != null) {
                 repository.insereDadosDB(detalhes, context);
-            }
         }).start();
     }
 

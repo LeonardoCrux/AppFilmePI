@@ -3,7 +3,9 @@ package com.pi.appfilme.view.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
@@ -17,6 +19,8 @@ import com.pi.appfilme.view.fragment.SeriesFragment;
 public class MainActivity extends AppCompatActivity {
     private SmartTabLayout smartTabLayout;
     private ViewPager viewPager;
+    private SearchView searchView;
+    private String nomeBusca;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +28,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initViews();
         initAbas();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                nomeBusca = query;
+                Intent intent = new Intent(getApplicationContext(), ResultadoBuscaActivity.class);
+                intent.putExtra("NOME", nomeBusca);
+                startActivity(intent);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     public void initViews(){
         smartTabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
+        searchView = findViewById(R.id.searchView);
     }
 
     public void initAbas(){

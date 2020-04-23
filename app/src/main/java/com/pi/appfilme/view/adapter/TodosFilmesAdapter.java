@@ -54,11 +54,6 @@ public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imagemTodos;
         private TextView tituloTodos;
-        private ImageView estrela1;
-        private ImageView estrela2;
-        private ImageView estrela3;
-        private ImageView estrela4;
-        private ImageView estrela5;
         private TextView texteDe, textData;
         private TextView textVote;
 

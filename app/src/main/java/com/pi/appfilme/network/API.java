@@ -1,5 +1,6 @@
 package com.pi.appfilme.network;
 
+import com.pi.appfilme.model.filme.BuscaEBreve.Busca;
 import com.pi.appfilme.model.filme.BuscaEBreve.Movie;
 import com.pi.appfilme.model.filme.creditos.Creditos;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
@@ -22,6 +23,15 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface API {
+
+    @GET("search/movie")
+    Flowable<Busca> buscaFilmes(
+            @Query("api_key") String api_key,
+            @Query("language") String language,
+            @Query("query") String query,
+            @Query("page") int pagina,
+            @Query("region") String region);
+
 
     @GET("movie/now_playing")
     Observable<Movie> getPlaying(

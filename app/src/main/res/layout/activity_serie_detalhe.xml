@@ -18,7 +18,8 @@
             android:layout_marginTop="7dp"
             android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/notaSerie" />
+            app:layout_constraintTop_toBottomOf="@+id/notaSerie"
+            tools:text="Temporadas" />
 
         <ImageView
             android:id="@+id/imagemSerieDetalhe"
@@ -43,21 +44,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="titulo" />
 
 
         <TextView
             android:id="@+id/dataSerieDetalhe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="serif"
-            android:text="data"
             android:textColor="@color/cinzaTexto"
             android:textSize="10sp"
             android:visibility="invisible"
             app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/tituloSerieDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/numeroEpsSerie"
+            tools:text="Estreia" />
 
         <TextView
             android:id="@+id/sinopseSerieDetalhe"
@@ -114,16 +117,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="7dp"
-            android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/tituloSerieDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/tituloSerieDetalhe"
+            tools:text="Status" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerSeason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:background="@color/backRecycler"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,9 +140,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="7dp"
-            android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/statusSerie" />
+            app:layout_constraintTop_toBottomOf="@+id/statusSerie"
+            tools:text="Diretor" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerElencoSerie"
@@ -162,7 +165,8 @@
             android:layout_marginTop="7dp"
             android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/diretorSerieDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/diretorSerieDetalhe"
+            tools:text="Nota" />
 
         <TextView
             android:id="@+id/numeroEpsSerie"
@@ -171,11 +175,11 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="5dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/numeroSeasons" />
+            app:layout_constraintTop_toBottomOf="@+id/numeroSeasons"
+            tools:text="Episodios" />
 
         <ImageView
             android:id="@+id/imagemNotaSerie"

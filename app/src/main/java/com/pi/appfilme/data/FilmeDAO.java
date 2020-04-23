@@ -1,5 +1,7 @@
 package com.pi.appfilme.data;
 
+import android.content.Context;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -16,7 +18,7 @@ import io.reactivex.Flowable;
 public interface FilmeDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insereFavoritoDB(Detalhes filmeDetalhes);
+    void insereFavoritoDB(Detalhes filme);
 
     @Query("SELECT * from filmes")
     Flowable<List<Detalhes>> recuperaFavoritosDB();

@@ -7,8 +7,9 @@
     tools:context=".view.activity.ResultadoBuscaActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="327dp"
+        android:id="@+id/recyclerBuscaFilmes"
+        android:layout_width="391dp"
+        android:layout_height="225dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="10dp"

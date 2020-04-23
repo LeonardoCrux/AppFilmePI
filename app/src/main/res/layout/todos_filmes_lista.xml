@@ -13,7 +13,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/retornorei" />
+        tools:srcCompat="@drawable/retornorei" />
 
     <TextView
         android:id="@+id/textTituloTodos"
@@ -25,13 +25,13 @@
         android:ellipsize="end"
         android:fontFamily="@font/abril_fatface"
         android:singleLine="true"
-        android:text="O Senhor dos Anéis: O Retorno do Rei"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="O Senhor dos Anéis: O Retorno do Rei" />
 
     <TextView
         android:id="@+id/textDataFilmeLista"
@@ -48,11 +48,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
         android:layout_marginEnd="100dp"
-        android:text="201 min"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
-        app:layout_constraintTop_toBottomOf="@+id/textDataFilmeLista" />
+        app:layout_constraintTop_toBottomOf="@+id/textDataFilmeLista"
+        tools:text="201 min" />
 
 
     <TextView
@@ -62,11 +62,11 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:fontFamily="serif"
-        android:text="10"
         android:textSize="12sp"
         android:textStyle="italic"
         app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
-        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos" />
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        tools:text="10" />
 
     <ImageView
         android:id="@+id/imageView"

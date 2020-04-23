@@ -12,23 +12,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.FavoritosActivity"></activity>
-        <activity android:name=".view.activity.SeasonDetalheActivity" />
-        <activity android:name=".view.activity.SerieDetalheActivity" />
-        <activity android:name=".view.activity.FotoDetalheActivity" />
-        <activity android:name=".view.activity.PessoaDetalheActivity" />
-        <activity android:name=".view.activity.ListaExpandidaActivity" />
-        <activity android:name=".view.Teste" />
-        <activity android:name=".view.activity.ResultadoBuscaActivity" />
-        <activity android:name=".view.activity.FilmeDetalheActivity" />
-        <activity android:name=".view.activity.MainActivity">
+        <activity android:name=".view.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.FavoritosActivity" />
+        <activity android:name=".view.activity.SeasonDetalheActivity" />
+        <activity android:name=".view.activity.SerieDetalheActivity" />
+        <activity android:name=".view.activity.FotoDetalheActivity" />
+        <activity android:name=".view.activity.PessoaDetalheActivity" />
+        <activity android:name=".view.activity.ListaExpandidaActivity" />
+        <activity android:name=".view.activity.ResultadoBuscaActivity" />
+        <activity android:name=".view.activity.FilmeDetalheActivity" />
+        <activity android:name=".view.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+            </intent-filter>
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -6,36 +6,38 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/tituloBusca"
+        android:id="@+id/imagem_busca"
         android:layout_width="34dp"
         android:layout_height="46dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/retornorei" />
+        tools:srcCompat="@drawable/retornorei" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/busca_filme_textView"
         android:layout_width="324dp"
         android:layout_height="22dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="O Senhor dos Anéis: O Retorno do Rei"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tituloBusca"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imagem_busca"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="O Senhor dos Anéis: O Retorno do Rei" />
 
     <TextView
-        android:id="@+id/elencoBusca"
-        android:layout_width="324dp"
-        android:layout_height="24dp"
+        android:id="@+id/estreia_busca_textView"
+        android:layout_width="161dp"
+        android:layout_height="21dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="1dp"
-        android:text="Sean Astin, Elijah Wood, Viggo Mortensen, Ian McKellen."
+        android:layout_marginBottom="1dp"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/tituloBusca"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagem_busca"
+        app:layout_constraintTop_toBottomOf="@+id/busca_filme_textView"
+        tools:text="2020-12-31" />
 </androidx.constraintlayout.widget.ConstraintLayout>

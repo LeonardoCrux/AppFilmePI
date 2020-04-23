@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.detalhes.Genre;
@@ -27,9 +29,10 @@ import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 
 public class FilmeDetalheActivity extends AppCompatActivity {
-    private ImageView imagemFilme;
+    private ImageView imagemFilme, imagemFavorito;
     private TextView tituloFilme, duracao, originalTitle, sinopse, orcamento, bilheteria, data, genero;
     private FilmeViewModel viewModelFilme;
+    private Detalhes filme;
     private PessoaViewModel viewModelElenco;
     private long idFilme;
     private ElencoAdapter adapter;
@@ -46,6 +49,7 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         viewModelFilme.getFilmeDetalhe(idFilme, API_KEY, PT_BR);
         viewModelFilme.liveDataDetalhes.observe(this, detalhes -> {
             setDetalhes(detalhes);
+            filme = detalhes;
         });
         viewModelFilme.liveDataLoading.observe(this, aBoolean -> {
             if(aBoolean){
@@ -54,13 +58,21 @@ public class FilmeDetalheActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
             }
         });
-
-        viewModelElenco.getCast(idFilme, "9e388e7de5c0c42386ebad1002886539");
+        viewModelElenco.getCast(idFilme, API_KEY);
         viewModelElenco.liveDataCast.observe(this, casts -> adapter.atualizaLista(casts));
+
+        imagemFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Adicionado aos favoritos", Toast.LENGTH_SHORT).show();
+                viewModelFilme.insereFavorito(filme, getApplicationContext());
+            }
+        });
 
     }
 
     public void initView(){
+        imagemFavorito = findViewById(R.id.imageAddFavorito);
         imagemFilme = findViewById(R.id.imagemFilmeDetalhe);
         tituloFilme = findViewById(R.id.tituloFilmeDetalhe);
         duracao = findViewById(R.id.duracaoFilmeDetalhe);

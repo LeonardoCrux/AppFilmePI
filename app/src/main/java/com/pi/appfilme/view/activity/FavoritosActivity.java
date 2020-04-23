@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
@@ -25,9 +26,8 @@ public class FavoritosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favoritos);
         initViews();
-
-        viewModel.liveDataDetalhes.observe(this, detalhes -> adapter.atualizaLista(detalhesList));
         viewModel.getFavoritosDB(this);
+        viewModel.liveDataFavoritos.observe(this, detalhes -> adapter.atualizaLista(detalhes));
 
     }
 

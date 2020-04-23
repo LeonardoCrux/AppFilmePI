@@ -14,7 +14,8 @@
         android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/elijah" />
 
     <TextView
         android:id="@+id/personagemFilmografia"
@@ -25,14 +26,14 @@
         android:layout_marginEnd="5dp"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="aaaaa"
         android:textAlignment="gravity"
         android:textColor="@color/cinzaTexto"
         android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloFilmografia" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloFilmografia"
+        tools:text="Personagem" />
 
     <TextView
         android:id="@+id/tituloFilmografia"
@@ -43,12 +44,12 @@
         android:layout_marginEnd="5dp"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="aaaaaaaa"
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagemFilmografia" />
+        app:layout_constraintTop_toBottomOf="@+id/imagemFilmografia"
+        tools:text="Titulo" />
 
     <TextView
         android:id="@+id/estreiaFilmografia"
@@ -66,6 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/personagemFilmografia"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.037"
+        tools:text="Estreia" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

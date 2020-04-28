@@ -12,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.series.ResultSeriesTop;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.activity.SerieDetalheActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import static android.os.Build.ID;
 
 public class ListaSeriesAdapter extends RecyclerView.Adapter<ListaSeriesAdapter.ViewHolder> {
 
@@ -71,13 +74,13 @@ public class ListaSeriesAdapter extends RecyclerView.Adapter<ListaSeriesAdapter.
             tituloTodos.setText(resultSeriesTop.getName());
             textVote.setText(resultSeriesTop.getVoteAverage().toString() + "/10");
             textData.setText(resultSeriesTop.getFirstAirDate());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultSeriesTop.getPosterPath()).into(imagemTodos);
+            Picasso.get().load(Constantes.URL_IMAGEM+ resultSeriesTop.getPosterPath()).into(imagemTodos);
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SerieDetalheActivity.class);
-            intent.putExtra("ID", listSeriesTop.get(getAdapterPosition()).getId());
+            intent.putExtra(ID, listSeriesTop.get(getAdapterPosition()).getId());
             v.getContext().startActivity(intent);
         }
     }

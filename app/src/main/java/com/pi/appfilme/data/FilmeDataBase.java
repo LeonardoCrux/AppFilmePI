@@ -9,7 +9,7 @@ import androidx.room.TypeConverters;
 
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
 
-@Database(entities = {Detalhes.class}, version = 1, exportSchema = false)
+@Database(entities = {Detalhes.class}, version = 2, exportSchema = false)
 @TypeConverters(FilmeConverter.class)
 public abstract class FilmeDataBase extends RoomDatabase {
 

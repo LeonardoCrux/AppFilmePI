@@ -1,26 +1,21 @@
 package com.pi.appfilme.view.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.series.SeasonDetalhes.Episode;
-import com.pi.appfilme.view.activity.SeasonDetalheActivity;
 import com.pi.appfilme.view.fragment.EpisodiosFragment;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

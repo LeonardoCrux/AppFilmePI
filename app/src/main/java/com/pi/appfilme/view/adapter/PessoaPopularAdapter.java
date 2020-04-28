@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.pessoa.pessoa.Pessoas;
 import com.pi.appfilme.model.pessoa.pessoa.ResultPessoaPop;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.activity.PessoaDetalheActivity;
 import com.squareup.picasso.Picasso;
 
@@ -67,7 +68,7 @@ public class PessoaPopularAdapter extends RecyclerView.Adapter<PessoaPopularAdap
 
         public void onBind(ResultPessoaPop resultPessoaPop){
             nome.setText(resultPessoaPop.getName());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultPessoaPop.getProfilePath()).into(imagem);
+            Picasso.get().load(Constantes.URL_IMAGEM+ resultPessoaPop.getProfilePath()).into(imagem);
 
         }
 

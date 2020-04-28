@@ -26,9 +26,12 @@ import com.pi.appfilme.viewmodel.FilmeViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pi.appfilme.util.Constantes.CARTAZ;
+import static com.pi.appfilme.util.Constantes.CLICK;
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 import static com.pi.appfilme.util.Constantes.Region.BR;
+import static com.pi.appfilme.util.Constantes.TOP;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,7 +75,7 @@ public class FilmesFragment extends Fragment {
             public void onClick(View v) {
                 textCartaz.startAnimation(animFadein);
                 Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
-                intent.putExtra("Click", "Cartaz");
+                intent.putExtra(CLICK , CARTAZ);
                 startActivity(intent);
             }
         });
@@ -82,7 +85,7 @@ public class FilmesFragment extends Fragment {
             public void onClick(View v) {
                 textTop.startAnimation(animFadein);
                 Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
-                intent.putExtra("Click", "Top");
+                intent.putExtra(CARTAZ, TOP);
                 startActivity(intent);
             }
         });

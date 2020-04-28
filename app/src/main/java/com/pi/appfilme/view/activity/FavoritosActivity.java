@@ -1,21 +1,27 @@
 package com.pi.appfilme.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Toast;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
 import com.pi.appfilme.view.adapter.FavoritosAdapter;
+import com.pi.appfilme.view.interfaces.FavoritosListener;
 import com.pi.appfilme.viewmodel.FilmeViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoritosActivity extends AppCompatActivity {
+import static android.os.Build.ID;
+
+public class FavoritosActivity extends AppCompatActivity implements FavoritosListener {
     private RecyclerView recyclerView;
     private FavoritosAdapter adapter;
     private FilmeViewModel viewModel;
@@ -31,10 +37,25 @@ public class FavoritosActivity extends AppCompatActivity {
 
     }
 
-    public void initViews(){
-        recyclerView = findViewById(R.id.recyclerFavoritos);
-        adapter =  new FavoritosAdapter(detalhesList);
-        RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(this);
+    private void initViews(){
+        recyclerView = findViewById(R.id.recyclerFavoritoss);
+        adapter =  new FavoritosAdapter(detalhesList, this);
         recyclerView.setAdapter(adapter);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(layoutManager);
+        viewModel = ViewModelProviders.of(this).get(FilmeViewModel.class);
+    }
+
+    @Override
+    public void deleteFavorito(Detalhes detalhes) {
+        viewModel.removeFavorito(detalhes, this);
+        Toast.makeText(this, "Removido", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void clickFavorito(Detalhes detalhes) {
+        Intent intent = new Intent(this, FilmeDetalheActivity.class);
+        intent.putExtra(ID, detalhes.getId());
+        startActivity(intent);
     }
 }

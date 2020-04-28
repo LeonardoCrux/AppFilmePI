@@ -12,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.activity.FilmeDetalheActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import static android.os.Build.ID;
 
 public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.ViewHolder> {
     private List<ResultFilme> listResult;
@@ -68,16 +71,16 @@ public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.
 
         private void onBind(ResultFilme resultFilme){
             tituloTodos.setText(resultFilme.getTitle());
-            textVote.setText(resultFilme.getVoteAverage().toString() + "/10");
+            textVote.setText(resultFilme.getVoteAverage().toString() + R.string.avaliacao_10);
             textData.setText(resultFilme.getReleaseDate());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultFilme.getPosterPath()).into(imagemTodos);
+            Picasso.get().load(Constantes.URL_IMAGEM+ resultFilme.getPosterPath()).into(imagemTodos);
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), FilmeDetalheActivity.class);
             long idFilme = listResult.get(getAdapterPosition()).getId();
-            intent.putExtra("ID", idFilme);
+            intent.putExtra(ID, idFilme);
             v.getContext().startActivity(intent);
         }
     }

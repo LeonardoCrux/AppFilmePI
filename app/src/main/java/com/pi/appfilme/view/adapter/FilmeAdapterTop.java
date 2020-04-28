@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.activity.FilmeDetalheActivity;
 import com.squareup.picasso.Picasso;
 
@@ -66,7 +67,7 @@ public class FilmeAdapterTop extends RecyclerView.Adapter<FilmeAdapterTop.ViewHo
         public void onBind (ResultFilme resultFilme){
             textTitulo.setText(resultFilme.getTitle());
             dataFilme.setText(resultFilme.getReleaseDate());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultFilme.getPosterPath()).into(imageView);
+            Picasso.get().load(Constantes.URL_IMAGEM+ resultFilme.getPosterPath()).into(imageView);
         }
 
         @Override

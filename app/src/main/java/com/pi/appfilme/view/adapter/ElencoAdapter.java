@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.creditos.Cast;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.activity.PessoaDetalheActivity;
 import com.squareup.picasso.Picasso;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 import static android.os.Build.ID;
 
-public class ElencoAdapter extends RecyclerView.Adapter<ElencoAdapter.ViewHolder>{
+public class     ElencoAdapter extends RecyclerView.Adapter<ElencoAdapter.ViewHolder>{
     private List<Cast> listaCast;
 
     public ElencoAdapter(List<Cast> listaCast) {
@@ -67,7 +68,7 @@ public class ElencoAdapter extends RecyclerView.Adapter<ElencoAdapter.ViewHolder
         }
 
         public void onBind(Cast cast){
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ cast.getProfilePath()).into(imagemElenco);
+            Picasso.get().load(Constantes.URL_IMAGEM+ cast.getProfilePath()).into(imagemElenco);
             textNome.setText(cast.getName());
             textPersonagem.setText(cast.getCharacter());
         }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.detalhes.Genre;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.adapter.ElencoAdapter;
 import com.pi.appfilme.model.filme.creditos.Cast;
 import com.pi.appfilme.model.filme.detalhes.Detalhes;
@@ -64,7 +65,7 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         imagemFavorito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Adicionado aos favoritos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Adicionado aos favoritos: " + filme.getTitle(), Toast.LENGTH_SHORT).show();
                 viewModelFilme.insereFavorito(filme, getApplicationContext());
             }
         });
@@ -100,9 +101,9 @@ public class FilmeDetalheActivity extends AppCompatActivity {
     }
 
     public void setDetalhes(Detalhes detalhes){
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ detalhes.getPosterPath()).into(imagemFilme);
+        Picasso.get().load(Constantes.URL_IMAGEM+ detalhes.getPosterPath()).into(imagemFilme);
         tituloFilme.setText(detalhes.getTitle());
-        duracao.setText(detalhes.getRuntime().toString() + " min");
+        duracao.setText(detalhes.getRuntime().toString() + R.string.min);
         originalTitle.setText(detalhes.getOriginalTitle());
         sinopse.setText(detalhes.getOverview());
         List<Genre> genres = detalhes.getGenres();

@@ -18,7 +18,7 @@ public class FotoDetalheActivity extends AppCompatActivity {
         setContentView(R.layout.activity_foto_detalhe);
         imageView = findViewById(R.id.imagemFoto);
         Bundle bundle = getIntent().getExtras();
-        fotoString = bundle.getString("FOTO");
+        fotoString = bundle.getString(getString(R.string.foto));
         Picasso.get().load(fotoString).into(imageView);
     }
 }

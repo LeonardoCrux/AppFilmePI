@@ -62,8 +62,8 @@ public class FilmeRepository {
         return FilmeService.getApiService().getSerieDetalhe(id, apiKey, language);
     }
 
-    public Single<SeasonDetalhes> getSeason(long id, long number, String apiKey, String language){
-        return FilmeService.getApiService().getSeasonDetalhes(id, number, apiKey,language);
+    public Single<SeasonDetalhes> getSeason(long id, long number, String apiKey, String language) {
+        return FilmeService.getApiService().getSeasonDetalhes(id, number, apiKey, language);
     }
 
     public Observable<SeriesTop> getSeriesTop(String apiKey, String language, int pagina) {
@@ -74,22 +74,22 @@ public class FilmeRepository {
         return FilmeService.getApiService().getSeriePopular(apiKey, language, page);
     }
 
-    public Observable<Pessoas> getPessoasPopular(String apiKey, String language, int pagina){
+    public Observable<Pessoas> getPessoasPopular(String apiKey, String language, int pagina) {
         return FilmeService.getApiService().getPessoasPopular(apiKey, language, pagina);
     }
 
 
     // DATABASE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    public void insereDadosDB(Detalhes filmeDetalhes, Context context){
+    public void insereDadosDB(Detalhes filmeDetalhes, Context context) {
         FilmeDataBase.getDatabase(context).filmeDAO().insereFavoritoDB(filmeDetalhes);
     }
 
-    public void removeFavorito(Detalhes detalhes, Context context){
+    public void removeFavorito(Detalhes detalhes, Context context) {
         FilmeDataBase.getDatabase(context).filmeDAO().removeFavorito(detalhes);
     }
 
-    public Flowable<List<Detalhes>> getFavoritosDB(Context context){
-return FilmeDataBase.getDatabase(context).filmeDAO().recuperaFavoritosDB();
+    public Flowable<List<Detalhes>> getFavoritosDB(Context context) {
+        return FilmeDataBase.getDatabase(context).filmeDAO().recuperaFavoritosDB();
     }
 
 

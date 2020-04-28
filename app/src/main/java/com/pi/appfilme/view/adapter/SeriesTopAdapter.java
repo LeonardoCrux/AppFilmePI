@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.series.ResultSeriesTop;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.activity.SerieDetalheActivity;
 import com.squareup.picasso.Picasso;
 
@@ -64,7 +65,7 @@ public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.View
         }
 
         public void onBind(ResultSeriesTop resultSeriesTop){
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultSeriesTop.getPosterPath()).into(imageView);
+            Picasso.get().load(Constantes.URL_IMAGEM+ resultSeriesTop.getPosterPath()).into(imageView);
             nome.setText(resultSeriesTop.getName());
         }
 

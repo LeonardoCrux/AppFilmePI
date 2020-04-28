@@ -7,5 +7,6 @@ import com.pi.appfilme.model.series.SeasonDetalhes.Episode;
 
 public interface FavoritosListener {
 
+    void deleteFavorito(Detalhes detalhes);
     void clickFavorito(Detalhes detalhes);
 }

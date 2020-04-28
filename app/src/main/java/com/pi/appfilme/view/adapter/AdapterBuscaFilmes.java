@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
+import com.pi.appfilme.util.Constantes;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class AdapterBuscaFilmes extends RecyclerView.Adapter<AdapterBuscaFilmes.
         public void onBind(ResultFilme resultFilme){
             textNome.setText(resultFilme.getTitle());
             textData.setText(resultFilme.getReleaseDate());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ resultFilme.getPosterPath()).into(imageView);
+            Picasso.get().load(Constantes.URL_IMAGEM+ resultFilme.getPosterPath()).into(imageView);
         }
 
         @Override

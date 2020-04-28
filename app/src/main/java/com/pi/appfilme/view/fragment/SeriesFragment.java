@@ -25,8 +25,11 @@ import com.pi.appfilme.view.adapter.SeriesTopAdapter;
 import com.pi.appfilme.viewmodel.SerieViewModel;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.pi.appfilme.util.Constantes.CLICK;
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
+import static com.pi.appfilme.util.Constantes.SERIES_TOP;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +61,7 @@ public class SeriesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
-                intent.putExtra("Click", "Populares");
+                intent.putExtra(CLICK , "Populares");
                 startActivity(intent);
             }
         });
@@ -88,7 +91,7 @@ public class SeriesFragment extends Fragment {
             public void onClick(View v) {
                 textSerieTop.startAnimation(animFadein);
                 Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
-                intent.putExtra("Click", "SeriesTop");
+                intent.putExtra(CLICK, SERIES_TOP);
                 startActivity(intent);
             }
         });

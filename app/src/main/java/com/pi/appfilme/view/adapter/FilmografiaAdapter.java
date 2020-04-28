@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.pessoa.FilmesPessoa;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.activity.FilmeDetalheActivity;
 import com.squareup.picasso.Picasso;
 
@@ -68,7 +69,7 @@ public class FilmografiaAdapter extends RecyclerView.Adapter<FilmografiaAdapter.
             estreia.setText(filmesPessoa.getReleaseDate());
             personagem.setText(filmesPessoa.getCharacter());
             titulo.setText(filmesPessoa.getTitle());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ filmesPessoa.getPosterPath()).into(imagem);
+            Picasso.get().load(Constantes.URL_IMAGEM+ filmesPessoa.getPosterPath()).into(imagem);
         }
 
 

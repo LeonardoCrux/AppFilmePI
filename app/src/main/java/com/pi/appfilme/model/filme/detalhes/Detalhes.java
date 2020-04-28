@@ -12,18 +12,7 @@ import com.google.gson.annotations.SerializedName;
 @Entity(tableName = "filmes")
 public class Detalhes {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "idFilme")
     private long idFilme;
-
-    public long getIdFilme() {
-        return idFilme;
-    }
-
-    public void setIdFilme(long idFilme) {
-        this.idFilme = idFilme;
-    }
-
     @Expose
     private Boolean adult;
     @SerializedName("backdrop_path")
@@ -36,6 +25,9 @@ public class Detalhes {
     private List<Genre> genres;
     @Expose
     private String homepage;
+
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "id")
     @Expose
     private Long id;
     @SerializedName("imdb_id")
@@ -84,6 +76,15 @@ public class Detalhes {
     private Double voteAverage;
     @SerializedName("vote_count")
     private Long voteCount;
+
+
+    public long getIdFilme() {
+        return idFilme;
+    }
+
+    public void setIdFilme(long idFilme) {
+        this.idFilme = idFilme;
+    }
 
     public Boolean getAdult() {
         return adult;

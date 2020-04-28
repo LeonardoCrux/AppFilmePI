@@ -8,4 +8,7 @@
     <string name="quiz">Quiz</string>
     <string name="mais">Mais</string>
     <string name="pessoas">Pessoas</string>
+    <string name="avaliacao_10">/10</string>
+    <string name="min">\" min\"</string>
+    <string name="foto">FOTO</string>
 </resources>

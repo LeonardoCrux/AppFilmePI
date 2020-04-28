@@ -3,6 +3,13 @@ package com.pi.appfilme.util;
 public class Constantes {
     private static final String ID = "ID";
 
+    public static final String URL_IMAGEM = "https://image.tmdb.org/t/p/w500/";
+
+    public static final String CLICK = "Click";
+    public static final String CARTAZ = "Cartaz";
+    public static final String TOP = "Top";
+    public static final String SERIES_TOP = "SeriesTop";
+
     public static final class Url {
         public static final String URL_BASE = "https://api.themoviedb.org/3/";
     }
@@ -18,14 +25,5 @@ public class Constantes {
     public static final class Region {
         public static final String BR = "BR";
     }
-
-//    public static class Pagina {
-//        int random = (int) (Math.random() * (80 - 1 + 1) + 1);
-//        public static final int PAGINA = ranom
-//    }
-
-//    public static final class UrlImagemFilme{
-//        public static final String URL_IMAGEM = "https://image.tmdb.org/t/p/w500/";
-//    }
 }
 

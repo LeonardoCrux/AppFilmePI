@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.pessoa.Profile;
+import com.pi.appfilme.util.Constantes;
 import com.pi.appfilme.view.activity.FotoDetalheActivity;
 import com.squareup.picasso.Picasso;
 
@@ -65,14 +66,14 @@ public class FotosPessoaAdapter extends RecyclerView.Adapter<FotosPessoaAdapter.
         }
 
         public void onBind(Profile profile){
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+profile.getFilePath()).into(fotoPessoa);
+            Picasso.get().load(Constantes.URL_IMAGEM+profile.getFilePath()).into(fotoPessoa);
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), FotoDetalheActivity.class);
             String foto = fotosPessoaList.get(getAdapterPosition()).getFilePath();
-            intent.putExtra("FOTO", "https://image.tmdb.org/t/p/w500/"+ foto);
+            intent.putExtra("FOTO", Constantes.URL_IMAGEM+ foto);
             v.getContext().startActivity(intent);
         }
     }

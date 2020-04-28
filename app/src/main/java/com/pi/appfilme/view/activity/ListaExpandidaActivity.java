@@ -21,9 +21,13 @@ import com.pi.appfilme.viewmodel.SerieViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pi.appfilme.util.Constantes.CARTAZ;
+import static com.pi.appfilme.util.Constantes.CLICK;
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 import static com.pi.appfilme.util.Constantes.Region.BR;
+import static com.pi.appfilme.util.Constantes.SERIES_TOP;
+import static com.pi.appfilme.util.Constantes.TOP;
 
 public class ListaExpandidaActivity extends AppCompatActivity{
     private RecyclerView recyclerView;
@@ -43,18 +47,18 @@ public class ListaExpandidaActivity extends AppCompatActivity{
         setContentView(R.layout.activity_lista_expandida);
         initViews();
         Bundle bundle = getIntent().getExtras();
-        selecionado = bundle.getString("Click");
-        if(selecionado.equals("Cartaz")){
+        selecionado = bundle.getString(CLICK);
+        if(selecionado.equals(CARTAZ)){
             setScrollView();
             recyclerView.setAdapter(adapter);
             viewModel.getPlaying(API_KEY, PT_BR, BR, pagina);
             viewModel.liveData.observe(this, resultFilmes -> adapter.atualizaLista(resultFilmes));
-        } else if(selecionado.equals("Top")){
+        } else if(selecionado.equals(TOP)){
             setScrollView();
             recyclerView.setAdapter(adapter);
             viewModel.getTop(API_KEY, PT_BR, "US", pagina);
             viewModel.liveDataTop.observe(this, resultFilmes -> adapter.atualizaLista(resultFilmes));
-        } else if(selecionado.equals("SeriesTop")){
+        } else if(selecionado.equals(SERIES_TOP)){
             setScrollView();
             adapterSeries = new ListaSeriesAdapter(listaSeries);
             recyclerView.setAdapter(adapterSeries);
@@ -94,11 +98,11 @@ public class ListaExpandidaActivity extends AppCompatActivity{
 
                 if (itemCount > 0 && ultimoItem){
                     pagina++;
-                    if(selecionado.equals("Cartaz")){
+                    if(selecionado.equals(CARTAZ)){
                         viewModel.getPlaying(API_KEY, PT_BR, BR, pagina);
-                    } else if(selecionado.equals("Top")){
+                    } else if(selecionado.equals(TOP)){
                         viewModel.getTop(API_KEY, PT_BR, "US", pagina);
-                    } else if(selecionado.equals("SeriesTop")){
+                    } else if(selecionado.equals(SERIES_TOP)){
                         serieViewModel.getTopSeries(API_KEY, PT_BR, pagina);
                     }
                 }

@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static android.os.Build.ID;
+
 public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.ViewHolder> {
     private List<ResultFilme> listPlaying;
 
@@ -73,7 +75,7 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.ViewHolder> 
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), FilmeDetalheActivity.class);
             long idFilme = listPlaying.get(getAdapterPosition()).getId();
-            intent.putExtra("ID", idFilme);
+            intent.putExtra(ID , idFilme);
             v.getContext().startActivity(intent);
         }
     }

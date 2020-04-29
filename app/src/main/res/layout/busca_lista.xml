@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imagem_busca"
+        android:id="@+id/searchImagem"
         android:layout_width="34dp"
         android:layout_height="46dp"
         android:layout_marginStart="4dp"
@@ -16,14 +16,14 @@
         tools:srcCompat="@drawable/retornorei" />
 
     <TextView
-        android:id="@+id/busca_filme_textView"
+        android:id="@+id/searchTitulo"
         android:layout_width="324dp"
         android:layout_height="22dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imagem_busca"
+        app:layout_constraintStart_toEndOf="@+id/searchImagem"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="O Senhor dos Anéis: O Retorno do Rei" />
 
@@ -37,7 +37,7 @@
         android:textSize="12sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imagem_busca"
-        app:layout_constraintTop_toBottomOf="@+id/busca_filme_textView"
+        app:layout_constraintStart_toEndOf="@+id/searchImagem"
+        app:layout_constraintTop_toBottomOf="@+id/searchTitulo"
         tools:text="2020-12-31" />
 </androidx.constraintlayout.widget.ConstraintLayout>

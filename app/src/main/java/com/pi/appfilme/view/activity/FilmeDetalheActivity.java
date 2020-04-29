@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.os.Build.ID;
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
 
@@ -97,13 +98,13 @@ public class FilmeDetalheActivity extends AppCompatActivity {
 
     public void recuperaIdFilme(){
         Bundle bundle = getIntent().getExtras();
-        idFilme = bundle.getLong("ID");
+        idFilme = bundle.getLong(ID);
     }
 
     public void setDetalhes(Detalhes detalhes){
         Picasso.get().load(Constantes.URL_IMAGEM+ detalhes.getPosterPath()).into(imagemFilme);
         tituloFilme.setText(detalhes.getTitle());
-        duracao.setText(detalhes.getRuntime().toString() + R.string.min);
+        duracao.setText(detalhes.getRuntime().toString() + getString(R.string.min));
         originalTitle.setText(detalhes.getOriginalTitle());
         sinopse.setText(detalhes.getOverview());
         List<Genre> genres = detalhes.getGenres();
@@ -114,10 +115,10 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         genero.setText(generosString.substring(0, generosString.length()-2));
         if(detalhes.getBudget() == 0){
             orcamento.setVisibility(View.INVISIBLE);
-        } else{orcamento.setText("Orçamento: " + detalhes.getBudget());}
+        } else{orcamento.setText(getString(R.string.orcamento) + detalhes.getBudget());}
         if(detalhes.getRevenue() == 0){
             bilheteria.setVisibility(View.INVISIBLE);
-        } else{bilheteria.setText("Bilheteria: " + detalhes.getRevenue());}
+        } else{bilheteria.setText(getString(R.string.bilheteria) + detalhes.getRevenue());}
         data.setText(detalhes.getReleaseDate());
     }
     }

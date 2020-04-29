@@ -50,8 +50,8 @@ public class FilmeViewModel extends AndroidViewModel {
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe(disposable1 -> mutableLiveDataLoading.setValue(true))
                         .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
-                        .subscribe(busca -> {
-                            mutableBusca.setValue(busca.getResultFilmes());
+                        .subscribe(resultFilmes -> {
+                            mutableBusca.setValue(resultFilmes.getResultFilmes());
                         }, throwable -> {
                             mutableLiveDataErro.setValue(throwable.getMessage());
                         }));

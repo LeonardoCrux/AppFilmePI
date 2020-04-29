@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="26dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:drawableRight="@drawable/ic_chevron_right_black_24dp"
         android:text="SÉRIES COM MELHORES NOTAS"
@@ -20,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerSeriePopularrrr" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSeriePopular" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSeriesTop"
@@ -46,17 +45,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerSeriePopularrrr"
-        android:layout_width="392dp"
-        android:layout_height="199dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/branco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSeriePopular" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,8 +25,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.os.Build.ID;
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
 import static com.pi.appfilme.util.Constantes.Language.PT_BR;
+import static com.pi.appfilme.util.Constantes.URL_IMAGEM;
 
 public class SerieDetalheActivity extends AppCompatActivity {
     private SerieViewModel viewModel;
@@ -73,7 +75,7 @@ public class SerieDetalheActivity extends AppCompatActivity {
 
     public void recuperaIdFilme(){
         Bundle bundle = getIntent().getExtras();
-        idFilme = bundle.getLong("ID");
+        idFilme = bundle.getLong(ID );
     }
 
     public void setDetalhes(ResultSeriesDetalhe result){
@@ -82,21 +84,21 @@ public class SerieDetalheActivity extends AppCompatActivity {
         for (CreatedBy c: created) {
                 criadores += c.getName() + ", ";
         }
-        diretor.setText("De" + criadores.substring(0, criadores.length() -2));
+        diretor.setText(getString(R.string.de) + criadores.substring(0, criadores.length() -2));
 
         if(result.getOverview().equals("")){
-            sinopse.setText("Sinopse indisponível");
+            sinopse.setText(R.string.sinopse_indisponivel);
         } else {
             sinopse.setText(result.getOverview());
         }
         tituloOriginal.setText(result.getOriginalName());
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ result.getPosterPath()).into(imageView);
+        Picasso.get().load(URL_IMAGEM+ result.getPosterPath()).into(imageView);
         titulo.setText(result.getName());
         status.setText(result.getStatus());
         initRecycler(result);
-        nota.setText(result.getVoteAverage().toString());
-        numeroEps.setText("Total de Episódios: " + result.getNumberOfEpisodes().toString());
-        numeroSeasons.setText("Temporadas: " + result.getNumberOfSeasons().toString());
+        nota.setText(result.getVoteAverage().toString() + getString(R.string.avaliacao_10));
+        numeroEps.setText(getString(R.string.total_episodios) + result.getNumberOfEpisodes().toString());
+        numeroSeasons.setText(getString(R.string.temporadas) + result.getNumberOfSeasons().toString());
     }
 
     private void initRecycler(ResultSeriesDetalhe resultSeriesDetalhe){

@@ -7,13 +7,12 @@
     tools:context=".view.activity.ResultadoBuscaActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerBuscaFilmes"
-        android:layout_width="391dp"
-        android:layout_height="225dp"
-        android:layout_marginStart="10dp"
+        android:id="@+id/recyclerSearchFilme"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="1dp"
+        android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

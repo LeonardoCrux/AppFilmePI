@@ -21,6 +21,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static android.os.Build.ID;
+import static com.pi.appfilme.util.Constantes.NUMBER;
+import static com.pi.appfilme.util.Constantes.URL_IMAGEM;
+
 public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder> {
     private List<Season> seasonList;
     private  long idSerie;
@@ -64,15 +68,15 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
 
         public void onBind(Season season) {
             textTemporada.setText(season.getName());
-            textEpisodios.setText(season.getEpisodeCount().toString() + " episódios");
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/" + season.getPosterPath()).into(imageView);
+            textEpisodios.setText(season.getEpisodeCount().toString() + "episodios");
+            Picasso.get().load(URL_IMAGEM + season.getPosterPath()).into(imageView);
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SeasonDetalheActivity.class);
-            intent.putExtra("ID", idSerie);
-            intent.putExtra("NUMBER",seasonList.get(getAdapterPosition()).getSeasonNumber());
+            intent.putExtra(ID, idSerie);
+            intent.putExtra(NUMBER ,seasonList.get(getAdapterPosition()).getSeasonNumber());
             v.getContext().startActivity(intent);
         }
     }

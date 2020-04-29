@@ -9,6 +9,15 @@
     <string name="mais">Mais</string>
     <string name="pessoas">Pessoas</string>
     <string name="avaliacao_10">/10</string>
-    <string name="min">\" min\"</string>
+    <string name="min">\ min\</string>
     <string name="foto">FOTO</string>
+    <string name="sinopse_indisponivel">Sinopse indisponível</string>
+    <string name="total_episodios">\"Total de Episódios: \"</string>
+    <string name="temporadas">\"Temporadas: \"</string>
+    <string name="removido_favoritos">Removido dos favoritos</string>
+    <string name="orcamento">\"Orçamento: \"</string>
+    <string name="bilheteria">\"Bilheteria: \"</string>
+    <string name="sinopse_temporada_nao">Sinopse da temporada indisponível</string>
+    <string name="de">De</string>
+    <string name="episodios">\" episódios\"</string>
 </resources>

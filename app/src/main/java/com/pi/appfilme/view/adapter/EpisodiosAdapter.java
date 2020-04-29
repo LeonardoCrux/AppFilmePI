@@ -19,6 +19,8 @@ import com.pi.appfilme.view.fragment.EpisodiosFragment;
 
 import java.util.List;
 
+import static com.pi.appfilme.util.Constantes.EP;
+
 public class EpisodiosAdapter extends RecyclerView.Adapter<EpisodiosAdapter.ViewHolder> {
     private List<Episode> episodeList;
 
@@ -60,7 +62,7 @@ public class EpisodiosAdapter extends RecyclerView.Adapter<EpisodiosAdapter.View
 
         public void envioDadosEpisodio(Episode ep, View v) {
             Bundle bundle = new Bundle();
-            bundle.putParcelable("EP", ep);
+            bundle.putParcelable(EP , ep);
             Fragment fragment = new EpisodiosFragment();
             fragment.setArguments(bundle);
             replaceFragments(fragment, v.getContext());

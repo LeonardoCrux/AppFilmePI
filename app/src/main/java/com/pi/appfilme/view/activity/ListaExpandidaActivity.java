@@ -48,11 +48,13 @@ public class ListaExpandidaActivity extends AppCompatActivity{
         initViews();
         Bundle bundle = getIntent().getExtras();
         selecionado = bundle.getString(CLICK);
+
         if(selecionado.equals(CARTAZ)){
             setScrollView();
             recyclerView.setAdapter(adapter);
             viewModel.getPlaying(API_KEY, PT_BR, BR, pagina);
             viewModel.liveData.observe(this, resultFilmes -> adapter.atualizaLista(resultFilmes));
+
         } else if(selecionado.equals(TOP)){
             setScrollView();
             recyclerView.setAdapter(adapter);

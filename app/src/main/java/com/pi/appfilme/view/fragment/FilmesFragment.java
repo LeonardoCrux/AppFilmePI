@@ -85,7 +85,7 @@ public class FilmesFragment extends Fragment {
             public void onClick(View v) {
                 textTop.startAnimation(animFadein);
                 Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
-                intent.putExtra(CARTAZ, TOP);
+                intent.putExtra(CLICK, TOP);
                 startActivity(intent);
             }
         });

@@ -71,7 +71,7 @@ public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.
 
         private void onBind(ResultFilme resultFilme){
             tituloTodos.setText(resultFilme.getTitle());
-            textVote.setText(resultFilme.getVoteAverage().toString() + R.string.avaliacao_10);
+            textVote.setText(resultFilme.getVoteAverage().toString() + "/10");
             textData.setText(resultFilme.getReleaseDate());
             Picasso.get().load(Constantes.URL_IMAGEM+ resultFilme.getPosterPath()).into(imagemTodos);
         }

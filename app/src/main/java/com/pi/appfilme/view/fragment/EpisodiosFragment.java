@@ -14,6 +14,9 @@ import com.pi.appfilme.R;
 import com.pi.appfilme.model.series.SeasonDetalhes.Episode;
 import com.squareup.picasso.Picasso;
 
+import static com.pi.appfilme.util.Constantes.EP;
+import static com.pi.appfilme.util.Constantes.URL_IMAGEM;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -48,12 +51,12 @@ public class EpisodiosFragment extends Fragment {
 
     public void recuperaDados(){
         Bundle bundle = getArguments();
-        episode = bundle.getParcelable("EP");
+        episode = bundle.getParcelable(EP );
     }
 
     public void setDetalhes(Episode episode){
         nome.setText(episode.getName());
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ episode.getStillPath()).into(imageView);
+        Picasso.get().load(URL_IMAGEM+ episode.getStillPath()).into(imageView);
         sinopse.setText(episode.getOverview());
         data.setText(episode.getAirDate());
     }

@@ -21,7 +21,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static android.os.Build.ID;
 import static com.pi.appfilme.util.Constantes.Hash.API_KEY;
+import static com.pi.appfilme.util.Constantes.NUMBER;
+import static com.pi.appfilme.util.Constantes.URL_IMAGEM;
 
 public class SeasonDetalheActivity extends AppCompatActivity{
     private SerieViewModel viewModel;
@@ -47,10 +50,8 @@ public class SeasonDetalheActivity extends AppCompatActivity{
 
     public void recuperaIdSeason(){
         Bundle bundle = getIntent().getExtras();
-        idSerie = bundle.getLong("ID");
-        number = bundle.getLong("NUMBER");
-        Log.i("DADOS", "ID" + idSerie + " number" + number);
-    }
+        idSerie = bundle.getLong(ID );
+        number = bundle.getLong(NUMBER); }
 
     public void initView(){
         nomeSeason = findViewById(R.id.nameSeasonDetalhe);
@@ -64,12 +65,12 @@ public class SeasonDetalheActivity extends AppCompatActivity{
         nomeSeason.setText(detalhes.getName());
 
         if(detalhes.getOverview().equals("")){
-            sinopseSeason.setText("Sinopse da temporada indisponível");
+            sinopseSeason.setText(R.string.sinopse_temporada_nao);
         } else {
             sinopseSeason.setText(detalhes.getOverview());
         }
         dataSeason.setText(detalhes.getAirDate());
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+ detalhes.getPosterPath()).into(imagemSeason);
+        Picasso.get().load(URL_IMAGEM+ detalhes.getPosterPath()).into(imagemSeason);
         initRecycler(detalhes);
     }
 

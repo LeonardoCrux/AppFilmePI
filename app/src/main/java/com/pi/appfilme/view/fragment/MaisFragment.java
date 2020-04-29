@@ -12,12 +12,13 @@ import android.widget.TextView;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.view.activity.FavoritosActivity;
+import com.pi.appfilme.view.activity.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MaisFragment extends Fragment {
-    private TextView textFavoritos;
+    private TextView textFavoritos, textLogin;
 
 
     public MaisFragment() {
@@ -30,10 +31,18 @@ public class MaisFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mais, container, false);
         textFavoritos = view.findViewById(R.id.textFavoritos);
+        textLogin = view.findViewById(R.id.textView6);
         textFavoritos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), FavoritosActivity.class));
+            }
+        });
+
+        textLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
 

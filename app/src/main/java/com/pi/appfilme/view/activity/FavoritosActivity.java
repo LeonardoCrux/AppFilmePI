@@ -49,7 +49,7 @@ public class FavoritosActivity extends AppCompatActivity implements FavoritosLis
     @Override
     public void deleteFavorito(Detalhes detalhes) {
         viewModel.removeFavorito(detalhes, this);
-        Toast.makeText(this, "Removido", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.removido_favoritos, Toast.LENGTH_SHORT).show();
     }
 
     @Override

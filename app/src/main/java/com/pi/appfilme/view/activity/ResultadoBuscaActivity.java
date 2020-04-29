@@ -3,17 +3,18 @@ package com.pi.appfilme.view.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.pi.appfilme.R;
 import com.pi.appfilme.model.filme.BuscaEBreve.ResultFilme;
-import com.pi.appfilme.network.API;
-import com.pi.appfilme.network.FilmeService;
-import com.pi.appfilme.view.adapter.AdapterBuscaFilmes;
+import com.pi.appfilme.view.adapter.SearchFilmeAdapter;
+import com.pi.appfilme.viewmodel.BuscaViewModel;
 import com.pi.appfilme.viewmodel.FilmeViewModel;
 
 import java.util.ArrayList;
@@ -28,35 +29,38 @@ import static com.pi.appfilme.util.Constantes.Region.BR;
 
 public class ResultadoBuscaActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private AdapterBuscaFilmes adapter;
-    private FilmeViewModel viewModel;
-    private List<ResultFilme> resultFilmeList = new ArrayList<>();
+    private SearchFilmeAdapter searchFilmeAdapter;
+    private BuscaViewModel buscaViewModel;
     private String busca;
     private int pagina = 1;
+    private List<ResultFilme> listaFilme =  new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado_busca);
-        initView();
+        initViews();
         recuperaDados();
-        viewModel.buscaFilmes(API_KEY, PT_BR, busca, pagina, BR);
-        viewModel.liveDataBusca.observe(this, (List<ResultFilme> resultFilmes) -> adapter.atualizaLista(resultFilmes));
+        buscaViewModel.getResultFilme(API_KEY, PT_BR, busca, 1, BR);
     }
 
-    public void initView(){
-        recyclerView = findViewById(R.id.recyclerBuscaFilmes);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new AdapterBuscaFilmes(resultFilmeList);
-        recyclerView.setAdapter(adapter);
-        viewModel = ViewModelProviders.of(this).get(FilmeViewModel.class);
+    private void initViews(){
+        recyclerView = findViewById(R.id.recyclerSearchFilme);
+        searchFilmeAdapter = new SearchFilmeAdapter(listaFilme);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(searchFilmeAdapter);
+        buscaViewModel = ViewModelProviders.of(this).get(BuscaViewModel.class);
     }
+
 
     public void recuperaDados(){
         Bundle bundle = getIntent().getExtras();
         busca = bundle.getString("NOME");
+    }
+
+    public void funciona(){
+        buscaViewModel.liveDataFilme.observe(this, resultFilmes -> searchFilmeAdapter.atualizaLista(resultFilmes));
     }
 
     private void setScrollView(){
@@ -75,7 +79,7 @@ public class ResultadoBuscaActivity extends AppCompatActivity {
                 boolean ultimoItem = ultimoVisivel + 5 >= itemCount;
                 if(itemCount > 0 && ultimoItem){
                     pagina++;
-                    viewModel.buscaFilmes(API_KEY, PT_BR, busca, pagina, BR);
+                    buscaViewModel.getResultFilme(API_KEY, PT_BR, busca, pagina, BR);
                 }
             }
         });

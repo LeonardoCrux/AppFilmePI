@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static android.os.Build.ID;
+
 public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.ViewHolder> {
     private List<ResultSeriesTop> listSeriesTop;
 
@@ -72,7 +74,7 @@ public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.View
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SerieDetalheActivity.class);
-            intent.putExtra("ID", listSeriesTop.get(getAdapterPosition()).getId());
+            intent.putExtra(ID , listSeriesTop.get(getAdapterPosition()).getId());
             v.getContext().startActivity(intent);
         }
     }

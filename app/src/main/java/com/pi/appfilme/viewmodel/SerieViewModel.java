@@ -97,10 +97,10 @@ public class SerieViewModel extends AndroidViewModel {
         );
     }
 
-//    @Override
-//    protected void onCleared() {
-//        super.onCleared();
-//        disposable.clear();
-//    }
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        disposable.clear();
+    }
 
 }

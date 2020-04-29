@@ -9,6 +9,8 @@ public class Constantes {
     public static final String CARTAZ = "Cartaz";
     public static final String TOP = "Top";
     public static final String SERIES_TOP = "SeriesTop";
+    public static final String NUMBER = "Number";
+    public static final String EP = "Ep";
 
     public static final class Url {
         public static final String URL_BASE = "https://api.themoviedb.org/3/";

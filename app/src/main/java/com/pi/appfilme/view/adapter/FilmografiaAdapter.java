@@ -18,6 +18,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static android.os.Build.ID;
+
 public class FilmografiaAdapter extends RecyclerView.Adapter<FilmografiaAdapter.ViewHolder> {
     private List<FilmesPessoa> filmesPessoaList;
 
@@ -76,7 +78,7 @@ public class FilmografiaAdapter extends RecyclerView.Adapter<FilmografiaAdapter.
         @Override
         public void onClick(View view) {
             Intent intent =  new Intent(view.getContext(), FilmeDetalheActivity.class);
-            intent.putExtra("ID", filmesPessoaList.get(getAdapterPosition()).getId());
+            intent.putExtra(ID , filmesPessoaList.get(getAdapterPosition()).getId());
             view.getContext().startActivity(intent);
         }
     }

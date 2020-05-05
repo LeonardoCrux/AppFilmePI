@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/searchImagem"
-        android:layout_width="34dp"
-        android:layout_height="46dp"
+        android:layout_width="43dp"
+        android:layout_height="64dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,20 +17,25 @@
 
     <TextView
         android:id="@+id/searchTitulo"
-        android:layout_width="324dp"
+        android:layout_width="0dp"
         android:layout_height="22dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="3dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="O Senhor dos Anéis: O Retorno do Rei"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/searchImagem"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="O Senhor dos Anéis: O Retorno do Rei" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/estreia_busca_textView"
-        android:layout_width="161dp"
-        android:layout_height="21dp"
+        android:layout_width="179dp"
+        android:layout_height="23dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"

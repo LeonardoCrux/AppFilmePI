@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "758933616378",
+    "firebase_url": "https://efilm-f9a7c.firebaseio.com",
+    "project_id": "efilm-f9a7c",
+    "storage_bucket": "efilm-f9a7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758933616378:android:50b516c538ce1e733f7b43",
+        "android_client_info": {
+          "package_name": "com.pi.appfilme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758933616378-gljpq9e39sqkln6j72l9a1nvr15o6f42.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pi.appfilme",
+            "certificate_hash": "4e40902b2a58768032fb62c5da218e36764c6d7c"
+          }
+        },
+        {
+          "client_id": "758933616378-ovfdtgepr8egt7us2paf08kuosaqraok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh9yztuYn9LDKt_gByjaShybuhRIDBjqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758933616378-ovfdtgepr8egt7us2paf08kuosaqraok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

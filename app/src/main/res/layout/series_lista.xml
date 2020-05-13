@@ -7,14 +7,15 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imagemSeriesPopular"
+        android:id="@+id/imageSerieTop"
         android:layout_width="131dp"
         android:layout_height="201dp"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginEnd="5dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/chefao" />
@@ -23,8 +24,8 @@
         android:id="@+id/textSeriePopular"
         android:layout_width="133dp"
         android:layout_height="24dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:allowUndo="false"
         android:autoText="false"
         android:cursorVisible="false"
@@ -33,10 +34,11 @@
         android:hapticFeedbackEnabled="false"
         android:nestedScrollingEnabled="false"
         android:singleLine="true"
-        android:text="O Poderoso Chefão"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagemSeriesPopular" />
+        app:layout_constraintTop_toBottomOf="@+id/imageSerieTop"
+        tools:text="O Poderoso Chefão" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

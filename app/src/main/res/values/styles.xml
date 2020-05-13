@@ -1,12 +1,19 @@
 <resources>
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorTab</item>
+        <item name="colorPrimary">@color/corDeFundo</item>
         <item name="colorPrimaryDark">@color/colorTab</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:colorBackground">@color/corDeFundo</item>
+    </style>
+
+    <style name="ActionBarTheme" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/branco</item>
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textColorSecondary">@color/branco</item>
+
     </style>
 
 </resources>

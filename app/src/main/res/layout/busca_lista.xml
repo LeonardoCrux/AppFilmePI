@@ -2,40 +2,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/tituloBusca"
-        android:layout_width="34dp"
-        android:layout_height="46dp"
+        android:id="@+id/searchImagem"
+        android:layout_width="43dp"
+        android:layout_height="64dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/retornorei" />
+        tools:srcCompat="@drawable/retornorei" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="324dp"
+        android:id="@+id/searchTitulo"
+        android:layout_width="0dp"
         android:layout_height="22dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="O Senhor dos Anéis: O Retorno do Rei"
+        android:layout_marginEnd="3dp"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tituloBusca"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/searchImagem"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="O Senhor dos Anéis: O Retorno do Rei" />
 
     <TextView
-        android:id="@+id/elencoBusca"
-        android:layout_width="324dp"
-        android:layout_height="24dp"
+        android:id="@+id/estreia_busca_textView"
+        android:layout_width="179dp"
+        android:layout_height="23dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="1dp"
-        android:text="Sean Astin, Elijah Wood, Viggo Mortensen, Ian McKellen."
+        android:layout_marginBottom="1dp"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/tituloBusca"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchImagem"
+        app:layout_constraintTop_toBottomOf="@+id/searchTitulo"
+        tools:text="2020-12-31" />
 </androidx.constraintlayout.widget.ConstraintLayout>

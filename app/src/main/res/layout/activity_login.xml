@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="495dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="71dp"
+        android:background="@drawable/canto_cadastro"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="15dp"
+            android:textColorHint="@color/cinzaTexto"
+            app:hintEnabled="false"
+            app:hintTextColor="@color/cinzaTexto">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/branco"
+                android:drawableLeft="@drawable/ic_person"
+                android:hapticFeedbackEnabled="false"
+                android:hint="Email"
+                android:shadowColor="#FFFFFF"
+                android:textColorHighlight="@color/branco"
+                android:textColorHint="@color/cinzaTexto"
+                android:textColorLink="@color/cinzaTexto" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:textColorHint="@color/cinzaTexto"
+            app:errorTextColor="@color/cinzaTexto"
+            app:helperTextTextColor="@color/cinzaTexto"
+            app:hintTextColor="@color/cinzaTexto"
+            app:passwordToggleDrawable="@drawable/ic_remove_red_eye_black_24dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/branco">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/branco"
+                android:drawableLeft="@drawable/ic_lock"
+                android:hapticFeedbackEnabled="false"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@color/branco"
+                android:textColorHighlight="@color/branco"
+                android:textColorHint="@color/cinzaTexto"
+                android:textColorLink="@color/cinzaTexto" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:checked="true"
+            android:text="Lembrar"
+            android:textColor="@color/branco"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/botaoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/login_background_button"
+            android:text="LOGIN" />
+
+
+        <Button
+            android:id="@+id/botaoGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/login_google_background"
+            android:drawableStart="@drawable/google"
+            android:text="Login com Google"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/botaoFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/login_background_button_facebook"
+            android:drawableStart="@drawable/facebook"
+            android:text="Login com Facebook"
+            android:textColor="@color/branco" />
+
+        <TextView
+            android:id="@+id/textRegistrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:text="Registrar-se"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.081" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

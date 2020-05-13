@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.SerieDetalheActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/numeroSeasons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/notaSerie"
+            tools:text="Temporadas" />
+
+        <ImageView
+            android:id="@+id/imagemSerieDetalhe"
+            android:layout_width="118dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tituloSerieDetalhe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="sans-serif"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/dataSerieDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="serif"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="10sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/numeroEpsSerie"
+            tools:text="Estreia" />
+
+        <TextView
+            android:id="@+id/sinopseSerieDetalhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="serif"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textVie" />
+
+        <TextView
+            android:id="@+id/textVie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="serif"
+            android:text="Título original:"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shareSerie" />
+
+        <TextView
+            android:id="@+id/originalSerieDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="serif"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="8sp"
+            app:layout_constraintStart_toEndOf="@+id/textVie"
+            app:layout_constraintTop_toBottomOf="@+id/imageFavoritoSerie"
+            tools:text="titulo" />
+
+        <ProgressBar
+            android:id="@+id/progressBarSeriesDetalhe"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="141dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/statusSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/tituloSerieDetalhe"
+            tools:text="Status" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSeason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/backRecycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sinopseSerieDetalhe" />
+
+        <TextView
+            android:id="@+id/diretorSerieDetalhe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/statusSerie"
+            tools:text="Diretor" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerElencoSerie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerSeason" />
+
+        <TextView
+            android:id="@+id/notaSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/diretorSerieDetalhe"
+            tools:text="Nota" />
+
+        <TextView
+            android:id="@+id/numeroEpsSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imagemSerieDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/numeroSeasons"
+            tools:text="Episodios" />
+
+        <ImageView
+            android:id="@+id/imagemNotaSerie"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintStart_toEndOf="@+id/notaSerie"
+            app:layout_constraintTop_toBottomOf="@+id/diretorSerieDetalhe"
+            app:srcCompat="@drawable/ic_star_black_24dp" />
+
+        <ImageView
+            android:id="@+id/imageFavoritoSerie"
+            android:layout_width="37dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@+id/shareSerie"
+            app:layout_constraintTop_toBottomOf="@+id/imagemSerieDetalhe"
+            app:srcCompat="@drawable/ic_favorite_branco" />
+
+        <ImageButton
+            android:id="@+id/botaoHomeSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/corDeFundo"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_home_black_24dp" />
+
+        <ImageView
+            android:id="@+id/shareSerie"
+            android:layout_width="37dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagemSerieDetalhe"
+            app:srcCompat="@drawable/ic_share_black_24dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imagemFilmeTodos"
+        android:layout_width="91dp"
+        android:layout_height="137dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/retornorei" />
+
+    <TextView
+        android:id="@+id/textTituloTodos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/abril_fatface"
+        android:singleLine="true"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="O Senhor dos Anéis: O Retorno do Rei" />
+
+    <TextView
+        android:id="@+id/textDataFilmeLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toBottomOf="@+id/textVote" />
+
+    <TextView
+        android:id="@+id/textMinutosTodos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toBottomOf="@+id/textDataFilmeLista"
+        tools:text="201 min" />
+
+
+    <TextView
+        android:id="@+id/textVote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="serif"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/imagemFilmeTodos"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        tools:text="10" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/textVote"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloTodos"
+        app:srcCompat="@drawable/ic_star_black_24dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,8 +2,14 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#0152F8</color>
     <color name="colorTab">#1E2433</color>
     <color name="branco">#FFFFFF</color>
+    <color name="corDeFundo">#171717</color>
+    <color name="cinzaTexto">#D79A9A9A</color>
+    <color name="cinzaRecycler">#88555555</color>
+    <color name="backRecycler">#C6222329</color>
+    <color name="fundoVermelho">#DDEA0000</color>
+    <color name="azulSeta">#003FBF</color>
 
 </resources>

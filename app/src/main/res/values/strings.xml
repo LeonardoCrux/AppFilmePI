@@ -1,10 +1,46 @@
 <resources>
-    <string name="app_name">AppFilme</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">eFilm</string>
     <string name="filmes">Filmes</string>
     <string name="series">Séries</string>
     <string name="quiz">Quiz</string>
     <string name="mais">Mais</string>
+    <string name="pessoas">Pessoas</string>
+    <string name="avaliacao_10">/10</string>
+    <string name="min">\ min\</string>
+    <string name="email">email</string>
+    <string name="foto">FOTO</string>
+    <string name="sinopse_indisponivel">Sinopse indisponível</string>
+    <string name="total_episodios">\"Total de Episódios: \"</string>
+    <string name="temporadas">\Temporadas: </string>
+    <string name="removido_favoritos">Removido dos favoritos</string>
+    <string name="orcamento">\Orçamento: </string>
+    <string name="bilheteria">\Bilheteria: </string>
+    <string name="sinopse_temporada_nao">Sinopse da temporada indisponível</string>
+    <string name="de">De</string>
+    <string name="episodios"> episódios</string>
+    <string name="facebook_app_id">3119489188093939</string>
+    <string name="fb_login_protocol_scheme">fb3119489188093939</string>
+    <string name="alerta_senha">A senha deve conter ao menos uma letra maiúscula e um numero</string>
+    <string name="digite_senha">Digite sua senha</string>
+    <string name="digite_email">Digite seu email</string>
+    <string name="email_invalido">Email ou senha inválido</string>
+    <string name="cancelado_usuario">Cancelado pelo usuário</string>
+    <string name="permission_profile">public_profile</string>
+    <string name="erro_logar_facebook"><![CDATA[\"Erro ao logar com facebook -> \"]]></string>
+    <string name="erro_facebook_email">Não foi possível conectar. Email já cadastrado</string>
+    <string name="data_nascimento">Data de Nascimento: </string>
+    <string name="local_nascimento">Local de nascimento: </string>
+    <string name="digite_nome">Digite seu nome</string>
+    <string name="senha_nao_confere">A confirmação de senha não confere</string>
+    <string name="requisitos_senha">A senha deve conter ao menos uma letra maiúscula e um numero</string>
+    <string name="remover_logado">Para remover dos favoritos é necessário estar logado</string>
+    <string name="remover_conexão">Não foi possível remover dos favoritos. Verifique sua conexão e tente novamente.</string>
+    <string name="adicionar_logado">Para adicionar aos favoritos é necessário estar logado</string>
+    <string name="adicionar_conexao">A conexão falhou. Verifica a conexão e tente novamente</string>
+    <string name="add_favorito">: Adicionado as favoritos</string>
+    <string name="carregar_informação_off">Não foi possível carregar todas as informações. Verifique a conexão e tente novamente</string>
+    <string name="autenticacao_falhou">Autenticação falhou.</string>
+    <string name="erro_cadastrar">\"Erro ao cadastrar usuário: \"</string>
+    <string name="localizar_info_filme">Não foi possível localizar todas as informações sobre o filme</string>
+
 </resources>

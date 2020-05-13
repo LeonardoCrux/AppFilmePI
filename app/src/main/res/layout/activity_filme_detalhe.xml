@@ -1,121 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FilmeDetalheActivity">
+    android:orientation="vertical"
+    tools:context=".view.activity.FilmeDetalheActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="118dp"
-        android:layout_height="170dp"
-        app:srcCompat="@drawable/retornorei"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text='O Senhor dos Anéis: O Retorno do Rei"'
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="16dp" />
+        <ImageView
+            android:id="@+id/imagemFilmeDetalhe"
+            android:layout_width="118dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/Elenco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Elenco"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="129dp" />
+        <TextView
+            android:id="@+id/tituloFilmeDetalhe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="sans-serif"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="De"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="148dp" />
+        <TextView
+            android:id="@+id/dataFilmeDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="serif"
+            android:text="De"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="10sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/bilheteriaDetalhe" />
 
-    <TextView
-        android:id="@+id/Estreia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estreia"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="167dp" />
+        <TextView
+            android:id="@+id/sinopseFilmeDetalhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="serif"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="408dp"
-        android:layout_height="244dp"
-        android:text='O confronto final entre as forças do bem e do mal que lutam pelo controle do futuro da Terra Média se aproxima. Sauron planeja um grande ataque a Minas Tirith, capital de Gondor, o que faz com que Gandalf e Pippin partam para o local na intenção de ajudar a resistência. Um exército é reunido por Theoden em Rohan, em mais uma tentativa de deter as forças de Sauron. Enquanto isso, Frodo, Sam e Gollum seguem sua viagem rumo à Montanha da Perdição para destruir o anel.", '
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="249dp" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="serif"
+            android:text="Título original :"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/duracaoFilmeDetalhe" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Título original:"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="235dp" />
+        <TextView
+            android:id="@+id/originalTitlefilmeDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:fontFamily="serif"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="8sp"
+            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="@+id/textView10"
+            tools:text="titulo original" />
 
-    <TextView
-        android:id="@+id/The"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The Lord of the Rings: The Return of the King"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="235dp" />
+        <TextView
+            android:id="@+id/duracaoFilmeDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shareFilme"
+            tools:text="200min" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="201 min"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="216dp" />
+        <TextView
+            android:id="@+id/orcamentoDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="serif"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/generoDetalhe" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bilheteria"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="68dp" />
+        <TextView
+            android:id="@+id/elencoDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="serif"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/generoDetalhe" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Orçamento"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="49dp" />
+        <TextView
+            android:id="@+id/estreiaFilmeDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="serif"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/dataFilmeDetalhe"
+            tools:text="11111" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nacionalidade"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="98dp" />
+        <TextView
+            android:id="@+id/bilheteriaDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="serif"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/orcamentoDetalhe" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="410dp"
-        android:layout_height="187dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="535dp" />
+        <TextView
+            android:id="@+id/generoDetalhe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="serif"
+            android:textColor="@color/cinzaTexto"
+            android:textSize="12sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/tituloFilmeDetalhe" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Elenco"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="511dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerElenco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/backRecycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:text="Elenco"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sinopseFilmeDetalhe" />
+
+        <ProgressBar
+            android:id="@+id/progressBarSeriesDetalhe"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="108dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageAddFavorito"
+            android:layout_width="37dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@+id/shareFilme"
+            app:layout_constraintTop_toBottomOf="@+id/imagemFilmeDetalhe"
+            app:srcCompat="@drawable/ic_favorite_branco" />
+
+        <ImageButton
+            android:id="@+id/botaoHomeFilme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/corDeFundo"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_home_black_24dp" />
+
+        <ImageView
+            android:id="@+id/shareFilme"
+            android:layout_width="37dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagemFilmeDetalhe"
+            app:srcCompat="@drawable/ic_share_black_24dp" />
+
+        <TextView
+            android:id="@+id/textViewFilmeSimilar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:text="Filmes similares"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerElenco" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFilmeSimilar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/backRecycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFilmeSimilar" />
+
+        <TextView
+            android:id="@+id/textViewFilmeRecomendado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:text="Filmes relacionados"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerFilmeSimilar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFilmeRecomendado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/backRecycler"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFilmeRecomendado" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

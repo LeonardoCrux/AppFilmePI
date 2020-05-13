@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import com.pi.efilm.R;
 import com.pi.efilm.model.pessoa.FilmesPessoa;
 import com.pi.efilm.model.pessoa.PessoaDetalhe;
 import com.pi.efilm.model.pessoa.Profile;
+import com.pi.efilm.util.AppUtil;
 import com.pi.efilm.view.adapter.FilmografiaAdapter;
 import com.pi.efilm.view.adapter.FotosPessoaAdapter;
 import com.pi.efilm.viewmodel.PessoaViewModel;
@@ -23,13 +25,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.os.Build.ID;
-import static com.pi.efilm.util.Constantes.Hash.API_KEY;
-import static com.pi.efilm.util.Constantes.Language.PT_BR;
+import static com.pi.efilm.util.Constantes.API_KEY;
+import static com.pi.efilm.util.Constantes.EN_US;
+import static com.pi.efilm.util.Constantes.PT_BR;
+import static com.pi.efilm.util.Constantes.URL_IMAGEM;
 
 public class PessoaDetalheActivity extends AppCompatActivity {
     private ImageView imagemPessoa, imagemErro;
     private TextView nomePessoa, nascPessoa, localPessoa, biografia, departamento;
     private PessoaViewModel viewModel;
+    private ImageButton botaoHome;
     private RecyclerView recyclerView;
     private RecyclerView recyclerViewFotos;
     private FilmografiaAdapter adapter;
@@ -45,27 +50,27 @@ public class PessoaDetalheActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pessoa_detalhe);
         initView();
         recuperaDados();
+        botaoHome.setOnClickListener(v -> AppUtil.botaoHome(this));
     }
 
-    public void recuperaDados(){
-        if(getIntent() != null) {
+    private void recuperaDados() {
+        if (getIntent() != null) {
             Bundle bundle = getIntent().getExtras();
             idPessoa = bundle.getLong(ID);
-            viewModel.getPessoa( idPessoa , API_KEY, PT_BR);
+            viewModel.getPessoa(idPessoa, API_KEY, PT_BR);
             viewModel.liveDataPessoa.observe(this, pessoaDetalhe1 -> setDetalhes(pessoaDetalhe1));
 
-            viewModel.getFilmografia(idPessoa , API_KEY, PT_BR);
+            viewModel.getFilmografia(idPessoa, API_KEY, PT_BR);
             viewModel.liveDataFilmografia.observe(this, filmesPessoas -> adapter.atualizaLista(filmesPessoas));
 
             viewModel.getFoto(idPessoa, API_KEY);
             viewModel.liveDataFoto.observe(this, profiles -> adapterFotos.atualizaLista(profiles));
         } else {
             imagemErro.setImageResource(R.drawable.marvin);
-            localPessoa.setText("Error");
         }
     }
 
-    public void initView(){
+    private void initView() {
         biografia = findViewById(R.id.biografiaPessoaDetalhe);
         imagemPessoa = findViewById(R.id.imagemPessoa);
         nomePessoa = findViewById(R.id.nomePessoaDetalhe);
@@ -73,6 +78,7 @@ public class PessoaDetalheActivity extends AppCompatActivity {
         localPessoa = findViewById(R.id.localPessoaDetalhe);
         imagemErro = findViewById(R.id.imagemErroPessoa);
         departamento = findViewById(R.id.departamentoPessoaDetalhe);
+        botaoHome = findViewById(R.id.botaoHomePessoa);
         viewModel = ViewModelProviders.of(this).get(PessoaViewModel.class);
         adapter = new FilmografiaAdapter(filmesPessoaList);
         recyclerView = findViewById(R.id.recyclerFilmografia);
@@ -81,7 +87,6 @@ public class PessoaDetalheActivity extends AppCompatActivity {
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
         layoutManager2.setOrientation(RecyclerView.HORIZONTAL);
         recyclerViewFotos = findViewById(R.id.recyclerFotosPessoa);
@@ -91,16 +96,16 @@ public class PessoaDetalheActivity extends AppCompatActivity {
         recyclerViewFotos.setLayoutManager(layoutManager2);
     }
 
-    public void setDetalhes(PessoaDetalhe pessoaDetalhe){
+    private void setDetalhes(PessoaDetalhe pessoaDetalhe) {
         nomePessoa.setText(pessoaDetalhe.getName());
-        nascPessoa.setText("Data de Nascimento: " + pessoaDetalhe.getBirthday());
-        localPessoa.setText("Local de nascimento: " + pessoaDetalhe.getPlaceOfBirth());
-        if(pessoaDetalhe.getBiography().equals("")){
-            biografia.setText("Biografia indisponível");
+        nascPessoa.setText(getString(R.string.data_nascimento) + pessoaDetalhe.getBirthday());
+        localPessoa.setText(getString(R.string.local_nascimento) + pessoaDetalhe.getPlaceOfBirth());
+        if (pessoaDetalhe.getBiography().equals("")) {
+            viewModel.getPessoa(idPessoa, API_KEY, EN_US);
         } else {
             biografia.setText(pessoaDetalhe.getBiography());
         }
         departamento.setText(pessoaDetalhe.getKnownForDepartment());
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+pessoaDetalhe.getProfilePath()).into(imagemPessoa);
+        Picasso.get().load(URL_IMAGEM + pessoaDetalhe.getProfilePath()).into(imagemPessoa);
     }
 }

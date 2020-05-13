@@ -24,13 +24,13 @@
         android:layout_marginEnd="3dp"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="O Senhor dos Anéis: O Retorno do Rei"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/searchImagem"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="O Senhor dos Anéis: O Retorno do Rei" />
 
     <TextView
         android:id="@+id/estreia_busca_textView"

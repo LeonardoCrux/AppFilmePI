@@ -42,14 +42,15 @@ public class ListaSeriesAdapter extends RecyclerView.Adapter<ListaSeriesAdapter.
 
     }
 
-    public void atualizaLista(List<ResultSeriesTop> novaLista){
-        if(listSeriesTop.isEmpty()){
+    public void atualizaLista(List<ResultSeriesTop> novaLista) {
+        if (listSeriesTop.isEmpty()) {
             listSeriesTop = novaLista;
         } else {
             listSeriesTop.addAll(novaLista);
         }
         notifyDataSetChanged();
     }
+
     @Override
     public int getItemCount() {
         return listSeriesTop.size();
@@ -70,11 +71,11 @@ public class ListaSeriesAdapter extends RecyclerView.Adapter<ListaSeriesAdapter.
             textData = itemView.findViewById(R.id.textDataFilmeLista);
         }
 
-        public void onBind(ResultSeriesTop resultSeriesTop){
-            tituloTodos.setText(resultSeriesTop.getName());
+        public void onBind(ResultSeriesTop resultSeriesTop) {
+            tituloTodos.setText((listSeriesTop.indexOf(resultSeriesTop) + 1) + "-" + resultSeriesTop.getName());
             textVote.setText(resultSeriesTop.getVoteAverage().toString() + "/10");
             textData.setText(resultSeriesTop.getFirstAirDate());
-            Picasso.get().load(Constantes.URL_IMAGEM+ resultSeriesTop.getPosterPath()).into(imagemTodos);
+            Picasso.get().load(Constantes.URL_IMAGEM + resultSeriesTop.getPosterPath()).into(imagemTodos);
         }
 
         @Override

@@ -22,7 +22,7 @@ import java.util.List;
 import static android.os.Build.ID;
 import static com.pi.efilm.util.Constantes.URL_IMAGEM;
 
-public class SearchSerieAdapter extends RecyclerView.Adapter<SearchSerieAdapter.ViewHolder>{
+public class SearchSerieAdapter extends RecyclerView.Adapter<SearchSerieAdapter.ViewHolder> {
     private List<ResultSeriesTop> listaFilmes;
 
     public SearchSerieAdapter(List<ResultSeriesTop> listaFilmes) {
@@ -40,11 +40,10 @@ public class SearchSerieAdapter extends RecyclerView.Adapter<SearchSerieAdapter.
     public void onBindViewHolder(@NonNull SearchSerieAdapter.ViewHolder holder, int position) {
         ResultSeriesTop resultSerie = listaFilmes.get(position);
         holder.onBind(resultSerie);
-
     }
 
-    public void atualizaLista(List<ResultSeriesTop> listaNova){
-        if(listaFilmes.isEmpty()){
+    public void atualizaLista(List<ResultSeriesTop> listaNova) {
+        if (listaFilmes.isEmpty()) {
             this.listaFilmes = listaNova;
         } else {
             this.listaFilmes.addAll(listaNova);
@@ -54,7 +53,7 @@ public class SearchSerieAdapter extends RecyclerView.Adapter<SearchSerieAdapter.
 
     @Override
     public int getItemCount() {
-        if(listaFilmes.size() >= 4){
+        if (listaFilmes.size() >= 4) {
             return 4;
         } else return listaFilmes.size();
     }
@@ -70,9 +69,9 @@ public class SearchSerieAdapter extends RecyclerView.Adapter<SearchSerieAdapter.
             textView = itemView.findViewById(R.id.searchTitulo);
         }
 
-        private void onBind(ResultSeriesTop resultSerie){
+        private void onBind(ResultSeriesTop resultSerie) {
             textView.setText(resultSerie.getName());
-            Picasso.get().load(URL_IMAGEM+resultSerie.getPosterPath()).into(imageView);
+            Picasso.get().load(URL_IMAGEM + resultSerie.getPosterPath()).into(imageView);
         }
 
         @Override

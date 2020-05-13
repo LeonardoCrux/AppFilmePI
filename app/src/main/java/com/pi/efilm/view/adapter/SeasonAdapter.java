@@ -41,7 +41,6 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Season season = seasonList.get(position);
         holder.onBind(season);
-
     }
 
     @Override
@@ -64,7 +63,7 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
 
         public void onBind(Season season) {
             textTemporada.setText(season.getName());
-            textEpisodios.setText(season.getEpisodeCount().toString() + "episodios");
+            textEpisodios.setText(season.getEpisodeCount().toString() + " episodios");
             Picasso.get().load(URL_IMAGEM + season.getPosterPath()).into(imageView);
         }
 

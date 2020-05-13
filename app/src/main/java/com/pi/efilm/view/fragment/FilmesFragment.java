@@ -26,16 +26,13 @@ import com.pi.efilm.viewmodel.FilmeViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.pi.efilm.util.Constantes.CARTAZ;
+import static com.pi.efilm.util.Constantes.API_KEY;
+import static com.pi.efilm.util.Constantes.BR;
+import static com.pi.efilm.util.Constantes.FILME_POPULAR;
 import static com.pi.efilm.util.Constantes.CLICK;
-import static com.pi.efilm.util.Constantes.Hash.API_KEY;
-import static com.pi.efilm.util.Constantes.Language.PT_BR;
-import static com.pi.efilm.util.Constantes.Region.BR;
+import static com.pi.efilm.util.Constantes.PT_BR;
 import static com.pi.efilm.util.Constantes.TOP;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class FilmesFragment extends Fragment {
     private TextView textCartaz;
     private TextView textTop;
@@ -45,29 +42,32 @@ public class FilmesFragment extends Fragment {
     private FilmeAdapterTop adapterTop;
     private List<ResultFilme> listPlaying = new ArrayList<>();
     private List<ResultFilme> listTop = new ArrayList<>();
-    private ProgressBar progressBar;
+    private ProgressBar progressBar3, progressBar;
     private FilmeViewModel viewModel;
     private Animation animFadein;
-
+    private int pagina = 1;
 
     public FilmesFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_filmes, container, false);
         initViews(view);
-        viewModel.getPlaying(API_KEY, PT_BR, BR,1 );
+        viewModel.getFilmePopular(API_KEY, PT_BR, BR,1 );
         viewModel.liveData.observe(getViewLifecycleOwner(), (List<ResultFilme> resultFilmes) -> { adapter.atualizaListaPlaying(resultFilmes);
         });
         viewModel.liveDataLoading.observe(getViewLifecycleOwner(), aBoolean -> {
             if(aBoolean) {
+                progressBar3.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.VISIBLE);
-            } else progressBar.setVisibility(View.INVISIBLE);
+            } else {
+                progressBar.setVisibility(View.INVISIBLE);
+                progressBar3.setVisibility(View.INVISIBLE);
+            }
         });
-        viewModel.getTop(API_KEY, PT_BR, "US", 1);
+        viewModel.getTop(API_KEY, PT_BR, "US", pagina);
         viewModel.liveDataTop.observe(getViewLifecycleOwner(), resultFilmes -> {adapterTop.atualizaListaTop(resultFilmes);});
 
         textCartaz.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,7 @@ public class FilmesFragment extends Fragment {
             public void onClick(View v) {
                 textCartaz.startAnimation(animFadein);
                 Intent intent = new Intent(getContext(), ListaExpandidaActivity.class);
-                intent.putExtra(CLICK , CARTAZ);
+                intent.putExtra(CLICK , FILME_POPULAR);
                 startActivity(intent);
             }
         });
@@ -92,7 +92,7 @@ public class FilmesFragment extends Fragment {
         return view;
     }
 
-    public void initViews(View view){
+    private void initViews(View view){
         recyclerCartaz = view.findViewById(R.id.recyclerCartaz);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -107,10 +107,11 @@ public class FilmesFragment extends Fragment {
         adapterTop = new FilmeAdapterTop(listTop);
         recyclerTop.setAdapter(adapterTop);
         recyclerTop.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
-        progressBar = view.findViewById(R.id.progressBar3);
+        progressBar3 = view.findViewById(R.id.progressBar3);
+        progressBar = view.findViewById(R.id.progressBar);
         viewModel = ViewModelProviders.of(this).get(FilmeViewModel.class);
         textTop = (TextView) view.findViewById(R.id.textTop);
-        textCartaz = view.findViewById(R.id.textCartaz);
+        textCartaz = view.findViewById(R.id.textFilmePopular);
 
         animFadein = AnimationUtils.loadAnimation(view.getContext(),
                 R.anim.fragment_fade_enter);

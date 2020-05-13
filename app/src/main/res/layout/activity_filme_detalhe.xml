@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.activity.FilmeDetalheActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +16,7 @@
             android:layout_width="118dp"
             android:layout_height="170dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="5dp"
             android:fontFamily="sans-serif"
             android:textSize="18sp"
@@ -66,43 +67,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="serif"
-            android:text="Título original:"
+            android:text="Título original :"
             android:textColor="@color/cinzaTexto"
             android:textSize="8sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/duracaoFilmeDetalhe" />
+            app:layout_constraintTop_toBottomOf="@id/duracaoFilmeDetalhe" />
 
         <TextView
             android:id="@+id/originalTitlefilmeDetalhe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
             android:fontFamily="serif"
             android:textColor="@color/cinzaTexto"
             android:textSize="8sp"
             app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toTopOf="@+id/textView10" />
+            app:layout_constraintTop_toTopOf="@+id/textView10"
+            tools:text="titulo original" />
 
         <TextView
             android:id="@+id/duracaoFilmeDetalhe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagemFilmeDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/shareFilme"
+            tools:text="200min" />
 
         <TextView
             android:id="@+id/orcamentoDetalhe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="serif"
             android:textColor="@color/cinzaTexto"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/generoDetalhe" />
 
         <TextView
             android:id="@+id/elencoDetalhe"
@@ -131,7 +136,7 @@
             android:id="@+id/bilheteriaDetalhe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="5dp"
             android:fontFamily="serif"
             android:textColor="@color/cinzaTexto"
             android:textSize="12sp"
@@ -193,11 +198,32 @@
             android:id="@+id/imageAddFavorito"
             android:layout_width="37dp"
             android:layout_height="43dp"
-            android:layout_marginTop="140dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@+id/shareFilme"
+            app:layout_constraintTop_toBottomOf="@+id/imagemFilmeDetalhe"
+            app:srcCompat="@drawable/ic_favorite_branco" />
+
+        <ImageButton
+            android:id="@+id/botaoHomeFilme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/corDeFundo"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_favorite_24dp" />
+            app:srcCompat="@drawable/ic_home_black_24dp" />
+
+        <ImageView
+            android:id="@+id/shareFilme"
+            android:layout_width="37dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagemFilmeDetalhe"
+            app:srcCompat="@drawable/ic_share_black_24dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

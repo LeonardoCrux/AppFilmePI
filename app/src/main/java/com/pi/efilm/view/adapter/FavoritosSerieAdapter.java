@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.efilm.R;
-import com.pi.efilm.model.filme.detalhes.Detalhes;
 import com.pi.efilm.model.series.ResultSeriesDetalhe;
 import com.pi.efilm.util.Constantes;
 import com.pi.efilm.view.interfaces.FavoritosListener;
@@ -18,11 +17,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.ViewHolder> {
-    private List<Detalhes> detalhesList;
+public class FavoritosSerieAdapter extends RecyclerView.Adapter<FavoritosSerieAdapter.ViewHolder> {
+    private List<ResultSeriesDetalhe> detalhesList;
     private FavoritosListener listener;
 
-    public FavoritosAdapter(List<Detalhes> detalhesList, FavoritosListener listener) {
+    public FavoritosSerieAdapter(List<ResultSeriesDetalhe> detalhesList, FavoritosListener listener) {
         this.detalhesList = detalhesList;
         this.listener = listener;
     }
@@ -31,24 +30,24 @@ public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.favoritos_lista, parent, false);
-        return new ViewHolder(view);
-    }
-
-    public void removeItem(Detalhes result) {
-        detalhesList.remove(result);
-        notifyDataSetChanged();
+        return new FavoritosSerieAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Detalhes detalhes = detalhesList.get(position);
+    public void onBindViewHolder(@NonNull FavoritosSerieAdapter.ViewHolder holder, int position) {
+        ResultSeriesDetalhe detalhes = detalhesList.get(position);
         holder.onBind(detalhes);
-        holder.imageRemove.setOnClickListener(v -> listener.deleteFavorito(detalhes));
-        holder.imageView.setOnClickListener(v -> listener.clickFavorito(detalhes));
+        holder.imageRemove.setOnClickListener(v -> listener.deleteFavoritoSerie(detalhes));
+        holder.imageView.setOnClickListener(v -> listener.clickFavoritoSerie(detalhes));
     }
 
-    public void atualizaLista(List<Detalhes> novaLista) {
+    public void atualizaLista(List<ResultSeriesDetalhe> novaLista) {
         this.detalhesList = novaLista;
+        notifyDataSetChanged();
+    }
+
+    public void removeItem(ResultSeriesDetalhe result) {
+        detalhesList.remove(result);
         notifyDataSetChanged();
     }
 
@@ -67,9 +66,10 @@ public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.View
             imageRemove = v.findViewById(R.id.removeFav);
         }
 
-        public void onBind(Detalhes detalhes) {
+        public void onBind(ResultSeriesDetalhe detalhes) {
             Picasso.get().load(Constantes.URL_IMAGEM + detalhes.getPosterPath()).into(imageView);
 
         }
     }
 }
+

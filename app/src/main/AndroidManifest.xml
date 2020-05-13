@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.PerfilActivity"></activity>
+        <activity android:name=".view.activity.ListaPessoas"></activity>
+        <activity android:name=".view.activity.PessoasBuscas" />
+        <activity android:name=".view.activity.PerfilActivity" />
         <activity android:name=".view.activity.RegistroActivity" />
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.SplashActivity">
@@ -39,7 +43,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -60,7 +63,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

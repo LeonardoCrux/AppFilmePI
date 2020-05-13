@@ -1,22 +1,38 @@
 package com.pi.efilm.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.pi.efilm.R;
+import com.pi.efilm.view.activity.MainActivity;
+import com.squareup.picasso.Picasso;
 
+import java.io.InputStream;
 import java.security.MessageDigest;
+
+import static com.pi.efilm.util.Constantes.NOME_IMAGEM;
 
 public class AppUtil {
 
@@ -26,10 +42,40 @@ public class AppUtil {
     }
 
     public static boolean verificarLogado(){
-        if (AccessToken.isCurrentAccessTokenActive() || FirebaseAuth.getInstance().getCurrentUser() != null){
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
             return true;
         } return false;
     }
+
+    public static boolean verificaConexaoComInternet(Context context){
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo;
+
+        if (connectivityManager != null){
+            networkInfo = connectivityManager.getActiveNetworkInfo();
+            return networkInfo != null && networkInfo.isConnected() &&
+                    (networkInfo.getType() == ConnectivityManager.TYPE_WIFI
+                            || networkInfo.getType() == ConnectivityManager.TYPE_MOBILE);
+        }
+
+        return false;
+    }
+
+    public static void botaoHome(Context context){
+        context.startActivity(new Intent(context, MainActivity.class));
+    }
+
+    public static void compartilhar(String stringCompartilhar, ProgressBar progressBar, Context context){
+        Intent sendIntent = new Intent();
+        progressBar.setVisibility(View.VISIBLE);
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, stringCompartilhar);
+        sendIntent.setType("text/plain");
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        context.startActivity(shareIntent);
+    }
+
+
 
     public static boolean segurançaSenha(String senha){
         char charCheck;
@@ -54,6 +100,22 @@ public class AppUtil {
         Log.i("TAG", "getIdUsuario: " + preferences.toString());
         return preferences.getString("UID", "");
 
+    }
+
+    public static void salvarImagemFirebase(InputStream stream, Context context, ImageView view) {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(AppUtil.getIdUsuario(context) + "image/profile" + NOME_IMAGEM);
+        if (stream == null) {
+            context.startActivity(new Intent(context, MainActivity.class));
+            return;
+        }
+        UploadTask uploadTask = storageReference.putStream(stream);
+        uploadTask.addOnSuccessListener(taskSnapshot -> {
+            storageReference.getDownloadUrl().addOnSuccessListener(uri -> {Picasso.get().load(uri).into(view);});
+//            Picasso.get().load(storageReference.getDownloadUrl().toString());
+            Toast.makeText(context, "Foto alterada", Toast.LENGTH_LONG).show();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG);
+        });
     }
 
 

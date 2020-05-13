@@ -44,8 +44,8 @@ public class SearchPessoaAdapter extends RecyclerView.Adapter<SearchPessoaAdapte
 
     }
 
-    public void atualizaLista(List<ResultPessoaPop> listaNova){
-        if(listaFilmes.isEmpty()){
+    public void atualizaLista(List<ResultPessoaPop> listaNova) {
+        if (listaFilmes.isEmpty()) {
             this.listaFilmes = listaNova;
         } else {
             this.listaFilmes.addAll(listaNova);
@@ -55,7 +55,7 @@ public class SearchPessoaAdapter extends RecyclerView.Adapter<SearchPessoaAdapte
 
     @Override
     public int getItemCount() {
-        if(listaFilmes.size() >= 4){
+        if (listaFilmes.size() >= 4) {
             return 4;
         } else return listaFilmes.size();
     }
@@ -72,11 +72,11 @@ public class SearchPessoaAdapter extends RecyclerView.Adapter<SearchPessoaAdapte
             textView = itemView.findViewById(R.id.searchTitulo);
         }
 
-        private void onBind(ResultPessoaPop resultPessoa){
+        private void onBind(ResultPessoaPop resultPessoa) {
             textKnow.setText(resultPessoa.getKnownForDepartment());
             textView.setText(resultPessoa.getName());
 
-            Picasso.get().load(URL_IMAGEM+resultPessoa.getProfilePath()).into(imageView);
+            Picasso.get().load(URL_IMAGEM + resultPessoa.getProfilePath()).into(imageView);
         }
 
         @Override

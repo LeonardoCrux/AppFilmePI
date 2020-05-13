@@ -17,16 +17,12 @@ import com.squareup.picasso.Picasso;
 import static com.pi.efilm.util.Constantes.EP;
 import static com.pi.efilm.util.Constantes.URL_IMAGEM;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class EpisodiosFragment extends Fragment {
     private TextView nome, sinopse, data;
     private ImageView imageView;
     private Episode episode;
 
     public EpisodiosFragment() {
-        // Required empty public constructor
     }
 
 
@@ -37,26 +33,24 @@ public class EpisodiosFragment extends Fragment {
         recuperaDados();
         initView(view);
         setDetalhes(episode);
-
-
         return view;
     }
 
-    public void initView(View v){
+    private void initView(View v) {
         nome = v.findViewById(R.id.nomeEpisodio);
         imageView = v.findViewById(R.id.imagemEpisodioDetalhe);
         sinopse = v.findViewById(R.id.sinopseEpisodio);
         data = v.findViewById(R.id.dataEpisodio);
     }
 
-    public void recuperaDados(){
+    private void recuperaDados() {
         Bundle bundle = getArguments();
-        episode = bundle.getParcelable(EP );
+        episode = bundle.getParcelable(EP);
     }
 
-    public void setDetalhes(Episode episode){
+    private void setDetalhes(Episode episode) {
         nome.setText(episode.getName());
-        Picasso.get().load(URL_IMAGEM+ episode.getStillPath()).into(imageView);
+        Picasso.get().load(URL_IMAGEM + episode.getStillPath()).into(imageView);
         sinopse.setText(episode.getOverview());
         data.setText(episode.getAirDate());
     }

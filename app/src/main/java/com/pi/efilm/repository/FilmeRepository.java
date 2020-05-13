@@ -12,7 +12,6 @@ import com.pi.efilm.model.pessoa.PessoaDetalhe;
 import com.pi.efilm.model.pessoa.pessoa.Pessoas;
 import com.pi.efilm.model.series.ResultSeriesDetalhe;
 import com.pi.efilm.model.series.SeasonDetalhes.SeasonDetalhes;
-import com.pi.efilm.model.series.SeriesPopular;
 import com.pi.efilm.model.series.SeriesTop;
 import com.pi.efilm.network.FilmeService;
 
@@ -36,8 +35,12 @@ public class FilmeRepository {
         return FilmeService.getApiService().buscaPessoas(apiKey, language, query, pagina, region);
     }
 
-    public Observable<Movie> getPlaying(String apiKey, String language, String region, int pagina) {
-        return FilmeService.getApiService().getPlaying(apiKey, language, region, pagina);
+    public Observable<Movie> buscaBilheteria(String apikey, String language, String sort, int pagina){
+        return FilmeService.getApiService().buscaBilheteria(apikey, language, sort, pagina);
+    }
+
+    public Observable<Movie> getFilmePopular(String apiKey, String language, String region, int pagina) {
+        return FilmeService.getApiService().getFilmePopular(apiKey, language, region, pagina);
     }
 
     public Observable<Movie> getTop(String apiKey, String language, String region, int pagina) {
@@ -84,8 +87,6 @@ public class FilmeRepository {
         return FilmeService.getApiService().getPessoasPopular(apiKey, language, pagina);
     }
 
-
-    // DATABASE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     public void insereDadosDB(Detalhes filmeDetalhes, Context context) {
         FilmeDataBase.getDatabase(context).filmeDAO().insereFavoritoDB(filmeDetalhes);
     }
@@ -96,6 +97,9 @@ public class FilmeRepository {
 
     public Flowable<List<Detalhes>> getFavoritosDB(Context context) {
         return FilmeDataBase.getDatabase(context).filmeDAO().recuperaFavoritosDB();
+    }
+    public Single<Detalhes> getDetalheDB(Context context, long id){
+        return FilmeDataBase.getDatabase(context).filmeDAO().recuperaFilmeDetalhe(id);
     }
 
 

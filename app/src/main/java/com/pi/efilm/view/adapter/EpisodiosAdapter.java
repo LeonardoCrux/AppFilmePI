@@ -56,13 +56,13 @@ public class EpisodiosAdapter extends RecyclerView.Adapter<EpisodiosAdapter.View
             textNome = v.findViewById(R.id.episodiosListaNome);
         }
 
-        public void onBind(Episode episode){
+        public void onBind(Episode episode) {
             textNome.setText(episode.getEpisodeNumber() + " - " + episode.getName());
         }
 
         public void envioDadosEpisodio(Episode ep, View v) {
             Bundle bundle = new Bundle();
-            bundle.putParcelable(EP , ep);
+            bundle.putParcelable(EP, ep);
             Fragment fragment = new EpisodiosFragment();
             fragment.setArguments(bundle);
             replaceFragments(fragment, v.getContext());
@@ -70,7 +70,7 @@ public class EpisodiosAdapter extends RecyclerView.Adapter<EpisodiosAdapter.View
         }
 
         private void replaceFragments(Fragment fragment, Context context) {
-            FragmentTransaction transaction = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
+            FragmentTransaction transaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.containerEpisodio, fragment);
             transaction.commit();
         }

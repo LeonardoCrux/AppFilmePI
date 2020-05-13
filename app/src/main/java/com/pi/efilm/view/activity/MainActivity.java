@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        printHashKey (this);
+        printHashKey(this);
         initViews();
         initAbas();
 
@@ -49,15 +49,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void initViews(){
+    private void initViews() {
         smartTabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         searchView = findViewById(R.id.searchView);
     }
 
-    public void initAbas(){
+    private void initAbas() {
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this).add(R.string.filmes, FilmesFragment.class).add(R.string.series, SeriesFragment.class).add(R.string.pessoas, QuizFragment.class).add(R.string.mais, MaisFragment.class).create());
         viewPager.setAdapter(adapter);
         smartTabLayout.setViewPager(viewPager);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

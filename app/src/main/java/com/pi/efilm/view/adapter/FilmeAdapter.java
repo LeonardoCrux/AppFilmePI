@@ -1,4 +1,5 @@
 package com.pi.efilm.view.adapter;
+
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.pi.efilm.R;
 import com.pi.efilm.model.filme.BuscaEBreve.ResultFilme;
 import com.pi.efilm.util.Constantes;
@@ -65,17 +67,17 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.ViewHolder> 
             itemView.setOnClickListener(this);
         }
 
-        public void onBind (ResultFilme resultFilme){
+        public void onBind(ResultFilme resultFilme) {
             textTitulo.setText(resultFilme.getTitle());
             dataFilme.setText(resultFilme.getReleaseDate());
-            Picasso.get().load(Constantes.URL_IMAGEM+ resultFilme.getPosterPath()).into(imageView);
+            Picasso.get().load(Constantes.URL_IMAGEM + resultFilme.getPosterPath()).into(imageView);
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), FilmeDetalheActivity.class);
             long idFilme = listPlaying.get(getAdapterPosition()).getId();
-            intent.putExtra(ID , idFilme);
+            intent.putExtra(ID, idFilme);
             v.getContext().startActivity(intent);
         }
     }

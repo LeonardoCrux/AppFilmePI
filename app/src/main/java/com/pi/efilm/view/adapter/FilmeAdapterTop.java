@@ -66,10 +66,10 @@ public class FilmeAdapterTop extends RecyclerView.Adapter<FilmeAdapterTop.ViewHo
             itemView.setOnClickListener(this);
         }
 
-        public void onBind (ResultFilme resultFilme){
+        public void onBind(ResultFilme resultFilme) {
             textTitulo.setText(resultFilme.getTitle());
             dataFilme.setText(resultFilme.getReleaseDate());
-            Picasso.get().load(Constantes.URL_IMAGEM+ resultFilme.getPosterPath()).into(imageView);
+            Picasso.get().load(Constantes.URL_IMAGEM + resultFilme.getPosterPath()).into(imageView);
         }
 
         @Override

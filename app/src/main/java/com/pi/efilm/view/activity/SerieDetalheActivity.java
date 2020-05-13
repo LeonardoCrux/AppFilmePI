@@ -6,35 +6,39 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.pi.efilm.R;
 import com.pi.efilm.model.series.CreatedBy;
 import com.pi.efilm.model.series.ResultSeriesDetalhe;
 import com.pi.efilm.model.series.Season;
+import com.pi.efilm.util.AppUtil;
 import com.pi.efilm.view.adapter.SeasonAdapter;
 import com.pi.efilm.viewmodel.SerieViewModel;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static android.os.Build.ID;
-import static com.pi.efilm.util.Constantes.Hash.API_KEY;
-import static com.pi.efilm.util.Constantes.Language.PT_BR;
+import static com.pi.efilm.util.Constantes.API_KEY;
+import static com.pi.efilm.util.Constantes.PT_BR;
 import static com.pi.efilm.util.Constantes.URL_IMAGEM;
 
 public class SerieDetalheActivity extends AppCompatActivity {
     private SerieViewModel viewModel;
     private ResultSeriesDetalhe resultSeriesDetalhe;
     private List<Season> seasonList = new ArrayList<>();
+    private ImageButton botaoHome;
     private long idFilme;
     private TextView data, sinopse, titulo, tituloOriginal, status, diretor, nota,  numeroSeasons, numeroEps;
-    private ImageView imageView;
+    private ImageView imageView, imageFavorito, imagemShare;
     private ProgressBar progressBar;
     private RecyclerView recyclerViewSeason;
     private SeasonAdapter adapter;
@@ -46,17 +50,37 @@ public class SerieDetalheActivity extends AppCompatActivity {
         initView();
         recuperaIdFilme();
         viewModel.getSerieDetalhe(idFilme ,API_KEY, PT_BR);
+
         viewModel.liveDataSerieDetalhe.observe(this, resultSeriesDetalhe1 -> {
             setDetalhes(resultSeriesDetalhe1);
+            viewModel.corBotaoFavoritos(resultSeriesDetalhe1, this, imageFavorito);
+            resultSeriesDetalhe = resultSeriesDetalhe1;
         });
         viewModel.liveDataLoading.observe(this, aBoolean -> {
             if(aBoolean){
                 progressBar.setVisibility(View.VISIBLE);
             } else progressBar.setVisibility(View.INVISIBLE);
         });
+
+        viewModel.resultLiveDataError.observe(this, error -> {
+            Snackbar snackbar = Snackbar.make(imageFavorito, error.getMessage(), Snackbar.LENGTH_LONG);
+            snackbar.getView().setBackgroundColor(Color.RED);
+            snackbar.show();
+        });
+        adicionarFavorito();
+        viewModel.favoritoAdd.observe(this, result -> {
+            if (result != null) {
+                Snackbar snackbar = Snackbar.make(imageFavorito, result.getName() + R.string.add_favorito, Snackbar.LENGTH_LONG);
+                snackbar.getView().setBackgroundColor(Color.parseColor("#4CAF50"));
+                snackbar.show();
+            }
+        });
+
+        botaoHome.setOnClickListener(v -> AppUtil.botaoHome(this));
+        compartilhar();
     }
 
-    public void initView(){
+    private void initView(){
         data = findViewById(R.id.dataSerieDetalhe);
         imageView = findViewById(R.id.imagemSerieDetalhe);
         sinopse = findViewById(R.id.sinopseSerieDetalhe);
@@ -69,14 +93,17 @@ public class SerieDetalheActivity extends AppCompatActivity {
         numeroSeasons = findViewById(R.id.numeroSeasons);
         nota = findViewById(R.id.notaSerie);
         numeroEps = findViewById(R.id.numeroEpsSerie);
+        imageFavorito =  findViewById(R.id.imageFavoritoSerie);
+        botaoHome = findViewById(R.id.botaoHomeSerie);
+        imagemShare = findViewById(R.id.shareSerie);
     }
 
-    public void recuperaIdFilme(){
+    private void recuperaIdFilme(){
         Bundle bundle = getIntent().getExtras();
         idFilme = bundle.getLong(ID );
     }
 
-    public void setDetalhes(ResultSeriesDetalhe result){
+    private void setDetalhes(ResultSeriesDetalhe result){
         List<CreatedBy> created = result.getCreatedBy();
         String criadores = "  ";
         for (CreatedBy c: created) {
@@ -110,4 +137,31 @@ public class SerieDetalheActivity extends AppCompatActivity {
         recyclerViewSeason.setAdapter(adapter);
     }
 
+    private void adicionarFavorito() {
+        imageFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (AppUtil.verificaConexaoComInternet(getApplicationContext())) {
+                    if (AppUtil.verificarLogado()) {
+                        viewModel.salvarFirebase(resultSeriesDetalhe, getApplicationContext(), imageFavorito);
+                    } else
+                        Snackbar.make(imageFavorito, R.string.adicionar_logado, Snackbar.LENGTH_SHORT).show();
+                } else
+                    Snackbar.make(imageFavorito, R.string.adicionar_conexao, Snackbar.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void compartilhar(){
+        imagemShare.setOnClickListener(v -> {
+            String stringCompartilhar = "Recomendo a série "+ resultSeriesDetalhe.getName() + "\nhttps://www.themoviedb.org/tv/" + idFilme;
+            AppUtil.compartilhar(stringCompartilhar, progressBar, this);
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        progressBar.setVisibility(View.INVISIBLE);
+    }
 }

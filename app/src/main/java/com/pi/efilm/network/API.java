@@ -44,11 +44,18 @@ public interface API {
             @Query("page") int pagina,
             @Query("region") String region);
 
-    @GET("movie/now_playing")
-    Observable<Movie> getPlaying(
+    @GET("movie/popular")
+    Observable<Movie> getFilmePopular(
             @Query("api_key") String api_key,
             @Query("language") String language,
             @Query("region") String region,
+            @Query("page") int pagina);
+
+    @GET("discover/movie")
+    Observable<Movie> buscaBilheteria(
+            @Query("api_key") String api_key,
+            @Query("language") String language,
+            @Query("sort_by") String sort,
             @Query("page") int pagina);
 
     @GET("movie/top_rated")

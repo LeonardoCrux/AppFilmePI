@@ -46,11 +46,12 @@ public class FilmografiaAdapter extends RecyclerView.Adapter<FilmografiaAdapter.
         return filmesPessoaList.size();
     }
 
-    public void atualizaLista(List<FilmesPessoa> novaLista){
-        if(filmesPessoaList.isEmpty()){
+    public void atualizaLista(List<FilmesPessoa> novaLista) {
+        if (filmesPessoaList.isEmpty()) {
             this.filmesPessoaList = novaLista;
-        }else {
-            this.filmesPessoaList.addAll(novaLista);}
+        } else {
+            this.filmesPessoaList.addAll(novaLista);
+        }
         notifyDataSetChanged();
     }
 
@@ -67,18 +68,18 @@ public class FilmografiaAdapter extends RecyclerView.Adapter<FilmografiaAdapter.
             v.setOnClickListener(this);
         }
 
-        public void onBind(FilmesPessoa filmesPessoa){
+        public void onBind(FilmesPessoa filmesPessoa) {
             estreia.setText(filmesPessoa.getReleaseDate());
             personagem.setText(filmesPessoa.getCharacter());
             titulo.setText(filmesPessoa.getTitle());
-            Picasso.get().load(Constantes.URL_IMAGEM+ filmesPessoa.getPosterPath()).into(imagem);
+            Picasso.get().load(Constantes.URL_IMAGEM + filmesPessoa.getPosterPath()).into(imagem);
         }
 
 
         @Override
         public void onClick(View view) {
-            Intent intent =  new Intent(view.getContext(), FilmeDetalheActivity.class);
-            intent.putExtra(ID , filmesPessoaList.get(getAdapterPosition()).getId());
+            Intent intent = new Intent(view.getContext(), FilmeDetalheActivity.class);
+            intent.putExtra(ID, filmesPessoaList.get(getAdapterPosition()).getId());
             view.getContext().startActivity(intent);
         }
     }

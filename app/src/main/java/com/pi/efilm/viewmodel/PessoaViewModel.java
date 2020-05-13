@@ -29,16 +29,12 @@ public class PessoaViewModel extends AndroidViewModel {
     public LiveData<Boolean> LiveDataBoolean = mutableLiveDataLoading;
     private MutableLiveData<String> mutableLiveDataErro = new MutableLiveData<>();
     public LiveData<String> liveDataErro = mutableLiveDataErro;
-
     private MutableLiveData<PessoaDetalhe> mutableLiveDataPessoa = new MutableLiveData<>();
     public LiveData<PessoaDetalhe> liveDataPessoa = mutableLiveDataPessoa;
-
     private MutableLiveData<List<FilmesPessoa>> mutableLiveDataFilmografia = new MutableLiveData<>();
     public LiveData<List<FilmesPessoa>> liveDataFilmografia = mutableLiveDataFilmografia;
-
     private MutableLiveData<List<Profile>> mutableLiveDataFoto = new MutableLiveData<>();
     public LiveData<List<Profile>> liveDataFoto = mutableLiveDataFoto;
-
     private MutableLiveData<List<ResultPessoaPop>> mutableLiveDataPessoaTop = new MutableLiveData<>();
     public LiveData<List<ResultPessoaPop>> liveDataPessoaTop = mutableLiveDataPessoaTop;
 

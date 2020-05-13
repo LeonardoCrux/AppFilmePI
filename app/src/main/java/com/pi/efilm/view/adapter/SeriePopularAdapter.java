@@ -20,7 +20,7 @@ import java.util.List;
 
 import static android.os.Build.ID;
 
-public class SeriePopularAdapter extends RecyclerView.Adapter<SeriePopularAdapter.ViewHolder>{
+public class SeriePopularAdapter extends RecyclerView.Adapter<SeriePopularAdapter.ViewHolder> {
     private List<ResultSeriesTop> listSeriesTop;
 
     public SeriePopularAdapter(List<ResultSeriesTop> listSeriesTop) {
@@ -40,14 +40,15 @@ public class SeriePopularAdapter extends RecyclerView.Adapter<SeriePopularAdapte
         holder.onBind(seriesTop);
     }
 
-    public void atualizaLista(List<ResultSeriesTop> novaLista){
-        if(listSeriesTop.isEmpty()){
+    public void atualizaLista(List<ResultSeriesTop> novaLista) {
+        if (listSeriesTop.isEmpty()) {
             listSeriesTop = novaLista;
         } else {
             listSeriesTop.addAll(novaLista);
         }
         notifyDataSetChanged();
     }
+
     @Override
     public int getItemCount() {
         return listSeriesTop.size();
@@ -64,15 +65,15 @@ public class SeriePopularAdapter extends RecyclerView.Adapter<SeriePopularAdapte
             nome = v.findViewById(R.id.textRecyclerCartaz);
         }
 
-        public void onBind(ResultSeriesTop resultSeriesTop){
-            Picasso.get().load(Constantes.URL_IMAGEM+ resultSeriesTop.getPosterPath()).into(imageView);
+        public void onBind(ResultSeriesTop resultSeriesTop) {
+            Picasso.get().load(Constantes.URL_IMAGEM + resultSeriesTop.getPosterPath()).into(imageView);
             nome.setText(resultSeriesTop.getName());
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SerieDetalheActivity.class);
-            intent.putExtra(ID , listSeriesTop.get(getAdapterPosition()).getId());
+            intent.putExtra(ID, listSeriesTop.get(getAdapterPosition()).getId());
             v.getContext().startActivity(intent);
         }
     }

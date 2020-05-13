@@ -36,12 +36,10 @@ public class FotosPessoaAdapter extends RecyclerView.Adapter<FotosPessoaAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Profile profile = fotosPessoaList.get(position);
         holder.onBind(profile);
-
-
     }
 
-    public void atualizaLista(List<Profile> novaLista){
-        if(fotosPessoaList.isEmpty()){
+    public void atualizaLista(List<Profile> novaLista) {
+        if (fotosPessoaList.isEmpty()) {
             this.fotosPessoaList = novaLista;
         } else {
             this.fotosPessoaList.addAll(novaLista);
@@ -58,22 +56,21 @@ public class FotosPessoaAdapter extends RecyclerView.Adapter<FotosPessoaAdapter.
         private ImageView fotoPessoa;
         private TextView textView;
 
-
         public ViewHolder(@NonNull View v) {
             super(v);
             v.setOnClickListener(this);
             fotoPessoa = v.findViewById(R.id.imageRecyclerFotos);
         }
 
-        public void onBind(Profile profile){
-            Picasso.get().load(Constantes.URL_IMAGEM+profile.getFilePath()).into(fotoPessoa);
+        public void onBind(Profile profile) {
+            Picasso.get().load(Constantes.URL_IMAGEM + profile.getFilePath()).into(fotoPessoa);
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), FotoDetalheActivity.class);
             String foto = fotosPessoaList.get(getAdapterPosition()).getFilePath();
-            intent.putExtra("FOTO", Constantes.URL_IMAGEM+ foto);
+            intent.putExtra("FOTO", Constantes.URL_IMAGEM + foto);
             v.getContext().startActivity(intent);
         }
     }

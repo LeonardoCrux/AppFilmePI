@@ -38,7 +38,6 @@ public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResultSeriesTop seriesTop = listSeriesTop.get(position);
         holder.onBind(seriesTop);
-
     }
 
     public void atualizaLista(List<ResultSeriesTop> novaLista){
@@ -49,6 +48,7 @@ public class SeriesTopAdapter extends RecyclerView.Adapter<SeriesTopAdapter.View
         }
         notifyDataSetChanged();
     }
+
     @Override
     public int getItemCount() {
         return listSeriesTop.size();

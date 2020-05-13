@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="495dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="71dp"
         android:layout_marginEnd="24dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imagemPerfil"
+            android:id="@+id/imagemcadastrar"
             android:layout_width="147dp"
             android:layout_height="147dp"
             android:layout_gravity="center"
@@ -36,11 +36,11 @@
             app:civ_border_width="2dp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputEmailRegistro"
+            android:id="@+id/inputNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
             android:textColorHint="@color/cinzaTexto"
             app:hintEnabled="false"
@@ -50,6 +50,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/branco"
+                android:drawableLeft="@drawable/ic_person"
+                android:hapticFeedbackEnabled="false"
+                android:hint="Nome"
+                android:shadowColor="#FFFFFF"
+                android:textColorHighlight="@color/branco"
+                android:textColorHint="@color/cinzaTexto"
+                android:textColorLink="@color/cinzaTexto" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputEmailRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:textColorHint="@color/cinzaTexto"
+            app:hintEnabled="false"
+            app:hintTextColor="@color/cinzaTexto">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/branco"
+                android:drawableLeft="@drawable/ic_email"
                 android:hapticFeedbackEnabled="false"
                 android:hint="Email"
                 android:shadowColor="#FFFFFF"
@@ -121,11 +146,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/login_background_button"
             android:text="REGISTRAR-SE" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarRegistro"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="189dp"
+        android:layout_marginEnd="174dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.081" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

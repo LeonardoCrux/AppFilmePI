@@ -38,11 +38,10 @@ public class SearchFilmeAdapter extends RecyclerView.Adapter<SearchFilmeAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResultFilme resultFilme = listaFilmes.get(position);
         holder.onBind(resultFilme);
-
     }
 
-    public void atualizaLista(List<ResultFilme> listaNova){
-        if(listaFilmes.isEmpty()){
+    public void atualizaLista(List<ResultFilme> listaNova) {
+        if (listaFilmes.isEmpty()) {
             this.listaFilmes = listaNova;
         } else {
             this.listaFilmes.addAll(listaNova);
@@ -52,7 +51,7 @@ public class SearchFilmeAdapter extends RecyclerView.Adapter<SearchFilmeAdapter.
 
     @Override
     public int getItemCount() {
-        if(listaFilmes.size() >= 4){
+        if (listaFilmes.size() >= 4) {
             return 4;
         } else return listaFilmes.size();
     }
@@ -68,9 +67,9 @@ public class SearchFilmeAdapter extends RecyclerView.Adapter<SearchFilmeAdapter.
             textView = itemView.findViewById(R.id.searchTitulo);
         }
 
-        private void onBind(ResultFilme resultFilme){
+        private void onBind(ResultFilme resultFilme) {
             textView.setText(resultFilme.getTitle());
-            Picasso.get().load(URL_IMAGEM+resultFilme.getPosterPath()).into(imageView);
+            Picasso.get().load(URL_IMAGEM + resultFilme.getPosterPath()).into(imageView);
         }
 
         @Override

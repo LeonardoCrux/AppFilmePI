@@ -7,31 +7,19 @@
     tools:context="com.pi.efilm.view.activity.PerfilActivity">
 
 
-    <ImageView
-        android:id="@+id/imagemPerfil"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:layout_marginBottom="71dp"
-        app:layout_constraintBottom_toTopOf="@+id/emailPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/nomePerfil"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/botaoSair"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imagemPerfil"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="98dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/botaoSair"
-        app:layout_constraintStart_toStartOf="@+id/emailPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/emailPerfil"
-        tools:text="nome" />
+        android:background="@drawable/login_background_button"
+        android:text="SAIR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomePerfil" />
 
     <TextView
         android:id="@+id/emailPerfil"
@@ -39,25 +27,41 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/nomePerfil"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
-        android:textSize="14sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/nomePerfil"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagemPerfil"
         tools:text="email.com" />
 
-    <Button
-        android:id="@+id/botaoSair"
-        android:layout_width="140dp"
+    <TextView
+        android:id="@+id/nomePerfil"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="139dp"
-        android:text="SAIR"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/botaoSair"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomePerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/emailPerfil"
+        tools:text="nome" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagemPerfil"
+        android:layout_width="205dp"
+        android:layout_height="192dp"
+        android:layout_gravity="center"
+        android:foregroundGravity="center|center_horizontal"
+        android:src="@drawable/androidimage"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/emailPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32999998" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

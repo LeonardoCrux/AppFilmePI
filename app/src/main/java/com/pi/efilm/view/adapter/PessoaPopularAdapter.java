@@ -40,8 +40,8 @@ public class PessoaPopularAdapter extends RecyclerView.Adapter<PessoaPopularAdap
         holder.onBind(pessoaPop);
     }
 
-    public void atualizaLista(List<ResultPessoaPop> novaLista){
-        if(pessoaPopList.isEmpty()){
+    public void atualizaLista(List<ResultPessoaPop> novaLista) {
+        if (pessoaPopList.isEmpty()) {
             pessoaPopList = novaLista;
         } else {
             pessoaPopList.addAll(novaLista);
@@ -65,16 +65,15 @@ public class PessoaPopularAdapter extends RecyclerView.Adapter<PessoaPopularAdap
             nome = itemView.findViewById(R.id.personagemFilmografia);
         }
 
-        public void onBind(ResultPessoaPop resultPessoaPop){
+        public void onBind(ResultPessoaPop resultPessoaPop) {
             nome.setText(resultPessoaPop.getName());
-            Picasso.get().load(Constantes.URL_IMAGEM+ resultPessoaPop.getProfilePath()).into(imagem);
-
+            Picasso.get().load(Constantes.URL_IMAGEM + resultPessoaPop.getProfilePath()).into(imagem);
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), PessoaDetalheActivity.class);
-            intent.putExtra(ID , pessoaPopList.get(getAdapterPosition()).getId());
+            intent.putExtra(ID, pessoaPopList.get(getAdapterPosition()).getId());
             v.getContext().startActivity(intent);
         }
     }

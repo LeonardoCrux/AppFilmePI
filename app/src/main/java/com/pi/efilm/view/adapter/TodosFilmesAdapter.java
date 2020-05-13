@@ -70,7 +70,7 @@ public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.
         }
 
         private void onBind(ResultFilme resultFilme){
-            tituloTodos.setText(resultFilme.getTitle());
+            tituloTodos.setText((listResult.indexOf(resultFilme)+1) + "-" + resultFilme.getTitle());
             textVote.setText(resultFilme.getVoteAverage().toString() + "/10");
             textData.setText(resultFilme.getReleaseDate());
             Picasso.get().load(Constantes.URL_IMAGEM+ resultFilme.getPosterPath()).into(imagemTodos);

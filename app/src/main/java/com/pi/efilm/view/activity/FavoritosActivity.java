@@ -29,7 +29,7 @@ import com.pi.efilm.viewmodel.FilmeViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.os.Build.ID;
+import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.FAVORITOS;
 import static com.pi.efilm.util.Constantes.FAVORITOS_SERIE;
 

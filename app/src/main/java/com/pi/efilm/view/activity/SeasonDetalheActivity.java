@@ -17,7 +17,7 @@ import com.pi.efilm.view.adapter.EpisodiosAdapter;
 import com.pi.efilm.viewmodel.SerieViewModel;
 import com.squareup.picasso.Picasso;
 import java.util.List;
-import static android.os.Build.ID;
+import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.API_KEY;
 import static com.pi.efilm.util.Constantes.NUMBER;
 import static com.pi.efilm.util.Constantes.PT_BR;

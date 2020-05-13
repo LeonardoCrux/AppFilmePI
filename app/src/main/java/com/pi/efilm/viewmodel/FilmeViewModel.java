@@ -46,12 +46,16 @@ public class FilmeViewModel extends AndroidViewModel {
     public LiveData<List<Detalhes>> liveDataFavoritos = mutableFavoritos;
     private MutableLiveData<List<Detalhes>> mutableFavFirebase = new MutableLiveData<>();
     public LiveData<List<Detalhes>> liveDataFavFirebase = mutableFavFirebase;
-    private MutableLiveData<List<ResultFilme>> mutableBusca = new MutableLiveData<>();
-    public LiveData<List<ResultFilme>> liveDataBusca = mutableBusca;
     private MutableLiveData<List<ResultFilme>> mutableBilheteria = new MutableLiveData<>();
     public LiveData<List<ResultFilme>> liveDataBilheteria = mutableBilheteria;
     public MutableLiveData<Detalhes> favoritoAdd = new MutableLiveData<>();
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private MutableLiveData<List<ResultFilme>> mutableFilmeSimilar =  new MutableLiveData<>();
+    public LiveData<List<ResultFilme>> liveDataSimilar = mutableFilmeSimilar;
+    private MutableLiveData<List<ResultFilme>> mutableRecomendado =  new MutableLiveData<>();
+    public LiveData<List<ResultFilme>> liveDataRecomendado = mutableRecomendado;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+
     DatabaseReference reference = database.getReference(AppUtil.getIdUsuario(getApplication()) + FAVORITOS);
     public FilmeViewModel(@NonNull Application application) {
         super(application);
@@ -71,6 +75,30 @@ public class FilmeViewModel extends AndroidViewModel {
                             mutableLiveDataErro.setValue(throwable.getMessage());
                         }));
     }
+
+    public void getFilmeSimilar(long id, String apikey, String language, int pagina){
+        disposable.add(
+                repository.getFilmeSimilar(id, apikey, language, pagina)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(movie -> {
+                    mutableFilmeSimilar.setValue(movie.getResults());
+                }, throwable -> { mutableLiveDataErro.setValue(throwable.getMessage());})
+        );
+    }
+
+    public void getFilmeRecomendado(long id, String apikey, String language, int pagina){
+        disposable.add(
+                repository.getFilmeRecomendado(id, apikey, language, pagina)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(movie -> {
+                            mutableRecomendado.setValue(movie.getResults());
+                        }, throwable -> { mutableLiveDataErro.setValue(throwable.getMessage());})
+        );
+    }
+
+
 
     public void getBilheteria(String apiKey, String language, String sort, int pagina) {
         disposable.add(

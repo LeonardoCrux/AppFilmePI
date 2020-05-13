@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activity.ListaPessoas"></activity>
-        <activity android:name=".view.activity.PessoasBuscas" />
         <activity android:name=".view.activity.PerfilActivity" />
         <activity android:name=".view.activity.RegistroActivity" />
         <activity android:name=".view.activity.LoginActivity" />

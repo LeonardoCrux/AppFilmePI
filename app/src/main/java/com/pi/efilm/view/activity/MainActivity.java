@@ -2,11 +2,9 @@ package com.pi.efilm.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.SearchView;
-
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -15,7 +13,6 @@ import com.pi.efilm.view.fragment.FilmesFragment;
 import com.pi.efilm.view.fragment.MaisFragment;
 import com.pi.efilm.view.fragment.QuizFragment;
 import com.pi.efilm.view.fragment.SeriesFragment;
-
 import static com.pi.efilm.util.AppUtil.printHashKey;
 import static com.pi.efilm.util.Constantes.NOME;
 

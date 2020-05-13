@@ -26,8 +26,8 @@ import com.pi.efilm.viewmodel.SerieViewModel;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
-import static android.os.Build.ID;
 import static com.pi.efilm.util.Constantes.API_KEY;
+import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.PT_BR;
 import static com.pi.efilm.util.Constantes.URL_IMAGEM;
 
@@ -70,7 +70,7 @@ public class SerieDetalheActivity extends AppCompatActivity {
         adicionarFavorito();
         viewModel.favoritoAdd.observe(this, result -> {
             if (result != null) {
-                Snackbar snackbar = Snackbar.make(imageFavorito, result.getName() + R.string.add_favorito, Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(imageFavorito, result.getName() + getString(R.string.add_favorito), Snackbar.LENGTH_LONG);
                 snackbar.getView().setBackgroundColor(Color.parseColor("#4CAF50"));
                 snackbar.show();
             }

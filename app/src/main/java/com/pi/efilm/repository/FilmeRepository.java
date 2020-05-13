@@ -42,6 +42,13 @@ public class FilmeRepository {
     public Observable<Movie> getFilmePopular(String apiKey, String language, String region, int pagina) {
         return FilmeService.getApiService().getFilmePopular(apiKey, language, region, pagina);
     }
+    public Observable<Movie> getFilmeSimilar(long id, String apiKey, String language, int pagina) {
+        return FilmeService.getApiService().getFilmeSimilar(id, apiKey, language, pagina);
+    }
+
+    public Observable<Movie> getFilmeRecomendado(long id, String apiKey, String language, int pagina) {
+        return FilmeService.getApiService().getFilmeRecomendado(id, apiKey, language, pagina);
+    }
 
     public Observable<Movie> getTop(String apiKey, String language, String region, int pagina) {
         return FilmeService.getApiService().getTop(apiKey, language, region, pagina);

@@ -1,42 +1,33 @@
 package com.pi.efilm.view.activity;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.snackbar.Snackbar;
 import com.pi.efilm.R;
+import com.pi.efilm.model.filme.BuscaEBreve.ResultFilme;
 import com.pi.efilm.model.filme.detalhes.Genre;
 import com.pi.efilm.util.AppUtil;
 import com.pi.efilm.util.Constantes;
 import com.pi.efilm.view.adapter.ElencoAdapter;
 import com.pi.efilm.model.filme.creditos.Cast;
 import com.pi.efilm.model.filme.detalhes.Detalhes;
+import com.pi.efilm.view.adapter.FilmeAdapterTop;
 import com.pi.efilm.viewmodel.PessoaViewModel;
 import com.pi.efilm.viewmodel.FilmeViewModel;
 import com.squareup.picasso.Picasso;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import static android.os.Build.ID;
+import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.API_KEY;
 import static com.pi.efilm.util.Constantes.PT_BR;
 
@@ -49,8 +40,10 @@ public class FilmeDetalheActivity extends AppCompatActivity {
     private PessoaViewModel viewModelElenco;
     private long idFilme;
     private ElencoAdapter adapter;
+    private FilmeAdapterTop adapterSimilar, adapteRecomendado;
+    private List<ResultFilme> resultFilmeList = new ArrayList<>();
     private List<Cast> castList = new ArrayList<>();
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView, recyclerFilmeSimilar, recyclerFilmeRecomendado;
     private ProgressBar progressBar;
 
     @Override
@@ -111,6 +104,10 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         });
         viewModelElenco.getCast(idFilme, API_KEY);
         viewModelElenco.liveDataCast.observe(this, casts -> adapter.atualizaLista(casts));
+        viewModelFilme.getFilmeSimilar(idFilme, API_KEY, PT_BR, 1);
+        viewModelFilme.liveDataSimilar.observe(this, resultFilmes -> adapterSimilar.atualizaListaTop(resultFilmes));
+        viewModelFilme.getFilmeRecomendado(idFilme, API_KEY, PT_BR, 1);
+        viewModelFilme.liveDataRecomendado.observe(this, resultFilmes -> adapteRecomendado.atualizaListaTop(resultFilmes));
     }
 
     private void adicionarFavorito() {
@@ -143,10 +140,22 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         viewModelFilme = ViewModelProviders.of(this).get(FilmeViewModel.class);
         viewModelElenco = ViewModelProviders.of(this).get(PessoaViewModel.class);
         recyclerView = findViewById(R.id.recyclerElenco);
+        recyclerFilmeSimilar = findViewById(R.id.recyclerFilmeSimilar);
+        recyclerFilmeRecomendado = findViewById(R.id.recyclerFilmeRecomendado);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
+        layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
+        LinearLayoutManager layoutManager3 = new LinearLayoutManager(this);
+        layoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerFilmeSimilar.setLayoutManager(layoutManager2);
+        recyclerFilmeRecomendado.setLayoutManager(layoutManager3);
         adapter = new ElencoAdapter(castList);
+        adapterSimilar =  new FilmeAdapterTop(resultFilmeList);
+        adapteRecomendado = new FilmeAdapterTop(resultFilmeList);
+        recyclerFilmeRecomendado.setAdapter(adapteRecomendado);
+        recyclerFilmeSimilar.setAdapter(adapterSimilar);
         recyclerView.setAdapter(adapter);
         botaoHome =  findViewById(R.id.botaoHomeFilme);
         imagemShare = findViewById(R.id.shareFilme);

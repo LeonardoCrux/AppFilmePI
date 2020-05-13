@@ -51,6 +51,20 @@ public interface API {
             @Query("region") String region,
             @Query("page") int pagina);
 
+    @GET("movie/{movie_id}/similar")
+    Observable<Movie> getFilmeSimilar(
+            @Path("movie_id") long id,
+            @Query("api_key") String api_key,
+            @Query("language") String language,
+            @Query("page") int pagina);
+
+    @GET("movie/{movie_id}/recommendations")
+    Observable<Movie> getFilmeRecomendado(
+            @Path("movie_id") long id,
+            @Query("api_key") String api_key,
+            @Query("language") String language,
+            @Query("page") int pagina);
+
     @GET("discover/movie")
     Observable<Movie> buscaBilheteria(
             @Query("api_key") String api_key,

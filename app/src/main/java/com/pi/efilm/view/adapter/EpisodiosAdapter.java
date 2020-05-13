@@ -6,21 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.pi.efilm.R;
 import com.pi.efilm.model.series.SeasonDetalhes.Episode;
 import com.pi.efilm.view.fragment.EpisodiosFragment;
-
 import java.util.List;
-
 import static com.pi.efilm.util.Constantes.EP;
-
 public class EpisodiosAdapter extends RecyclerView.Adapter<EpisodiosAdapter.ViewHolder> {
     private List<Episode> episodeList;
 

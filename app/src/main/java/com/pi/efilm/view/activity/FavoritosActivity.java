@@ -84,6 +84,7 @@ public class FavoritosActivity extends AppCompatActivity implements FavoritosLis
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplication(), R.string.erro_cancelled, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -139,6 +140,7 @@ public class FavoritosActivity extends AppCompatActivity implements FavoritosLis
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplication(), R.string.erro_cancelled, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -159,7 +161,7 @@ public class FavoritosActivity extends AppCompatActivity implements FavoritosLis
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(getApplication(), R.string.erro_cancelled, Toast.LENGTH_SHORT).show();
             }
         });
     }

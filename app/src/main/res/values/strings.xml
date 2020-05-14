@@ -42,5 +42,6 @@
     <string name="autenticacao_falhou">Autenticação falhou.</string>
     <string name="erro_cadastrar">\"Erro ao cadastrar usuário: \"</string>
     <string name="localizar_info_filme">Não foi possível localizar todas as informações sobre o filme</string>
+    <string name="erro_cancelled">Erro ao realizar ação</string>
 
 </resources>

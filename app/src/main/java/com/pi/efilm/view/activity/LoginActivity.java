@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onCancel() {
                         progressBar.setVisibility(View.INVISIBLE);
+                        Toast.makeText(getApplication(), R.string.erro_cancelled, Toast.LENGTH_SHORT).show();
 
                     }
 

@@ -3,6 +3,7 @@ package com.pi.efilm.viewmodel;
 import android.app.Application;
 import android.content.Context;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -251,6 +252,8 @@ public class FilmeViewModel extends AndroidViewModel {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplication(), R.string.erro_cancelled, Toast.LENGTH_SHORT).show();
+
             }
         });
     }

@@ -1,9 +1,11 @@
 
 package com.pi.efilm.model.pessoa;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class FilmesPessoa {
 
     @Expose
@@ -32,6 +34,8 @@ public class FilmesPessoa {
     private String releaseDate;
     @Expose
     private String title;
+    @Expose
+    private String name;
     @Expose
     private Boolean video;
     @SerializedName("vote_average")
@@ -133,6 +137,14 @@ public class FilmesPessoa {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTitle() {

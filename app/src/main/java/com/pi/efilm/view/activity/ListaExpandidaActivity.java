@@ -1,27 +1,32 @@
 package com.pi.efilm.view.activity;
+
+import android.os.Bundle;
+import android.widget.ProgressBar;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
-import android.widget.ProgressBar;
+
 import com.pi.efilm.R;
+import com.pi.efilm.model.filme.BuscaEBreve.ResultFilme;
 import com.pi.efilm.model.series.ResultSeriesTop;
 import com.pi.efilm.view.adapter.ListaSeriesAdapter;
 import com.pi.efilm.view.adapter.TodosFilmesAdapter;
-import com.pi.efilm.model.filme.BuscaEBreve.ResultFilme;
 import com.pi.efilm.viewmodel.BuscaViewModel;
 import com.pi.efilm.viewmodel.FilmeViewModel;
 import com.pi.efilm.viewmodel.SerieViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static com.pi.efilm.util.Constantes.API_KEY;
 import static com.pi.efilm.util.Constantes.BILHETERIAS;
 import static com.pi.efilm.util.Constantes.BR;
-import static com.pi.efilm.util.Constantes.FILME_POPULAR;
 import static com.pi.efilm.util.Constantes.CLICK;
+import static com.pi.efilm.util.Constantes.FILME_POPULAR;
 import static com.pi.efilm.util.Constantes.PT_BR;
 import static com.pi.efilm.util.Constantes.SERIES_POPULARES;
 import static com.pi.efilm.util.Constantes.SERIES_TOP;
@@ -82,7 +87,7 @@ public class ListaExpandidaActivity extends AppCompatActivity{
         else if(selecionado.equals(BILHETERIAS)){
             setScrollView();
             recyclerView.setAdapter(adapter);
-            viewModel.getBilheteria(API_KEY, PT_BR, "revenue.desc", pagina);
+            viewModel.getBilheteria(API_KEY, PT_BR, "revenue.desc", 10, pagina);
             viewModel.liveDataBilheteria.observe(this, resultFilmes -> adapter.atualizaLista(resultFilmes));
         }
         else if(selecionado.equals("1")){
@@ -141,7 +146,7 @@ public class ListaExpandidaActivity extends AppCompatActivity{
                     } else if(selecionado.equals(SERIES_POPULARES)){
                         serieViewModel.getSeriesPopular(API_KEY, PT_BR, pagina);
                     }else if(selecionado.equals(BILHETERIAS)){
-                        viewModel.getBilheteria(API_KEY, PT_BR, "revenue.desc", pagina);
+                        viewModel.getBilheteria(API_KEY, PT_BR, "revenue.desc", 10, pagina);
                     }
                     else if(selecionado.equals(1)){
                         buscaViewModel.getResultFilme(API_KEY, PT_BR, ResultadoBuscaActivity.query, pagina, BR);

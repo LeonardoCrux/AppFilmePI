@@ -1,19 +1,23 @@
 package com.pi.efilm.view.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
 import com.pi.efilm.R;
 import com.pi.efilm.model.pessoa.pessoa.ResultPessoaPop;
 import com.pi.efilm.view.adapter.PessoaPopularAdapter;
 import com.pi.efilm.viewmodel.PessoaViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static com.pi.efilm.util.Constantes.API_KEY;
 import static com.pi.efilm.util.Constantes.PT_BR;
 

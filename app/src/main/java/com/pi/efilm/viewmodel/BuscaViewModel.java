@@ -2,14 +2,17 @@ package com.pi.efilm.viewmodel;
 
 import android.app.Application;
 import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import com.pi.efilm.model.filme.BuscaEBreve.ResultFilme;
 import com.pi.efilm.model.pessoa.pessoa.ResultPessoaPop;
 import com.pi.efilm.model.series.ResultSeriesTop;
 import com.pi.efilm.repository.FilmeRepository;
+
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

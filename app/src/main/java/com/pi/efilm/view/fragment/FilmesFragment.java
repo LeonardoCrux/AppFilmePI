@@ -2,12 +2,6 @@ package com.pi.efilm.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +10,17 @@ import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.pi.efilm.R;
-import com.pi.efilm.view.adapter.FilmeAdapter;
-import com.pi.efilm.view.adapter.FilmeAdapterTop;
 import com.pi.efilm.model.filme.BuscaEBreve.ResultFilme;
 import com.pi.efilm.view.activity.ListaExpandidaActivity;
+import com.pi.efilm.view.adapter.FilmeAdapter;
+import com.pi.efilm.view.adapter.FilmeAdapterTop;
 import com.pi.efilm.viewmodel.FilmeViewModel;
 
 import java.util.ArrayList;
@@ -28,8 +28,8 @@ import java.util.List;
 
 import static com.pi.efilm.util.Constantes.API_KEY;
 import static com.pi.efilm.util.Constantes.BR;
-import static com.pi.efilm.util.Constantes.FILME_POPULAR;
 import static com.pi.efilm.util.Constantes.CLICK;
+import static com.pi.efilm.util.Constantes.FILME_POPULAR;
 import static com.pi.efilm.util.Constantes.PT_BR;
 import static com.pi.efilm.util.Constantes.TOP;
 

@@ -9,7 +9,6 @@ import com.pi.efilm.model.pessoa.PessoaDetalhe;
 import com.pi.efilm.model.pessoa.pessoa.Pessoas;
 import com.pi.efilm.model.series.ResultSeriesDetalhe;
 import com.pi.efilm.model.series.SeasonDetalhes.SeasonDetalhes;
-import com.pi.efilm.model.series.SeriesPopular;
 import com.pi.efilm.model.series.SeriesTop;
 
 import io.reactivex.Observable;
@@ -58,6 +57,13 @@ public interface API {
             @Query("language") String language,
             @Query("page") int pagina);
 
+    @GET("tv/{tv_id}/similar")
+    Observable<SeriesTop> getSerieSimilar(
+            @Path("tv_id") long id,
+            @Query("api_key") String api_key,
+            @Query("language") String language,
+            @Query("page") int pagina);
+
     @GET("movie/{movie_id}/recommendations")
     Observable<Movie> getFilmeRecomendado(
             @Path("movie_id") long id,
@@ -70,14 +76,15 @@ public interface API {
             @Query("api_key") String api_key,
             @Query("language") String language,
             @Query("sort_by") String sort,
+            @Query("vote_count.gte") int vote,
             @Query("page") int pagina);
 
     @GET("movie/top_rated")
     Observable<Movie> getTop(
-    @Query("api_key") String api_key,
-    @Query("language") String language,
-    @Query("region") String region,
-    @Query("page") int pagina);
+            @Query("api_key") String api_key,
+            @Query("language") String language,
+            @Query("region") String region,
+            @Query("page") int pagina);
 
     @GET("movie/{movie_id}")
     Single<Detalhes> getFilmeDetalhe(
@@ -87,8 +94,13 @@ public interface API {
 
     @GET("movie/{movie_id}/credits")
     Observable<Creditos> getCreditos(
-    @Path("movie_id") long id,
-    @Query("api_key") String apiKey);
+            @Path("movie_id") long id,
+            @Query("api_key") String apiKey);
+
+    @GET("tv/{tv_id}/credits")
+    Observable<Creditos> getCreditosSerie(
+            @Path("tv_id") long id,
+            @Query("api_key") String apiKey);
 
     @GET("person/{person_id}")
     Single<PessoaDetalhe> getPessoaDetalhe(
@@ -98,6 +110,12 @@ public interface API {
 
     @GET("person/{person_id}/movie_credits")
     Observable<Filmografia> getFilmografia(
+            @Path("person_id") long id,
+            @Query("api_key") String api_key,
+            @Query("language") String language);
+
+    @GET("person/{person_id}/tv_credits")
+    Observable<Filmografia> getSeriesTV(
             @Path("person_id") long id,
             @Query("api_key") String api_key,
             @Query("language") String language);

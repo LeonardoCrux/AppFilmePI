@@ -35,8 +35,8 @@ public class FilmeRepository {
         return FilmeService.getApiService().buscaPessoas(apiKey, language, query, pagina, region);
     }
 
-    public Observable<Movie> buscaBilheteria(String apikey, String language, String sort, int pagina){
-        return FilmeService.getApiService().buscaBilheteria(apikey, language, sort, pagina);
+    public Observable<Movie> buscaBilheteria(String apikey, String language, String sort, int vote, int pagina){
+        return FilmeService.getApiService().buscaBilheteria(apikey, language, sort,vote,  pagina);
     }
 
     public Observable<Movie> getFilmePopular(String apiKey, String language, String region, int pagina) {
@@ -44,6 +44,10 @@ public class FilmeRepository {
     }
     public Observable<Movie> getFilmeSimilar(long id, String apiKey, String language, int pagina) {
         return FilmeService.getApiService().getFilmeSimilar(id, apiKey, language, pagina);
+    }
+
+    public Observable<SeriesTop> getSerieSimilar(long id, String apiKey, String language, int pagina) {
+        return FilmeService.getApiService().getSerieSimilar(id, apiKey, language, pagina);
     }
 
     public Observable<Movie> getFilmeRecomendado(long id, String apiKey, String language, int pagina) {
@@ -58,6 +62,10 @@ public class FilmeRepository {
         return FilmeService.getApiService().getCreditos(id, apiKey);
     }
 
+    public Observable<Creditos> getCreditosSerie(long id, String apiKey) {
+        return FilmeService.getApiService().getCreditosSerie(id, apiKey);
+    }
+
     public Single<Detalhes> getFilmeDetalhes(long id, String apiKey, String language) {
         return FilmeService.getApiService().getFilmeDetalhe(id, apiKey, language);
     }
@@ -68,6 +76,10 @@ public class FilmeRepository {
 
     public Observable<Filmografia> getFilmografia(long id, String apiKey, String language) {
         return FilmeService.getApiService().getFilmografia(id, apiKey, language);
+    }
+
+    public Observable<Filmografia> getSeriesTV(long id, String apiKey, String language) {
+        return FilmeService.getApiService().getSeriesTV(id, apiKey, language);
     }
 
     public Observable<FotosPessoa> getFotos(long id, String apiKey) {

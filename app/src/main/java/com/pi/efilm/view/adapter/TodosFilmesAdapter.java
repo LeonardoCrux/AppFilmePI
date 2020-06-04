@@ -6,14 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.pi.efilm.R;
 import com.pi.efilm.model.filme.BuscaEBreve.ResultFilme;
 import com.pi.efilm.util.Constantes;
 import com.pi.efilm.view.activity.FilmeDetalheActivity;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
+
 import static com.pi.efilm.util.Constantes.ID;
 
 public class TodosFilmesAdapter extends RecyclerView.Adapter<TodosFilmesAdapter.ViewHolder> {

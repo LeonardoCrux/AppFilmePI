@@ -3,10 +3,12 @@ package com.pi.efilm.viewmodel;
 import android.app.Application;
 import android.content.Context;
 import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +20,9 @@ import com.pi.efilm.model.series.ResultSeriesTop;
 import com.pi.efilm.model.series.SeasonDetalhes.SeasonDetalhes;
 import com.pi.efilm.repository.FilmeRepository;
 import com.pi.efilm.util.AppUtil;
+
 import java.util.List;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -42,6 +46,10 @@ public class SerieViewModel extends AndroidViewModel {
     private MutableLiveData<List<ResultSeriesTop>> mutablePopular = new MutableLiveData<>();
     public LiveData<List<ResultSeriesTop>> liveDataPopular = mutablePopular;
     public MutableLiveData<ResultSeriesDetalhe> favoritoAdd = new MutableLiveData<>();
+
+    private MutableLiveData<List<ResultSeriesTop>> mutableSimilar =  new MutableLiveData<>();
+    public LiveData<List<ResultSeriesTop>> liveDataSimilar = mutableSimilar;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference referenceSerie = database.getReference(AppUtil.getIdUsuario(getApplication()) + FAVORITOS_SERIE);
 
@@ -62,6 +70,17 @@ public class SerieViewModel extends AndroidViewModel {
                         }, throwable -> {
                             mutableLiveDataErro.setValue(throwable.getMessage());
                         }));
+    }
+
+    public void getSerieSimilar(long id, String apikey, String language, int pagina){
+        disposable.add(
+                repository.getSerieSimilar(id, apikey, language, pagina)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(seriesTop -> {
+                            mutableSimilar.setValue(seriesTop.getResults());
+                        }, throwable -> { mutableLiveDataErro.setValue(throwable.getMessage());})
+        );
     }
 
     public void getSerieDetalhe(long id, String apiKey, String language) {

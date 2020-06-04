@@ -1,17 +1,22 @@
 package com.pi.efilm.view.activity;
+
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
+
 import com.pi.efilm.R;
 import com.pi.efilm.model.pessoa.pessoa.ResultPessoaPop;
 import com.pi.efilm.view.adapter.PessoaPopularAdapter;
 import com.pi.efilm.viewmodel.BuscaViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static com.pi.efilm.util.Constantes.API_KEY;
 import static com.pi.efilm.util.Constantes.BR;
 import static com.pi.efilm.util.Constantes.CLICK;

@@ -1,8 +1,10 @@
 
 package com.pi.efilm.model.filme.creditos;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
+
+import java.util.List;
+
 public class Creditos {
 
     @Expose

@@ -1,8 +1,5 @@
 package com.pi.efilm.view.activity;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,29 +8,37 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.pi.efilm.R;
 import com.pi.efilm.model.filme.BuscaEBreve.ResultFilme;
+import com.pi.efilm.model.filme.creditos.Cast;
+import com.pi.efilm.model.filme.detalhes.Detalhes;
 import com.pi.efilm.model.filme.detalhes.Genre;
 import com.pi.efilm.util.AppUtil;
 import com.pi.efilm.util.Constantes;
 import com.pi.efilm.view.adapter.ElencoAdapter;
-import com.pi.efilm.model.filme.creditos.Cast;
-import com.pi.efilm.model.filme.detalhes.Detalhes;
 import com.pi.efilm.view.adapter.FilmeAdapterTop;
-import com.pi.efilm.viewmodel.PessoaViewModel;
 import com.pi.efilm.viewmodel.FilmeViewModel;
+import com.pi.efilm.viewmodel.PessoaViewModel;
 import com.squareup.picasso.Picasso;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import static com.pi.efilm.util.Constantes.ID;
+
 import static com.pi.efilm.util.Constantes.API_KEY;
+import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.PT_BR;
 
 public class FilmeDetalheActivity extends AppCompatActivity {
     private ImageView imagemFilme, imagemFavorito, imagemShare;
-    private TextView tituloFilme, duracao, originalTitle, sinopse, orcamento, bilheteria, data, genero;
+    private TextView tituloFilme, duracao, originalTitle, sinopse, orcamento, bilheteria, data, genero, nota;
     private FilmeViewModel viewModelFilme;
     private ImageButton botaoHome;
     private Detalhes filme;
@@ -159,6 +164,7 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         botaoHome =  findViewById(R.id.botaoHomeFilme);
         imagemShare = findViewById(R.id.shareFilme);
+        nota =  findViewById(R.id.notaFilmeDetalhe);
     }
 
     private void recuperaIdFilme() {
@@ -176,6 +182,7 @@ public class FilmeDetalheActivity extends AppCompatActivity {
             sinopse.setText(detalhes.getOverview());
             List<Genre> genres = detalhes.getGenres();
             String generosString = "";
+            nota.setText(detalhes.getVoteAverage().toString() + "/10");
             for (Genre g : genres) {
                 generosString += g.getName() + ", ";
             }

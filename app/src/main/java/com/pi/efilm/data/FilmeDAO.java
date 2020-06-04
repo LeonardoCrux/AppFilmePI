@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+
 import com.pi.efilm.model.filme.detalhes.Detalhes;
 
 import java.util.List;

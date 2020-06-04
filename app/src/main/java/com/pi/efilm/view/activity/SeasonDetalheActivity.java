@@ -1,14 +1,16 @@
 package com.pi.efilm.view.activity;
 
+import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.pi.efilm.R;
 import com.pi.efilm.model.series.SeasonDetalhes.Episode;
 import com.pi.efilm.model.series.SeasonDetalhes.SeasonDetalhes;
@@ -16,9 +18,11 @@ import com.pi.efilm.util.AppUtil;
 import com.pi.efilm.view.adapter.EpisodiosAdapter;
 import com.pi.efilm.viewmodel.SerieViewModel;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
-import static com.pi.efilm.util.Constantes.ID;
+
 import static com.pi.efilm.util.Constantes.API_KEY;
+import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.NUMBER;
 import static com.pi.efilm.util.Constantes.PT_BR;
 import static com.pi.efilm.util.Constantes.URL_IMAGEM;

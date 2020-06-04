@@ -13,29 +13,29 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pi.efilm.R;
 import com.pi.efilm.model.pessoa.FilmesPessoa;
 import com.pi.efilm.util.Constantes;
-import com.pi.efilm.view.activity.FilmeDetalheActivity;
+import com.pi.efilm.view.activity.SerieDetalheActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import static com.pi.efilm.util.Constantes.ID;
 
-public class FilmografiaAdapter extends RecyclerView.Adapter<FilmografiaAdapter.ViewHolder> {
+public class ProgramasAdapter extends RecyclerView.Adapter<ProgramasAdapter.ViewHolder> {
     private List<FilmesPessoa> filmesPessoaList;
 
-    public FilmografiaAdapter(List<FilmesPessoa> filmesPessoaList) {
+    public ProgramasAdapter(List<FilmesPessoa> filmesPessoaList) {
         this.filmesPessoaList = filmesPessoaList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProgramasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.filmografia_lista, parent, false);
-        return new ViewHolder(view);
+        return new ProgramasAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProgramasAdapter.ViewHolder holder, int position) {
         FilmesPessoa filmesPessoa = filmesPessoaList.get(position);
         holder.onBind(filmesPessoa);
 
@@ -81,7 +81,7 @@ public class FilmografiaAdapter extends RecyclerView.Adapter<FilmografiaAdapter.
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(view.getContext(), FilmeDetalheActivity.class);
+            Intent intent = new Intent(view.getContext(), SerieDetalheActivity.class);
             intent.putExtra(ID, filmesPessoaList.get(getAdapterPosition()).getId());
             view.getContext().startActivity(intent);
         }

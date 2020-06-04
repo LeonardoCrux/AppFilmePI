@@ -1,15 +1,18 @@
 package com.pi.efilm.view.activity;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -18,16 +21,20 @@ import com.google.firebase.storage.StorageReference;
 import com.pi.efilm.R;
 import com.pi.efilm.util.AppUtil;
 import com.squareup.picasso.Picasso;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
+
 import static com.pi.efilm.util.Constantes.IMAGEM_PROFILE;
 import static com.pi.efilm.util.Constantes.NOME_IMAGEM;
+
 public class PerfilActivity extends AppCompatActivity {
     private TextView nomePerfil, emailPerfil;
     private CircleImageView imagemPerfil;

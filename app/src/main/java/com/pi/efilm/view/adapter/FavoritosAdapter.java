@@ -5,13 +5,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.pi.efilm.R;
 import com.pi.efilm.model.filme.detalhes.Detalhes;
 import com.pi.efilm.util.Constantes;
 import com.pi.efilm.view.interfaces.FavoritosListener;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.ViewHolder> {

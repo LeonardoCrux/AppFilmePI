@@ -3,6 +3,7 @@ package com.pi.efilm.model.filme.detalhes;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
 public class ProductionCountry {
 
     @SerializedName("iso_3166_1")

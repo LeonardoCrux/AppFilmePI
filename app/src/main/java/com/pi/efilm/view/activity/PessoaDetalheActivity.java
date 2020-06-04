@@ -1,14 +1,16 @@
 package com.pi.efilm.view.activity;
 
+import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.pi.efilm.R;
 import com.pi.efilm.model.pessoa.FilmesPessoa;
 import com.pi.efilm.model.pessoa.PessoaDetalhe;
@@ -16,13 +18,16 @@ import com.pi.efilm.model.pessoa.Profile;
 import com.pi.efilm.util.AppUtil;
 import com.pi.efilm.view.adapter.FilmografiaAdapter;
 import com.pi.efilm.view.adapter.FotosPessoaAdapter;
+import com.pi.efilm.view.adapter.ProgramasAdapter;
 import com.pi.efilm.viewmodel.PessoaViewModel;
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
-import static com.pi.efilm.util.Constantes.ID;
+
 import static com.pi.efilm.util.Constantes.API_KEY;
 import static com.pi.efilm.util.Constantes.EN_US;
+import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.PT_BR;
 import static com.pi.efilm.util.Constantes.URL_IMAGEM;
 
@@ -31,9 +36,9 @@ public class PessoaDetalheActivity extends AppCompatActivity {
     private TextView nomePessoa, nascPessoa, localPessoa, biografia, departamento;
     private PessoaViewModel viewModel;
     private ImageButton botaoHome;
-    private RecyclerView recyclerView;
-    private RecyclerView recyclerViewFotos;
+    private RecyclerView recyclerView, recyclerViewFotos, recyclerSeriesTV;
     private FilmografiaAdapter adapter;
+    private ProgramasAdapter adapterSerie;
     private FotosPessoaAdapter adapterFotos;
     private PessoaDetalhe pessoaDetalhe;
     private long idPessoa;
@@ -55,6 +60,9 @@ public class PessoaDetalheActivity extends AppCompatActivity {
             idPessoa = bundle.getLong(ID);
             viewModel.getPessoa(idPessoa, API_KEY, PT_BR);
             viewModel.liveDataPessoa.observe(this, pessoaDetalhe1 -> setDetalhes(pessoaDetalhe1));
+
+            viewModel.getSeriesTV(idPessoa, API_KEY, PT_BR);
+            viewModel.liveDataSerieTV.observe(this, filmesPessoas -> adapterSerie.atualizaLista(filmesPessoas));
 
             viewModel.getFilmografia(idPessoa, API_KEY, PT_BR);
             viewModel.liveDataFilmografia.observe(this, filmesPessoas -> adapter.atualizaLista(filmesPessoas));
@@ -90,6 +98,13 @@ public class PessoaDetalheActivity extends AppCompatActivity {
         recyclerViewFotos.setAdapter(adapterFotos);
         recyclerViewFotos.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
         recyclerViewFotos.setLayoutManager(layoutManager2);
+
+        recyclerSeriesTV = findViewById(R.id.recyclerSeriesPessoaDetalhe);
+        LinearLayoutManager layoutManager3 = new LinearLayoutManager(this);
+        layoutManager3.setOrientation(RecyclerView.HORIZONTAL);
+        recyclerSeriesTV.setLayoutManager(layoutManager3);
+        adapterSerie = new ProgramasAdapter(filmesPessoaList);
+        recyclerSeriesTV.setAdapter(adapterSerie);
     }
 
     private void setDetalhes(PessoaDetalhe pessoaDetalhe) {

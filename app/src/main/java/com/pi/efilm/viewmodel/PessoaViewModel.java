@@ -25,6 +25,8 @@ public class PessoaViewModel extends AndroidViewModel {
     private FilmeRepository repository = new FilmeRepository();
     private MutableLiveData<List<Cast>> mutableLiveDataCast = new MutableLiveData<>();
     public LiveData<List<Cast>> liveDataCast = mutableLiveDataCast;
+    private MutableLiveData<List<Cast>> mutableCastSerie = new MutableLiveData<>();
+    public LiveData<List<Cast>> liveDataCastSerie = mutableCastSerie;
     private MutableLiveData<Boolean> mutableLiveDataLoading = new MutableLiveData<>();
     public LiveData<Boolean> LiveDataBoolean = mutableLiveDataLoading;
     private MutableLiveData<String> mutableLiveDataErro = new MutableLiveData<>();
@@ -33,6 +35,8 @@ public class PessoaViewModel extends AndroidViewModel {
     public LiveData<PessoaDetalhe> liveDataPessoa = mutableLiveDataPessoa;
     private MutableLiveData<List<FilmesPessoa>> mutableLiveDataFilmografia = new MutableLiveData<>();
     public LiveData<List<FilmesPessoa>> liveDataFilmografia = mutableLiveDataFilmografia;
+    private MutableLiveData<List<FilmesPessoa>> mutableSerieTV = new MutableLiveData<>();
+    public LiveData<List<FilmesPessoa>> liveDataSerieTV = mutableSerieTV;
     private MutableLiveData<List<Profile>> mutableLiveDataFoto = new MutableLiveData<>();
     public LiveData<List<Profile>> liveDataFoto = mutableLiveDataFoto;
     private MutableLiveData<List<ResultPessoaPop>> mutableLiveDataPessoaTop = new MutableLiveData<>();
@@ -51,6 +55,20 @@ public class PessoaViewModel extends AndroidViewModel {
                         .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
                         .subscribe(creditos -> {
                             mutableLiveDataCast.setValue(creditos.getCast());
+                        }, throwable -> {
+                            mutableLiveDataErro.setValue(throwable.getMessage());
+                        }));
+    }
+
+    public void getCastSerie(long id, String apiKey) {
+        disposable.add(
+                repository.getCreditosSerie(id, apiKey)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(disposable1 -> mutableLiveDataLoading.setValue(true))
+                        .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
+                        .subscribe(creditos -> {
+                            mutableCastSerie.setValue(creditos.getCast());
                         }, throwable -> {
                             mutableLiveDataErro.setValue(throwable.getMessage());
                         }));
@@ -78,6 +96,18 @@ public class PessoaViewModel extends AndroidViewModel {
                         .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
                         .subscribe(filmografia -> {
                             mutableLiveDataFilmografia.setValue(filmografia.getCast());
+                        }, throwable -> mutableLiveDataErro.setValue(throwable.getMessage())));
+    }
+
+    public void getSeriesTV(long id, String apiKey, String language) {
+        disposable.add(
+                repository.getSeriesTV(id, apiKey, language)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(disposable1 -> mutableLiveDataLoading.setValue(true))
+                        .doOnTerminate(() -> mutableLiveDataLoading.setValue(false))
+                        .subscribe(filmografia -> {
+                            mutableSerieTV.setValue(filmografia.getCast());
                         }, throwable -> mutableLiveDataErro.setValue(throwable.getMessage())));
     }
 

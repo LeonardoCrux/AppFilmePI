@@ -1,12 +1,5 @@
 package com.pi.efilm.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,17 +8,30 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.pi.efilm.R;
+import com.pi.efilm.model.filme.creditos.Cast;
 import com.pi.efilm.model.series.CreatedBy;
 import com.pi.efilm.model.series.ResultSeriesDetalhe;
+import com.pi.efilm.model.series.ResultSeriesTop;
 import com.pi.efilm.model.series.Season;
 import com.pi.efilm.util.AppUtil;
+import com.pi.efilm.view.adapter.ElencoAdapter;
 import com.pi.efilm.view.adapter.SeasonAdapter;
+import com.pi.efilm.view.adapter.SeriesTopAdapter;
+import com.pi.efilm.viewmodel.PessoaViewModel;
 import com.pi.efilm.viewmodel.SerieViewModel;
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static com.pi.efilm.util.Constantes.API_KEY;
 import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.PT_BR;
@@ -35,13 +41,18 @@ public class SerieDetalheActivity extends AppCompatActivity {
     private SerieViewModel viewModel;
     private ResultSeriesDetalhe resultSeriesDetalhe;
     private List<Season> seasonList = new ArrayList<>();
+    private SeriesTopAdapter adapterSimilar;
     private ImageButton botaoHome;
-    private long idFilme;
+    private long idSerie;
     private TextView data, sinopse, titulo, tituloOriginal, status, diretor, nota,  numeroSeasons, numeroEps;
     private ImageView imageView, imageFavorito, imagemShare;
     private ProgressBar progressBar;
-    private RecyclerView recyclerViewSeason;
+    private List<ResultSeriesTop> seriesList = new ArrayList<>();
+    private RecyclerView recyclerViewSeason, recyclerViewSimilar, recyclerViewElenco;
+    private List<Cast> castList = new ArrayList<>();
     private SeasonAdapter adapter;
+    private ElencoAdapter elencoAdapter;
+    private PessoaViewModel pessoaViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +60,11 @@ public class SerieDetalheActivity extends AppCompatActivity {
         setContentView(R.layout.activity_serie_detalhe);
         initView();
         recuperaIdFilme();
-        viewModel.getSerieDetalhe(idFilme ,API_KEY, PT_BR);
-
+        viewModel.getSerieSimilar(idSerie, API_KEY, PT_BR, 1);
+        viewModel.liveDataSimilar.observe(this, resultSeriesTops -> adapterSimilar.atualizaLista(resultSeriesTops));
+        pessoaViewModel.getCastSerie(idSerie, API_KEY);
+        pessoaViewModel.liveDataCastSerie.observe(this, casts -> elencoAdapter.atualizaLista(casts));
+        viewModel.getSerieDetalhe(idSerie,API_KEY, PT_BR);
         viewModel.liveDataSerieDetalhe.observe(this, resultSeriesDetalhe1 -> {
             setDetalhes(resultSeriesDetalhe1);
             viewModel.corBotaoFavoritos(resultSeriesDetalhe1, this, imageFavorito);
@@ -88,6 +102,7 @@ public class SerieDetalheActivity extends AppCompatActivity {
         status = findViewById(R.id.statusSerie);
         tituloOriginal = findViewById(R.id.originalSerieDetalhe);
         viewModel = ViewModelProviders.of(this).get(SerieViewModel.class);
+        pessoaViewModel = ViewModelProviders.of(this).get(PessoaViewModel.class);
         progressBar = findViewById(R.id.progressBarSeriesDetalhe);
         diretor = findViewById(R.id.diretorSerieDetalhe);
         numeroSeasons = findViewById(R.id.numeroSeasons);
@@ -96,11 +111,23 @@ public class SerieDetalheActivity extends AppCompatActivity {
         imageFavorito =  findViewById(R.id.imageFavoritoSerie);
         botaoHome = findViewById(R.id.botaoHomeSerie);
         imagemShare = findViewById(R.id.shareSerie);
+        recyclerViewSimilar = findViewById(R.id.recyclerSerieSimilar);
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
+        layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerViewSimilar.setLayoutManager(layoutManager2);
+        adapterSimilar = new SeriesTopAdapter(seriesList);
+        recyclerViewSimilar.setAdapter(adapterSimilar);
+        recyclerViewElenco = findViewById(R.id.recyclerElencoSerie);
+        LinearLayoutManager layoutManager3 = new LinearLayoutManager(this);
+        layoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerViewElenco.setLayoutManager(layoutManager3);
+        elencoAdapter = new ElencoAdapter(castList);
+        recyclerViewElenco.setAdapter(elencoAdapter);
     }
 
     private void recuperaIdFilme(){
         Bundle bundle = getIntent().getExtras();
-        idFilme = bundle.getLong(ID );
+        idSerie = bundle.getLong(ID );
     }
 
     private void setDetalhes(ResultSeriesDetalhe result){
@@ -135,6 +162,8 @@ public class SerieDetalheActivity extends AppCompatActivity {
         adapter = new SeasonAdapter(resultSeriesDetalhe.getSeasons(), resultSeriesDetalhe.getId());
         recyclerViewSeason.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
         recyclerViewSeason.setAdapter(adapter);
+
+
     }
 
     private void adicionarFavorito() {
@@ -154,7 +183,7 @@ public class SerieDetalheActivity extends AppCompatActivity {
 
     private void compartilhar(){
         imagemShare.setOnClickListener(v -> {
-            String stringCompartilhar = "Recomendo a série "+ resultSeriesDetalhe.getName() + "\nhttps://www.themoviedb.org/tv/" + idFilme;
+            String stringCompartilhar = "Recomendo a série "+ resultSeriesDetalhe.getName() + "\nhttps://www.themoviedb.org/tv/" + idSerie;
             AppUtil.compartilhar(stringCompartilhar, progressBar, this);
         });
     }

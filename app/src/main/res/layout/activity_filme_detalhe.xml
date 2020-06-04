@@ -20,6 +20,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imagemNotaFilme"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="3dp"
+            app:layout_constraintStart_toEndOf="@+id/notaFilmeDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/bilheteriaDetalhe"
+            app:srcCompat="@drawable/ic_star_black_24dp" />
+
         <TextView
             android:id="@+id/tituloFilmeDetalhe"
             android:layout_width="0dp"
@@ -33,21 +42,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Titulo" />
 
         <TextView
-            android:id="@+id/dataFilmeDetalhe"
+            android:id="@+id/notaFilmeDetalhe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="116dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="serif"
-            android:text="De"
             android:textColor="@color/cinzaTexto"
-            android:textSize="10sp"
-            android:visibility="invisible"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/bilheteriaDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/bilheteriaDetalhe"
+            tools:text="Nota" />
 
         <TextView
             android:id="@+id/sinopseFilmeDetalhe"
@@ -60,7 +69,8 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
 
         <TextView
             android:id="@+id/textView10"
@@ -102,12 +112,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="serif"
             android:textColor="@color/cinzaTexto"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/generoDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/generoDetalhe"
+            tools:text="100000000" />
 
         <TextView
             android:id="@+id/elencoDetalhe"
@@ -124,12 +135,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="serif"
             android:textColor="@color/cinzaTexto"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/dataFilmeDetalhe"
+            app:layout_constraintTop_toBottomOf="@+id/notaFilmeDetalhe"
             tools:text="11111" />
 
         <TextView
@@ -137,18 +148,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="serif"
             android:textColor="@color/cinzaTexto"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/orcamentoDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/orcamentoDetalhe"
+            tools:text="100000" />
 
         <TextView
             android:id="@+id/generoDetalhe"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="serif"
             android:textColor="@color/cinzaTexto"
@@ -157,7 +170,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imagemFilmeDetalhe"
-            app:layout_constraintTop_toBottomOf="@+id/tituloFilmeDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/tituloFilmeDetalhe"
+            tools:text="terror" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerElenco"
@@ -176,7 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="15dp"
             android:text="Elenco"
             android:textSize="16sp"
             android:textStyle="bold"

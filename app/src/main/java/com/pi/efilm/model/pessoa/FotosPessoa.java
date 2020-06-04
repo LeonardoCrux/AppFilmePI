@@ -1,8 +1,9 @@
 
 package com.pi.efilm.model.pessoa;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
+
+import java.util.List;
 
 public class FotosPessoa {
 

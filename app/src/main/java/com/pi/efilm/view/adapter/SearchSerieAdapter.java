@@ -6,12 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.pi.efilm.R;
 import com.pi.efilm.model.series.ResultSeriesTop;
 import com.pi.efilm.view.activity.SerieDetalheActivity;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import static com.pi.efilm.util.Constantes.ID;

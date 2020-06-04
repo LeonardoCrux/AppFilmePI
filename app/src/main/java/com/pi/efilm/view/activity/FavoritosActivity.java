@@ -1,17 +1,15 @@
 package com.pi.efilm.view.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,9 +27,9 @@ import com.pi.efilm.viewmodel.FilmeViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.pi.efilm.util.Constantes.ID;
 import static com.pi.efilm.util.Constantes.FAVORITOS;
 import static com.pi.efilm.util.Constantes.FAVORITOS_SERIE;
+import static com.pi.efilm.util.Constantes.ID;
 
 public class FavoritosActivity extends AppCompatActivity implements FavoritosListener {
     private RecyclerView recyclerView, recyclerSerie;
@@ -84,7 +82,6 @@ public class FavoritosActivity extends AppCompatActivity implements FavoritosLis
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplication(), R.string.erro_cancelled, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -140,7 +137,6 @@ public class FavoritosActivity extends AppCompatActivity implements FavoritosLis
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplication(), R.string.erro_cancelled, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -161,7 +157,7 @@ public class FavoritosActivity extends AppCompatActivity implements FavoritosLis
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplication(), R.string.erro_cancelled, Toast.LENGTH_SHORT).show();
+
             }
         });
     }

@@ -88,11 +88,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="40dp"
-            android:text="Filmografia"
+            android:text="Filmes"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/biografiaPessoaDetalhe" />
+
+        <TextView
+            android:id="@+id/serieTVPessoa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:text="Programas de TV"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerFilmografia" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerFilmografia"
@@ -106,6 +118,19 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/filmografiaPessoa" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSeriesPessoaDetalhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/backRecycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/serieTVPessoa" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerFotosPessoa"
@@ -153,12 +178,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="Fotos"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerFilmografia" />
+            app:layout_constraintTop_toBottomOf="@+id/recyclerSeriesPessoaDetalhe" />
 
         <ImageButton
             android:id="@+id/botaoHomePessoa"

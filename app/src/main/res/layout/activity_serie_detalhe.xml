@@ -10,6 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSerieSimilar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView52" />
+
         <TextView
             android:id="@+id/numeroSeasons"
             android:layout_width="wrap_content"
@@ -126,13 +139,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
             android:background="@color/backRecycler"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinopseSerieDetalhe" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
             android:id="@+id/diretorSerieDetalhe"
@@ -152,13 +165,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/backRecycler"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerSeason" />
+            app:layout_constraintTop_toBottomOf="@id/textView53" />
 
         <TextView
             android:id="@+id/notaSerie"
@@ -222,6 +235,42 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imagemSerieDetalhe"
             app:srcCompat="@drawable/ic_share_black_24dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Temporadas"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sinopseSerieDetalhe" />
+
+        <TextView
+            android:id="@+id/textView52"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Séries similares"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerElencoSerie" />
+
+        <TextView
+            android:id="@+id/textView53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Elenco"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerSeason" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
